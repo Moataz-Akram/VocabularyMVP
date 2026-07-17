@@ -29,7 +29,7 @@ struct VoicePickerStepView: View {
         }
     }
 
-    private func voiceRow(_ voice: VoiceOption) -> some View {
+    private func voiceRow(_ voice: SpeechService.Voice) -> some View {
         let isSelected = voiceID == voice.id
         let isSpeaking = speech.speakingVoiceID == voice.id
         return Button {
