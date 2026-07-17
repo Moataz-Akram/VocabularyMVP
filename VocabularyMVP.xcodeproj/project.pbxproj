@@ -8,7 +8,25 @@
 
 /* Begin PBXBuildFile section */
 		078174003008468A000ACABA /* VocabularyMVPApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078173FF3008468A000ACABA /* VocabularyMVPApp.swift */; };
-		078174023008468A000ACABA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078174013008468A000ACABA /* ContentView.swift */; };
+		AB20000000000000000000001 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB10000000000000000000001 /* RootView.swift */; };
+		AB20000000000000000000002 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB10000000000000000000002 /* Theme.swift */; };
+		AB20000000000000000000003 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB10000000000000000000003 /* Haptics.swift */; };
+		AB20000000000000000000004 /* PrimaryButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB10000000000000000000004 /* PrimaryButtonStyle.swift */; };
+		AB20000000000000000000005 /* SelectableRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB10000000000000000000005 /* SelectableRow.swift */; };
+		AB20000000000000000000006 /* OnboardingProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB10000000000000000000006 /* OnboardingProfile.swift */; };
+		AB20000000000000000000007 /* OnboardingStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB10000000000000000000007 /* OnboardingStep.swift */; };
+		AB20000000000000000000008 /* OnboardingFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB10000000000000000000008 /* OnboardingFlow.swift */; };
+		AB20000000000000000000009 /* OnboardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB10000000000000000000009 /* OnboardingCoordinator.swift */; };
+		AB2000000000000000000000A /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1000000000000000000000A /* OnboardingView.swift */; };
+		AB2000000000000000000000B /* WelcomeStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1000000000000000000000B /* WelcomeStepView.swift */; };
+		AB2000000000000000000000C /* InfoStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1000000000000000000000C /* InfoStepView.swift */; };
+		AB2000000000000000000000D /* SingleSelectStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1000000000000000000000D /* SingleSelectStepView.swift */; };
+		AB2000000000000000000000E /* MultiSelectStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1000000000000000000000E /* MultiSelectStepView.swift */; };
+		AB2000000000000000000000F /* TextInputStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1000000000000000000000F /* TextInputStepView.swift */; };
+		AB20000000000000000000010 /* VoicePickerStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB10000000000000000000010 /* VoicePickerStepView.swift */; };
+		AB20000000000000000000011 /* StreakPreviewStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB10000000000000000000011 /* StreakPreviewStepView.swift */; };
+		AB20000000000000000000012 /* WordCardPreviewStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB10000000000000000000012 /* WordCardPreviewStepView.swift */; };
+		AB20000000000000000000013 /* SpeechService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB10000000000000000000013 /* SpeechService.swift */; };
 		078174043008468B000ACABA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 078174033008468B000ACABA /* Assets.xcassets */; };
 		078174073008468B000ACABA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 078174063008468B000ACABA /* Preview Assets.xcassets */; };
 		078174113008468B000ACABA /* VocabularyMVPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078174103008468B000ACABA /* VocabularyMVPTests.swift */; };
@@ -36,7 +54,25 @@
 /* Begin PBXFileReference section */
 		078173FC3008468A000ACABA /* VocabularyMVP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VocabularyMVP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		078173FF3008468A000ACABA /* VocabularyMVPApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabularyMVPApp.swift; sourceTree = "<group>"; };
-		078174013008468A000ACABA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		AB10000000000000000000001 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		AB10000000000000000000002 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		AB10000000000000000000003 /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
+		AB10000000000000000000004 /* PrimaryButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButtonStyle.swift; sourceTree = "<group>"; };
+		AB10000000000000000000005 /* SelectableRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableRow.swift; sourceTree = "<group>"; };
+		AB10000000000000000000006 /* OnboardingProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingProfile.swift; sourceTree = "<group>"; };
+		AB10000000000000000000007 /* OnboardingStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingStep.swift; sourceTree = "<group>"; };
+		AB10000000000000000000008 /* OnboardingFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFlow.swift; sourceTree = "<group>"; };
+		AB10000000000000000000009 /* OnboardingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCoordinator.swift; sourceTree = "<group>"; };
+		AB1000000000000000000000A /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		AB1000000000000000000000B /* WelcomeStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeStepView.swift; sourceTree = "<group>"; };
+		AB1000000000000000000000C /* InfoStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoStepView.swift; sourceTree = "<group>"; };
+		AB1000000000000000000000D /* SingleSelectStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleSelectStepView.swift; sourceTree = "<group>"; };
+		AB1000000000000000000000E /* MultiSelectStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiSelectStepView.swift; sourceTree = "<group>"; };
+		AB1000000000000000000000F /* TextInputStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputStepView.swift; sourceTree = "<group>"; };
+		AB10000000000000000000010 /* VoicePickerStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoicePickerStepView.swift; sourceTree = "<group>"; };
+		AB10000000000000000000011 /* StreakPreviewStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreakPreviewStepView.swift; sourceTree = "<group>"; };
+		AB10000000000000000000012 /* WordCardPreviewStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordCardPreviewStepView.swift; sourceTree = "<group>"; };
+		AB10000000000000000000013 /* SpeechService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechService.swift; sourceTree = "<group>"; };
 		078174033008468B000ACABA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		078174063008468B000ACABA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0781740C3008468B000ACABA /* VocabularyMVPTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VocabularyMVPTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -95,11 +131,61 @@
 			isa = PBXGroup;
 			children = (
 				078173FF3008468A000ACABA /* VocabularyMVPApp.swift */,
-				078174013008468A000ACABA /* ContentView.swift */,
+				AB10000000000000000000001 /* RootView.swift */,
+				AB30000000000000000000001 /* DesignSystem */,
+				AB30000000000000000000002 /* Onboarding */,
+				AB30000000000000000000004 /* Services */,
 				078174033008468B000ACABA /* Assets.xcassets */,
 				078174053008468B000ACABA /* Preview Content */,
 			);
 			path = VocabularyMVP;
+			sourceTree = "<group>";
+		};
+		AB30000000000000000000001 /* DesignSystem */ = {
+			isa = PBXGroup;
+			children = (
+				AB10000000000000000000002 /* Theme.swift */,
+				AB10000000000000000000003 /* Haptics.swift */,
+				AB10000000000000000000004 /* PrimaryButtonStyle.swift */,
+				AB10000000000000000000005 /* SelectableRow.swift */,
+			);
+			path = DesignSystem;
+			sourceTree = "<group>";
+		};
+		AB30000000000000000000002 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				AB10000000000000000000006 /* OnboardingProfile.swift */,
+				AB10000000000000000000007 /* OnboardingStep.swift */,
+				AB10000000000000000000008 /* OnboardingFlow.swift */,
+				AB10000000000000000000009 /* OnboardingCoordinator.swift */,
+				AB1000000000000000000000A /* OnboardingView.swift */,
+				AB30000000000000000000003 /* Templates */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		AB30000000000000000000003 /* Templates */ = {
+			isa = PBXGroup;
+			children = (
+				AB1000000000000000000000B /* WelcomeStepView.swift */,
+				AB1000000000000000000000C /* InfoStepView.swift */,
+				AB1000000000000000000000D /* SingleSelectStepView.swift */,
+				AB1000000000000000000000E /* MultiSelectStepView.swift */,
+				AB1000000000000000000000F /* TextInputStepView.swift */,
+				AB10000000000000000000010 /* VoicePickerStepView.swift */,
+				AB10000000000000000000011 /* StreakPreviewStepView.swift */,
+				AB10000000000000000000012 /* WordCardPreviewStepView.swift */,
+			);
+			path = Templates;
+			sourceTree = "<group>";
+		};
+		AB30000000000000000000004 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				AB10000000000000000000013 /* SpeechService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		078174053008468B000ACABA /* Preview Content */ = {
@@ -257,8 +343,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				078174023008468A000ACABA /* ContentView.swift in Sources */,
 				078174003008468A000ACABA /* VocabularyMVPApp.swift in Sources */,
+				AB20000000000000000000001 /* RootView.swift in Sources */,
+				AB20000000000000000000002 /* Theme.swift in Sources */,
+				AB20000000000000000000003 /* Haptics.swift in Sources */,
+				AB20000000000000000000004 /* PrimaryButtonStyle.swift in Sources */,
+				AB20000000000000000000005 /* SelectableRow.swift in Sources */,
+				AB20000000000000000000006 /* OnboardingProfile.swift in Sources */,
+				AB20000000000000000000007 /* OnboardingStep.swift in Sources */,
+				AB20000000000000000000008 /* OnboardingFlow.swift in Sources */,
+				AB20000000000000000000009 /* OnboardingCoordinator.swift in Sources */,
+				AB2000000000000000000000A /* OnboardingView.swift in Sources */,
+				AB2000000000000000000000B /* WelcomeStepView.swift in Sources */,
+				AB2000000000000000000000C /* InfoStepView.swift in Sources */,
+				AB2000000000000000000000D /* SingleSelectStepView.swift in Sources */,
+				AB2000000000000000000000E /* MultiSelectStepView.swift in Sources */,
+				AB2000000000000000000000F /* TextInputStepView.swift in Sources */,
+				AB20000000000000000000010 /* VoicePickerStepView.swift in Sources */,
+				AB20000000000000000000011 /* StreakPreviewStepView.swift in Sources */,
+				AB20000000000000000000012 /* WordCardPreviewStepView.swift in Sources */,
+				AB20000000000000000000013 /* SpeechService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
