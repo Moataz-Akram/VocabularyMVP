@@ -14,6 +14,7 @@ final class SpeechService: NSObject, AVSpeechSynthesizerDelegate {
 
     let voices: [Voice]
     private(set) var speakingVoiceID: String?
+    private(set) var isPaused = false
     private(set) var progress = 0.0
 
     private let synthesizer = AVSpeechSynthesizer()
@@ -34,8 +35,19 @@ final class SpeechService: NSObject, AVSpeechSynthesizerDelegate {
         }
         currentUtterance = utterance
         speakingVoiceID = voiceID
+        isPaused = false
         progress = 0
         synthesizer.speak(utterance)
+    }
+
+    func pauseOrResume() {
+        if synthesizer.isPaused {
+            synthesizer.continueSpeaking()
+            isPaused = false
+        } else if synthesizer.isSpeaking {
+            synthesizer.pauseSpeaking(at: .immediate)
+            isPaused = true
+        }
     }
 
     // MARK: - Voice selection
@@ -121,6 +133,7 @@ final class SpeechService: NSObject, AVSpeechSynthesizerDelegate {
             guard utterance === self.currentUtterance else { return }
             self.progress = 1
             self.speakingVoiceID = nil
+            self.isPaused = false
             self.currentUtterance = nil
         }
     }
@@ -130,6 +143,7 @@ final class SpeechService: NSObject, AVSpeechSynthesizerDelegate {
             guard utterance === self.currentUtterance else { return }
             self.progress = 0
             self.speakingVoiceID = nil
+            self.isPaused = false
             self.currentUtterance = nil
         }
     }

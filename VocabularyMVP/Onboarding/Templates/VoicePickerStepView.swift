@@ -32,45 +32,63 @@ struct VoicePickerStepView: View {
     private func voiceRow(_ voice: SpeechService.Voice) -> some View {
         let isSelected = voiceID == voice.id
         let isSpeaking = speech.speakingVoiceID == voice.id
-        return Button {
-            voiceID = voice.id
-            Haptics.selection()
-            speech.speak(Self.samplePhrase, voiceID: voice.id)
-        } label: {
-            HStack(spacing: 16) {
-                Image(systemName: "play.fill")
-                    .font(.system(size: 14))
-                VStack(alignment: .leading, spacing: 2) {
-                    Text(voice.name)
-                        .font(.system(.body, design: .rounded).weight(.semibold))
-                    Text(voice.accent)
-                        .font(.system(.subheadline, design: .rounded))
-                        .opacity(0.7)
+        return HStack(spacing: 12) {
+            Button {
+                Haptics.selection()
+                if isSpeaking {
+                    speech.pauseOrResume()
+                } else {
+                    speech.speak(Self.samplePhrase, voiceID: voice.id)
                 }
-                WaveformProgress(progress: isSpeaking ? speech.progress : 0,
-                                 tint: Theme.onAccent,
-                                 track: (isSelected ? Theme.onAccent : Theme.textSecondary).opacity(0.35))
-                    .frame(maxWidth: .infinity)
-                ZStack {
-                    Circle()
-                        .strokeBorder(isSelected ? Theme.onAccent : Theme.textSecondary, lineWidth: 2)
-                        .frame(width: 26, height: 26)
-                    if isSelected {
+            } label: {
+                Image(systemName: isSpeaking && !speech.isPaused ? "pause.fill" : "play.fill")
+                    .font(.system(size: 14))
+                    .frame(width: 32, height: 32)
+                    .contentShape(Rectangle())
+            }
+            .buttonStyle(.plain)
+            .accessibilityLabel(isSpeaking && !speech.isPaused
+                ? "Pause \(voice.name)"
+                : "Play sample of \(voice.name)")
+
+            Button {
+                voiceID = voice.id
+                Haptics.selection()
+            } label: {
+                HStack(spacing: 16) {
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text(voice.name)
+                            .font(.system(.body, design: .rounded).weight(.semibold))
+                        Text(voice.accent)
+                            .font(.system(.subheadline, design: .rounded))
+                            .opacity(0.7)
+                    }
+                    WaveformProgress(progress: isSpeaking ? speech.progress : 0,
+                                     tint: Theme.onAccent,
+                                     track: (isSelected ? Theme.onAccent : Theme.textSecondary).opacity(0.35))
+                        .frame(maxWidth: .infinity)
+                    ZStack {
                         Circle()
-                            .fill(Theme.onAccent)
-                            .frame(width: 14, height: 14)
+                            .strokeBorder(isSelected ? Theme.onAccent : Theme.textSecondary, lineWidth: 2)
+                            .frame(width: 26, height: 26)
+                        if isSelected {
+                            Circle()
+                                .fill(Theme.onAccent)
+                                .frame(width: 14, height: 14)
+                        }
                     }
                 }
+                .contentShape(Rectangle())
             }
-            .foregroundStyle(isSelected ? Theme.onAccent : Theme.textPrimary)
-            .padding(.horizontal, 24)
-            .padding(.vertical, 14)
-            .background(isSelected ? Theme.accent : Theme.surface, in: Capsule())
-            .hardShadow(in: Capsule())
+            .buttonStyle(.plain)
+            .accessibilityLabel("\(voice.name), \(voice.accent)")
+            .accessibilityAddTraits(isSelected ? .isSelected : [])
         }
-        .buttonStyle(.plain)
-        .accessibilityLabel("\(voice.name), \(voice.accent)")
-        .accessibilityAddTraits(isSelected ? .isSelected : [])
+        .foregroundStyle(isSelected ? Theme.onAccent : Theme.textPrimary)
+        .padding(.horizontal, 24)
+        .padding(.vertical, 14)
+        .background(isSelected ? Theme.accent : Theme.surface, in: Capsule())
+        .hardShadow(in: Capsule())
     }
 }
 
