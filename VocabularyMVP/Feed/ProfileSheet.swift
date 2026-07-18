@@ -16,10 +16,10 @@ struct ProfileSheet: View {
                     LazyVGrid(columns: [GridItem(.flexible(), spacing: 16), GridItem(.flexible())],
                               spacing: 16) {
                         tile("Favorites", symbol: "heart.fill") {
-                            WordListView(kind: .favorites, viewModel: viewModel)
+                            WordListView(viewModel: viewModel)
                         }
                         tile("Collections", symbol: "bookmark.fill") {
-                            WordListView(kind: .collections, viewModel: viewModel)
+                            CollectionsListView(viewModel: viewModel)
                         }
                     }
                     Button("Restart onboarding", role: .destructive) {

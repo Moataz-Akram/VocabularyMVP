@@ -6,7 +6,8 @@ final class WordInteraction {
     @Attribute(.unique) var wordID: String
     var liked = false
     var likedAt: Date?
-    var bookmarked = false
+    var collectionID: UUID?
+    var bookmarkedAt: Date?
     var seenAt: Date?
 
     init(wordID: String) {

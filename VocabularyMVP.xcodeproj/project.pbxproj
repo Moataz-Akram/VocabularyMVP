@@ -42,6 +42,14 @@
 		AB20000000000000000000020 /* words.json in Resources */ = {isa = PBXBuildFile; fileRef = AB10000000000000000000020 /* words.json */; };
 		AB20000000000000000000021 /* WordShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB10000000000000000000021 /* WordShareSheet.swift */; };
 		AB20000000000000000000022 /* WordListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB10000000000000000000022 /* WordListView.swift */; };
+		AB20000000000000000000023 /* WordCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB10000000000000000000023 /* WordCollection.swift */; };
+		AB20000000000000000000024 /* WordRowCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB10000000000000000000024 /* WordRowCard.swift */; };
+		AB20000000000000000000025 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB10000000000000000000025 /* SearchBar.swift */; };
+		AB20000000000000000000026 /* CollectionsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB10000000000000000000026 /* CollectionsListView.swift */; };
+		AB20000000000000000000027 /* NewCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB10000000000000000000027 /* NewCollectionView.swift */; };
+		AB20000000000000000000028 /* CollectionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB10000000000000000000028 /* CollectionDetailView.swift */; };
+		AB20000000000000000000029 /* CollectionPickerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB10000000000000000000029 /* CollectionPickerSheet.swift */; };
+		AB2000000000000000000002A /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1000000000000000000002A /* BackButton.swift */; };
 		078174043008468B000ACABA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 078174033008468B000ACABA /* Assets.xcassets */; };
 		078174073008468B000ACABA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 078174063008468B000ACABA /* Preview Assets.xcassets */; };
 		078174113008468B000ACABA /* VocabularyMVPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078174103008468B000ACABA /* VocabularyMVPTests.swift */; };
@@ -103,6 +111,14 @@
 		AB10000000000000000000020 /* words.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = words.json; sourceTree = "<group>"; };
 		AB10000000000000000000021 /* WordShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordShareSheet.swift; sourceTree = "<group>"; };
 		AB10000000000000000000022 /* WordListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordListView.swift; sourceTree = "<group>"; };
+		AB10000000000000000000023 /* WordCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordCollection.swift; sourceTree = "<group>"; };
+		AB10000000000000000000024 /* WordRowCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordRowCard.swift; sourceTree = "<group>"; };
+		AB10000000000000000000025 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		AB10000000000000000000026 /* CollectionsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionsListView.swift; sourceTree = "<group>"; };
+		AB10000000000000000000027 /* NewCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCollectionView.swift; sourceTree = "<group>"; };
+		AB10000000000000000000028 /* CollectionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionDetailView.swift; sourceTree = "<group>"; };
+		AB10000000000000000000029 /* CollectionPickerSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionPickerSheet.swift; sourceTree = "<group>"; };
+		AB1000000000000000000002A /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		078174033008468B000ACABA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		078174063008468B000ACABA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0781740C3008468B000ACABA /* VocabularyMVPTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VocabularyMVPTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -181,6 +197,7 @@
 			children = (
 				AB10000000000000000000014 /* Word.swift */,
 				AB10000000000000000000015 /* WordInteraction.swift */,
+				AB10000000000000000000023 /* WordCollection.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -213,6 +230,11 @@
 				AB1000000000000000000001F /* ProfileSheet.swift */,
 				AB10000000000000000000021 /* WordShareSheet.swift */,
 				AB10000000000000000000022 /* WordListView.swift */,
+				AB10000000000000000000024 /* WordRowCard.swift */,
+				AB10000000000000000000026 /* CollectionsListView.swift */,
+				AB10000000000000000000027 /* NewCollectionView.swift */,
+				AB10000000000000000000028 /* CollectionDetailView.swift */,
+				AB10000000000000000000029 /* CollectionPickerSheet.swift */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -240,6 +262,8 @@
 				AB10000000000000000000003 /* Haptics.swift */,
 				AB10000000000000000000004 /* PrimaryButtonStyle.swift */,
 				AB10000000000000000000005 /* SelectableRow.swift */,
+				AB10000000000000000000025 /* SearchBar.swift */,
+				AB1000000000000000000002A /* BackButton.swift */,
 			);
 			path = DesignSystem;
 			sourceTree = "<group>";
@@ -471,6 +495,14 @@
 				AB2000000000000000000001F /* ProfileSheet.swift in Sources */,
 				AB20000000000000000000021 /* WordShareSheet.swift in Sources */,
 				AB20000000000000000000022 /* WordListView.swift in Sources */,
+				AB20000000000000000000023 /* WordCollection.swift in Sources */,
+				AB20000000000000000000024 /* WordRowCard.swift in Sources */,
+				AB20000000000000000000025 /* SearchBar.swift in Sources */,
+				AB20000000000000000000026 /* CollectionsListView.swift in Sources */,
+				AB20000000000000000000027 /* NewCollectionView.swift in Sources */,
+				AB20000000000000000000028 /* CollectionDetailView.swift in Sources */,
+				AB20000000000000000000029 /* CollectionPickerSheet.swift in Sources */,
+				AB2000000000000000000002A /* BackButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

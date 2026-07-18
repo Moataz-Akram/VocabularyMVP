@@ -8,6 +8,7 @@ struct FeedView: View {
     @State private var scrolledWordID: String?
     @State private var detailWord: Word?
     @State private var shareWord: Word?
+    @State private var collectionPickerWord: Word?
     @State private var showsSettings = false
 
     var body: some View {
@@ -15,8 +16,13 @@ struct FeedView: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Theme.background.ignoresSafeArea())
             .overlay(alignment: .topLeading) { profileButton }
+            .overlay(alignment: .top) { goalPill }
+            .overlay(alignment: .top) { savedToast }
             .sheet(item: $detailWord) { word in
                 WordDetailSheet(word: word, voiceID: viewModel.voiceID)
+            }
+            .sheet(item: $collectionPickerWord) { word in
+                CollectionPickerSheet(word: word, viewModel: viewModel)
             }
             .fullScreenCover(item: $shareWord) { word in
                 WordShareSheet(word: word)
@@ -30,6 +36,7 @@ struct FeedView: View {
                 viewModel.markSeen(wordID: newID)
                 viewModel.loadMoreIfNeeded(nearWordID: newID)
             }
+            .animation(.spring(duration: 0.35), value: viewModel.savedToast?.word.id)
             .onReceive(NotificationCenter.default.publisher(
                 for: UIApplication.userDidTakeScreenshotNotification)) { _ in
                 // Mirror the original app: a screenshot opens the share card.
@@ -87,6 +94,58 @@ struct FeedView: View {
 
     private var currentWord: Word? {
         viewModel.words.first { $0.id == scrolledWordID } ?? viewModel.words.first
+    }
+
+    @ViewBuilder
+    private var goalPill: some View {
+        if viewModel.bookmarkedTodayCount > 0 {
+            HStack(spacing: 8) {
+                Image(systemName: "bookmark")
+                    .font(.system(size: 13))
+                Text("\(min(viewModel.bookmarkedTodayCount, viewModel.dailyGoal))/\(viewModel.dailyGoal)")
+                    .font(.system(.subheadline, design: .rounded).weight(.semibold))
+                ProgressView(value: min(1, Double(viewModel.bookmarkedTodayCount) / Double(viewModel.dailyGoal)))
+                    .tint(Theme.textPrimary)
+                    .frame(width: 70)
+            }
+            .foregroundStyle(Theme.textPrimary)
+            .padding(.horizontal, 16)
+            .padding(.vertical, 10)
+            .background(Theme.surface, in: Capsule())
+            .hardShadow(in: Capsule(), offset: 2)
+            .animation(.spring(duration: 0.4), value: viewModel.bookmarkedTodayCount)
+            .accessibilityLabel("\(viewModel.bookmarkedTodayCount) of \(viewModel.dailyGoal) words saved today")
+        }
+    }
+
+    @ViewBuilder
+    private var savedToast: some View {
+        if let toast = viewModel.savedToast {
+            HStack {
+                Text("Saved to **\(toast.collection.name)**")
+                    .font(.system(.subheadline, design: .rounded))
+                Spacer()
+                Button("Change") {
+                    let word = toast.word
+                    viewModel.dismissToast()
+                    collectionPickerWord = word
+                }
+                .font(.system(.subheadline, design: .rounded).weight(.semibold))
+                .foregroundStyle(Theme.onAccent)
+                .padding(.horizontal, 16)
+                .padding(.vertical, 8)
+                .background(Theme.accent, in: Capsule())
+                .buttonStyle(.plain)
+            }
+            .foregroundStyle(Theme.textPrimary)
+            .padding(.horizontal, 20)
+            .padding(.vertical, 14)
+            .background(Theme.surface, in: RoundedRectangle(cornerRadius: 20))
+            .hardShadow(in: RoundedRectangle(cornerRadius: 20), offset: 2)
+            .padding(.horizontal, 16)
+            .padding(.top, 52)
+            .transition(.move(edge: .top).combined(with: .opacity))
+        }
     }
 
     private var profileButton: some View {

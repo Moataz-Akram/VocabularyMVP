@@ -14,6 +14,6 @@ struct VocabularyMVPApp: App {
         WindowGroup {
             RootView()
         }
-        .modelContainer(for: WordInteraction.self)
+        .modelContainer(for: [WordInteraction.self, WordCollection.self])
     }
 }
