@@ -98,21 +98,22 @@ struct FeedView: View {
 
     @ViewBuilder
     private var goalPill: some View {
-        if viewModel.bookmarkedTodayCount > 0 {
-            HStack(spacing: 8) {
+        if viewModel.bookmarkedTodayCount > 0, viewModel.bookmarkedTodayCount < viewModel.dailyGoal {
+            HStack(spacing: 6) {
                 Image(systemName: "bookmark")
-                    .font(.system(size: 13))
-                Text("\(min(viewModel.bookmarkedTodayCount, viewModel.dailyGoal))/\(viewModel.dailyGoal)")
-                    .font(.system(.subheadline, design: .rounded).weight(.semibold))
-                ProgressView(value: min(1, Double(viewModel.bookmarkedTodayCount) / Double(viewModel.dailyGoal)))
+                    .font(.system(size: 11))
+                Text("\(viewModel.bookmarkedTodayCount)/\(viewModel.dailyGoal)")
+                    .font(.system(.caption, design: .rounded).weight(.semibold))
+                ProgressView(value: Double(viewModel.bookmarkedTodayCount) / Double(viewModel.dailyGoal))
                     .tint(Theme.textPrimary)
-                    .frame(width: 70)
+                    .scaleEffect(y: 0.7)
+                    .frame(width: 64)
             }
             .foregroundStyle(Theme.textPrimary)
-            .padding(.horizontal, 16)
-            .padding(.vertical, 10)
+            .padding(.horizontal, 14)
+            .padding(.vertical, 7)
             .background(Theme.surface, in: Capsule())
-            .hardShadow(in: Capsule(), offset: 2)
+            .shadow(color: .black.opacity(0.18), radius: 4, y: 3)
             .animation(.spring(duration: 0.4), value: viewModel.bookmarkedTodayCount)
             .accessibilityLabel("\(viewModel.bookmarkedTodayCount) of \(viewModel.dailyGoal) words saved today")
         }
@@ -157,7 +158,7 @@ struct FeedView: View {
                 .foregroundStyle(Theme.textPrimary)
                 .frame(width: 44, height: 44)
                 .background(Theme.surface, in: Circle())
-                .hardShadow(in: Circle(), offset: 2)
+                .shadow(color: .black.opacity(0.18), radius: 4, y: 3)
         }
         .buttonStyle(.plain)
         .padding(.horizontal, 20)

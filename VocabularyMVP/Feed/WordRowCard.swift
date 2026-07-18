@@ -31,10 +31,10 @@ struct WordRowCard: View {
                 .accessibilityLabel("Pronounce \(word.word)")
             }
             Text("(\(word.partOfSpeech)) \(word.definition)")
-                .font(.system(.body, design: .rounded))
+                .font(.system(size: 16, design: .rounded))
             if let example = word.examples.first {
                 Text("(\(example))")
-                    .font(.system(.subheadline, design: .rounded))
+                    .font(.system(size: 14, design: .rounded))
                     .foregroundStyle(Theme.textSecondary)
             }
             HStack {

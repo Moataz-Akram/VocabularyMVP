@@ -26,8 +26,8 @@ struct WordShareSheet: View {
                 Spacer()
             }
             Spacer()
-            card
-                .hardShadow(in: RoundedRectangle(cornerRadius: 28))
+            framedCard
+                .shadow(color: .black.opacity(0.08), radius: 4, y: 2)
             Spacer()
             actions
         }
@@ -35,10 +35,16 @@ struct WordShareSheet: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Theme.background.ignoresSafeArea())
         .task {
-            let renderer = ImageRenderer(content: card)
+            let renderer = ImageRenderer(content: framedCard)
             renderer.scale = 3
             rendered = renderer.uiImage
         }
+    }
+
+    private var framedCard: some View {
+        card
+            .padding(1)
+            .background(.white, in: RoundedRectangle(cornerRadius: 29))
     }
 
     // Fixed light palette so the exported image looks the same in dark mode.
@@ -46,29 +52,41 @@ struct WordShareSheet: View {
         VStack(spacing: 18) {
             Spacer()
             Text(word.word)
-                .font(.system(size: 38, weight: .bold, design: .serif))
+                .font(.system(size: 34, weight: .bold, design: .serif))
             Text(word.phonetic)
-                .font(.system(.subheadline, design: .rounded))
+                .font(.system(size: 14, design: .rounded))
                 .opacity(0.7)
             Text("(\(word.partOfSpeech)) \(word.definition)")
-                .font(.system(.title3, design: .rounded))
+                .font(.system(size: 18, design: .rounded))
             Text(word.examples.first ?? "")
-                .font(.system(.body, design: .rounded))
+                .font(.system(size: 15, design: .rounded))
                 .opacity(0.8)
+            watermark
+                .padding(.top, 12)
             Spacer()
-            Text("VocabularyMVP")
-                .font(.system(.caption, design: .rounded))
-                .padding(.horizontal, 12)
-                .padding(.vertical, 6)
-                .background(Color.black.opacity(0.06), in: Capsule())
-                .opacity(0.7)
+            Spacer()
         }
         .multilineTextAlignment(.center)
         .foregroundStyle(Color(red: 0.11, green: 0.11, blue: 0.1))
         .padding(28)
-        .frame(width: 300, height: 440)
+        .frame(width: 340, height: 490)
         .background(Color(red: 0.94, green: 0.93, blue: 0.89),
                     in: RoundedRectangle(cornerRadius: 28))
+    }
+
+    private var watermark: some View {
+        HStack(spacing: 6) {
+            Text("v")
+                .font(.system(size: 11, weight: .semibold, design: .serif))
+                .frame(width: 18, height: 18)
+                .background(.white, in: RoundedRectangle(cornerRadius: 5))
+            Text("vocabularymvp.app")
+                .font(.system(.caption, design: .rounded))
+        }
+        .foregroundStyle(Color(red: 0.11, green: 0.11, blue: 0.1).opacity(0.55))
+        .padding(.horizontal, 10)
+        .padding(.vertical, 6)
+        .background(Color.black.opacity(0.08), in: RoundedRectangle(cornerRadius: 9))
     }
 
     private var actions: some View {

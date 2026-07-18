@@ -11,13 +11,13 @@ struct WordDetailSheet: View {
             VStack(alignment: .leading, spacing: 20) {
                 VStack(spacing: 8) {
                     Text(word.word)
-                        .font(.system(size: 34, weight: .bold, design: .serif))
+                        .font(.system(size: 30, weight: .bold, design: .serif))
                     Button {
                         SpeechService.shared.speak(word.word, voiceID: voiceID)
                     } label: {
                         HStack(spacing: 6) {
-                            Image(systemName: "speaker.wave.2")
                             Text(word.phonetic)
+                            Image(systemName: "speaker.wave.2")
                         }
                         .font(.system(.subheadline, design: .rounded))
                         .padding(.horizontal, 14)

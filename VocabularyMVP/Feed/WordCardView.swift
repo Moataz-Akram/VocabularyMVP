@@ -14,12 +14,12 @@ struct WordCardView: View {
         VStack(spacing: 20) {
             Spacer()
             Text(word.word)
-                .font(.system(size: 44, weight: .bold, design: .serif))
+                .font(.system(size: 40, weight: .bold, design: .serif))
                 .minimumScaleFactor(0.6)
                 .lineLimit(1)
             phoneticPill
             Text("(\(word.partOfSpeech)) \(word.definition)")
-                .font(.system(.title3, design: .rounded))
+                .font(.system(size: 19, design: .rounded))
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, 16)
             Spacer()
