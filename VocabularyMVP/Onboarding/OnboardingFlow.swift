@@ -2,7 +2,6 @@ import Foundation
 
 enum OnboardingFlow {
     static let steps: [OnboardingStep] = [
-        OnboardingStep(id: "voice", template: .voicePicker),
         OnboardingStep(id: "welcome", template: .welcome),
         OnboardingStep(id: "source", template: .singleSelect(
             question: "How did you hear about Vocabulary?",
@@ -27,6 +26,7 @@ enum OnboardingFlow {
             options: ["10 words a week", "30 words a week", "50 words a week"],
             answer: \.weeklyGoal), isSkippable: true),
         OnboardingStep(id: "streak", template: .streakPreview),
+        OnboardingStep(id: "voice", template: .voicePicker),
         OnboardingStep(id: "topics", template: .multiSelect(
             question: "Which topics are you interested in?",
             options: ["Society", "Human body", "Emotions", "Business", "Other"],
