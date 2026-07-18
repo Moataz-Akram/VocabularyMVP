@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct VocabularyMVPApp: App {
@@ -13,5 +14,6 @@ struct VocabularyMVPApp: App {
         WindowGroup {
             RootView()
         }
+        .modelContainer(for: WordInteraction.self)
     }
 }
