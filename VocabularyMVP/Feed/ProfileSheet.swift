@@ -6,6 +6,7 @@ struct ProfileSheet: View {
 
     @Environment(\.dismiss) private var dismiss
     @AppStorage(OnboardingProfile.hasCompletedOnboardingKey) private var hasCompletedOnboarding = true
+    @State private var showsRestartConfirm = false
 
     var body: some View {
         NavigationStack {
@@ -22,13 +23,25 @@ struct ProfileSheet: View {
                             CollectionsListView(viewModel: viewModel)
                         }
                     }
+                    // Debug-only: lets us re-test the onboarding flow without
+                    // reinstalling; stripped from release builds.
+                    #if DEBUG
                     Button("Restart onboarding", role: .destructive) {
-                        hasCompletedOnboarding = false
-                        dismiss()
+                        showsRestartConfirm = true
                     }
                     .font(.system(.body, design: .rounded))
                     .padding(.top, 24)
                     .frame(maxWidth: .infinity)
+                    .confirmationDialog("Restart onboarding?",
+                                        isPresented: $showsRestartConfirm, titleVisibility: .visible) {
+                        Button("Restart", role: .destructive) {
+                            hasCompletedOnboarding = false
+                            dismiss()
+                        }
+                    } message: {
+                        Text("Your saved words and collections stay; you'll go through setup again.")
+                    }
+                    #endif
                 }
                 .padding(20)
             }

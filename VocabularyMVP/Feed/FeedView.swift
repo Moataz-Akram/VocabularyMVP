@@ -83,6 +83,19 @@ struct FeedView: View {
                                  onBookmark: { viewModel.toggleBookmark(word) })
                         .containerRelativeFrame(.vertical)
                 }
+                if viewModel.loadFailed {
+                    VStack(spacing: 16) {
+                        Text("Couldn't load more words")
+                            .font(.serifTitle)
+                            .foregroundStyle(Theme.textPrimary)
+                        Button("Try again") {
+                            Task { await viewModel.retry() }
+                        }
+                        .buttonStyle(PrimaryButtonStyle())
+                        .fixedSize()
+                    }
+                    .containerRelativeFrame(.vertical)
+                }
             }
             .scrollTargetLayout()
         }
