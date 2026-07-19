@@ -175,7 +175,6 @@ struct FeedView: View {
                 .foregroundStyle(Theme.textPrimary)
                 .frame(width: 44, height: 44)
                 .background(Theme.surface, in: Circle())
-                .shadow(color: .black.opacity(0.18), radius: 4, y: 3)
         }
         .buttonStyle(.plain)
         .zoomTransitionSource(id: "profile", in: profileZoom)
