@@ -10,6 +10,7 @@ struct FeedView: View {
     @State private var shareWord: Word?
     @State private var collectionPickerWord: Word?
     @State private var showsSettings = false
+    @Namespace private var profileZoom
 
     var body: some View {
         content
@@ -29,6 +30,7 @@ struct FeedView: View {
             }
             .fullScreenCover(isPresented: $showsSettings) {
                 ProfileSheet(viewModel: viewModel)
+                    .zoomTransition(sourceID: "profile", in: profileZoom)
             }
             .task { await viewModel.start(context: modelContext) }
             .onChange(of: scrolledWordID) { _, newID in
@@ -83,6 +85,8 @@ struct FeedView: View {
                                  onBookmark: { viewModel.toggleBookmark(word) })
                         .containerRelativeFrame(.vertical)
                 }
+                // A page load failed mid-feed; the feed otherwise just ends
+                // silently. Scrolling near the end also retries on its own.
                 if viewModel.loadFailed {
                     VStack(spacing: 16) {
                         Text("Couldn't load more words")
@@ -174,8 +178,43 @@ struct FeedView: View {
                 .shadow(color: .black.opacity(0.18), radius: 4, y: 3)
         }
         .buttonStyle(.plain)
+        .zoomTransitionSource(id: "profile", in: profileZoom)
         .padding(.horizontal, 20)
         .accessibilityLabel("Profile and settings")
+    }
+}
+
+// Photos-style zoom for the profile cover: the screen grows out of the profile
+// button and shrinks back into it on close. The API is iOS 18-only and its
+// symbols don't exist in the iOS 17 SDK, so a runtime #available check alone
+// wouldn't compile under Xcode 15 — the compiler(>=6.0) condition hides the
+// calls from older toolchains entirely and activates them automatically once
+// the project is built with Xcode 16+. Until then both modifiers are no-ops.
+private extension View {
+    @ViewBuilder
+    func zoomTransitionSource(id: String, in namespace: Namespace.ID) -> some View {
+        #if compiler(>=6.0)
+        if #available(iOS 18.0, *) {
+            matchedTransitionSource(id: id, in: namespace)
+        } else {
+            self
+        }
+        #else
+        self
+        #endif
+    }
+
+    @ViewBuilder
+    func zoomTransition(sourceID: String, in namespace: Namespace.ID) -> some View {
+        #if compiler(>=6.0)
+        if #available(iOS 18.0, *) {
+            navigationTransition(.zoom(sourceID: sourceID, in: namespace))
+        } else {
+            self
+        }
+        #else
+        self
+        #endif
     }
 }
 
