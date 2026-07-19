@@ -128,10 +128,8 @@ struct PronunciationCheckView: View {
             feedbackText(isPressing ? "Say “\(word.word)”…" : "Checking…")
         case .success:
             feedbackText("Sounded great!")
-        case .failure(let heard?):
-            feedbackText("I heard: “\(heard)” — try again")
-        case .failure(nil):
-            feedbackText("Didn't catch that — try again")
+        case .failure:
+            feedbackText("Not quite — hold the mic and try again")
         case .idle, .denied:
             EmptyView()
         }

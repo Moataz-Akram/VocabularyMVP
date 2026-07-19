@@ -27,6 +27,11 @@ struct VoicePickerStepView: View {
         .onAppear {
             if voiceID == nil { voiceID = speech.voices.first?.id }
         }
+        // Voices load asynchronously at startup and may not be ready on first
+        // appearance; default the selection once they arrive.
+        .onChange(of: speech.voices.count) {
+            if voiceID == nil { voiceID = speech.voices.first?.id }
+        }
     }
 
     private func voiceRow(_ voice: SpeechService.Voice) -> some View {

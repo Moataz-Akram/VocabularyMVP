@@ -12,7 +12,7 @@ final class SpeechService: NSObject, AVSpeechSynthesizerDelegate {
 
     static let shared = SpeechService()
 
-    let voices: [Voice]
+    private(set) var voices: [Voice] = []
     private(set) var speakingVoiceID: String?
     private(set) var isPaused = false
     private(set) var progress = 0.0
@@ -21,17 +21,26 @@ final class SpeechService: NSObject, AVSpeechSynthesizerDelegate {
     private var currentUtterance: AVSpeechUtterance?
 
     private override init() {
-        try? AVAudioSession.sharedInstance().setCategory(.playback, mode: .spokenAudio, options: .duckOthers)
-        voices = Self.makeVoices()
         super.init()
         synthesizer.delegate = self
+        // Session configuration blocks on the audio server and speechVoices()
+        // loads voice assets from disk — both stall the UI for hundreds of
+        // milliseconds if run on the main thread at first access.
+        Task.detached(priority: .userInitiated) {
+            try? AVAudioSession.sharedInstance().setCategory(.playback, mode: .spokenAudio, options: .duckOthers)
+            let voices = Self.makeVoices()
+            await MainActor.run { self.voices = voices }
+        }
     }
 
     func speak(_ text: String, voiceID: String? = nil) {
         synthesizer.stopSpeaking(at: .immediate)
         let utterance = AVSpeechUtterance(string: text)
         if let voiceID {
-            utterance.voice = AVSpeechSynthesisVoice(identifier: voiceID)
+            // The cached voice avoids AVSpeechSynthesisVoice(identifier:)
+            // reloading voice assets from disk on every tap.
+            utterance.voice = voices.first { $0.id == voiceID }?.systemVoice
+                ?? AVSpeechSynthesisVoice(identifier: voiceID)
         }
         currentUtterance = utterance
         speakingVoiceID = voiceID
