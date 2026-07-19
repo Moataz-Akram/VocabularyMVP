@@ -9,7 +9,7 @@ final class FeedViewModel {
     private(set) var isLoadingInitial = false
     private(set) var loadFailed = false
 
-    let voiceID: String?
+    private(set) var voiceID: String?
 
     private let repository: WordRepository
     private let personalization: PersonalizationService
@@ -35,6 +35,13 @@ final class FeedViewModel {
 
     func retry() async {
         await loadNextPage()
+    }
+
+    func setVoice(_ voiceID: String?) {
+        self.voiceID = voiceID
+        var profile = OnboardingProfile.load() ?? OnboardingProfile()
+        profile.voiceID = voiceID
+        profile.save()
     }
 
     func loadMoreIfNeeded(nearWordID wordID: String?) {

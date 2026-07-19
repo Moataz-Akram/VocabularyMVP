@@ -23,6 +23,10 @@ struct ProfileSheet: View {
                             CollectionsListView(viewModel: viewModel)
                         }
                     }
+                    Text("Settings")
+                        .font(.system(.title3, design: .rounded).weight(.bold))
+                        .padding(.top, 8)
+                    voiceRow
                     // Debug-only: lets us re-test the onboarding flow without
                     // reinstalling; stripped from release builds.
                     #if DEBUG
@@ -66,6 +70,35 @@ struct ProfileSheet: View {
         }
     }
 
+    private var voiceRow: some View {
+        NavigationLink {
+            VoiceSettingsView(viewModel: viewModel)
+        } label: {
+            HStack(spacing: 10) {
+                Image(systemName: "waveform")
+                    .font(.system(size: 20))
+                    .foregroundStyle(Theme.accent)
+                Text("Pronunciation voice")
+                    .font(.system(.subheadline, design: .rounded).weight(.semibold))
+                    .foregroundStyle(Theme.textPrimary)
+                Spacer(minLength: 8)
+                if let name = SpeechService.shared.voices.first(where: { $0.id == viewModel.voiceID })?.name {
+                    Text(name)
+                        .font(.system(.subheadline, design: .rounded))
+                        .foregroundStyle(Theme.textSecondary)
+                }
+                Image(systemName: "chevron.right")
+                    .font(.system(size: 13, weight: .semibold))
+                    .foregroundStyle(Theme.textSecondary)
+            }
+            .padding(.horizontal, 16)
+            .padding(.vertical, 20)
+            .background(Theme.surface, in: RoundedRectangle(cornerRadius: 20))
+            .hardShadow(in: RoundedRectangle(cornerRadius: 20))
+        }
+        .buttonStyle(.plain)
+    }
+
     private func tile(_ title: String, symbol: String,
                       @ViewBuilder destination: @escaping () -> some View) -> some View {
         NavigationLink {
@@ -88,5 +121,24 @@ struct ProfileSheet: View {
             .hardShadow(in: RoundedRectangle(cornerRadius: 20))
         }
         .buttonStyle(.plain)
+    }
+}
+
+// Selecting a row applies and persists the voice immediately — no save button.
+@MainActor
+private struct VoiceSettingsView: View {
+    let viewModel: FeedViewModel
+
+    var body: some View {
+        ScrollView {
+            VoiceList(voiceID: Binding(
+                get: { viewModel.voiceID },
+                set: { viewModel.setVoice($0) }))
+                .padding(20)
+        }
+        .background(Theme.background.ignoresSafeArea())
+        .navigationTitle("Pronunciation voice")
+        .navigationBarTitleDisplayMode(.inline)
+        .customBackButton()
     }
 }

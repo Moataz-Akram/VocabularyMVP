@@ -52,6 +52,7 @@
 		AB2000000000000000000002A /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1000000000000000000002A /* BackButton.swift */; };
 		AB2000000000000000000002B /* PronunciationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1000000000000000000002B /* PronunciationService.swift */; };
 		AB2000000000000000000002C /* PronunciationCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1000000000000000000002C /* PronunciationCheckView.swift */; };
+		AB2000000000000000000002D /* VoiceList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1000000000000000000002D /* VoiceList.swift */; };
 		078174043008468B000ACABA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 078174033008468B000ACABA /* Assets.xcassets */; };
 		078174073008468B000ACABA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 078174063008468B000ACABA /* Preview Assets.xcassets */; };
 		078174113008468B000ACABA /* VocabularyMVPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078174103008468B000ACABA /* VocabularyMVPTests.swift */; };
@@ -128,6 +129,7 @@
 		AB1000000000000000000002A /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		AB1000000000000000000002B /* PronunciationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PronunciationService.swift; sourceTree = "<group>"; };
 		AB1000000000000000000002C /* PronunciationCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PronunciationCheckView.swift; sourceTree = "<group>"; };
+		AB1000000000000000000002D /* VoiceList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceList.swift; sourceTree = "<group>"; };
 		078174033008468B000ACABA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		078174063008468B000ACABA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0781740C3008468B000ACABA /* VocabularyMVPTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VocabularyMVPTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -278,6 +280,7 @@
 				AB10000000000000000000004 /* PrimaryButtonStyle.swift */,
 				AB10000000000000000000005 /* SelectableRow.swift */,
 				AB10000000000000000000025 /* SearchBar.swift */,
+				AB1000000000000000000002D /* VoiceList.swift */,
 				AB1000000000000000000002A /* BackButton.swift */,
 			);
 			path = DesignSystem;
@@ -526,6 +529,7 @@
 				AB2000000000000000000002A /* BackButton.swift in Sources */,
 				AB2000000000000000000002B /* PronunciationService.swift in Sources */,
 				AB2000000000000000000002C /* PronunciationCheckView.swift in Sources */,
+				AB2000000000000000000002D /* VoiceList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
