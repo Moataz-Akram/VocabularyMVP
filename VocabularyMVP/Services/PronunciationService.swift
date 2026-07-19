@@ -3,6 +3,20 @@ import AudioToolbox
 import Observation
 import Speech
 
+/// Push-to-talk pronunciation check: capture runs while the finger is down,
+/// recognition judges the audio, and the phase drives the UI.
+///
+/// Lifecycle of one attempt:
+///  1. `begin` — permissions, then recognizer + request + capture start.
+///  2. Partial results stream in while the user speaks; the first transcript
+///     containing the target word resolves `.success` immediately.
+///  3. `finish` (finger lifted, or the safety timeout) — capture stops, and a
+///     short grace window lets the recognizer finish judging the captured
+///     audio before we call it `.failure`.
+///
+/// Every attempt carries a token. All async callbacks compare tokens before
+/// touching state, so anything left over from a superseded attempt — late
+/// recognizer callbacks, in-flight engine work, scheduled stops — is inert.
 @Observable
 @MainActor
 final class PronunciationService {
@@ -20,14 +34,14 @@ final class PronunciationService {
     private(set) var activeWordID: String?
 
     private let captureEngine = CaptureEngine()
+    // The recognizer must stay strongly referenced for its task's lifetime.
+    private var recognizer: SFSpeechRecognizer?
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     private var recognitionTask: SFSpeechRecognitionTask?
     private var timeoutTask: Task<Void, Never>?
     private var graceTask: Task<Void, Never>?
     private var resetTask: Task<Void, Never>?
-    // Bumped on every cancel/new attempt so in-flight async work from a
-    // superseded attempt can tell it is stale and bail out.
-    private var attempt = 0
+    private var attemptToken = 0
 
     // SIMToolkit ack sounds: a short positive blip and its negative twin.
     // Both respect the silent switch, leaving haptics as the only feedback in
@@ -36,69 +50,77 @@ final class PronunciationService {
     private static let failureSound: SystemSoundID = 1053
 
     private static let listenTimeout: Duration = .seconds(5)
+    private static let verdictGrace: Duration = .seconds(0.25)
 
     private init() {}
 
-    /// Listens for the user to say `word` and resolves to success or failure.
-    /// Recognition prefers the on-device model for the voice's locale; the
-    /// simulator lacks on-device models, so it falls back to Apple's server.
-    func check(word: String, wordID: String, localeID: String) {
+    // MARK: - Public API
+
+    /// Starts an attempt at saying `word`. Recognition prefers the on-device
+    /// model for the voice's locale; the simulator lacks on-device models, so
+    /// it falls back to Apple's server.
+    func begin(word: String, wordID: String, localeID: String) {
         cancel()
-        let attemptID = attempt
+        let token = attemptToken
         activeWordID = wordID
         phase = .listening
 
         Task {
             guard await Self.requestPermissions() else {
-                if self.attempt == attemptID { self.resolve(.denied, wordID: wordID) }
+                if self.attemptToken == token { self.resolve(.denied, token: token) }
                 return
             }
-            guard self.attempt == attemptID, self.phase == .listening else { return }
+            guard self.attemptToken == token else { return }
             do {
-                try await self.beginRecognition(target: word, wordID: wordID,
-                                                localeID: localeID, attemptID: attemptID)
+                try await self.startRecognition(target: word, localeID: localeID, token: token)
             } catch {
-                if self.attempt == attemptID { self.resolve(.idle, wordID: wordID) }
+                // No usable mic route or the engine failed to start; there is
+                // nothing to judge, so end the attempt without a verdict.
+                if self.attemptToken == token { self.resolve(.idle, token: token) }
             }
         }
     }
 
-    /// Stops the mic the moment the finger lifts. Capture shuts down right
-    /// away; the recognizer gets a short grace window to finish judging the
-    /// audio it already has, after which we rule on the last transcript
-    /// ourselves. Released before recognition started (e.g. during the
-    /// permission prompt) there is nothing to judge, so the attempt is
-    /// abandoned.
-    func stopListening() {
-        timeoutTask?.cancel()
+    /// Ends the capture (finger lifted or timeout). The recognizer gets a
+    /// short grace window to deliver its verdict on the captured audio; if it
+    /// stays silent, the attempt fails.
+    func finish() {
         guard phase == .listening else { return }
+        let token = attemptToken
+        timeoutTask?.cancel()
+
+        // Released before capture was up: nothing recorded, nothing to judge.
         guard recognitionRequest != nil else {
             cancel()
             return
         }
+
         recognitionRequest?.endAudio()
-        Task { await captureEngine.stop() }
+        Task { await captureEngine.stop(ifToken: token) }
         graceTask = Task { [weak self] in
-            try? await Task.sleep(for: .seconds(0.2))
-            guard !Task.isCancelled, let self, let wordID = self.activeWordID else { return }
-            self.resolve(.failure, wordID: wordID)
+            try? await Task.sleep(for: Self.verdictGrace)
+            guard !Task.isCancelled, let self else { return }
+            self.resolve(.failure, token: token)
         }
     }
 
+    /// Silently abandons the current attempt, if any.
     func cancel() {
-        attempt += 1
+        let staleToken = attemptToken
+        attemptToken += 1
         timeoutTask?.cancel()
         graceTask?.cancel()
         resetTask?.cancel()
         recognitionTask?.cancel()
         recognitionTask = nil
         recognitionRequest = nil
-        Task { await captureEngine.stop() }
+        recognizer = nil
+        Task { await captureEngine.stop(ifToken: staleToken) }
         activeWordID = nil
         phase = .idle
     }
 
-    // MARK: - Recognition
+    // MARK: - Attempt internals
 
     private static func requestPermissions() async -> Bool {
         guard await AVAudioApplication.requestRecordPermission() else { return false }
@@ -111,7 +133,7 @@ final class PronunciationService {
     // Recognizer creation and its capability checks talk to the speech daemon,
     // so they run off the main actor.
     private nonisolated static func makeRecognition(target: String, localeID: String)
-        async -> (SFSpeechRecognizer, SFSpeechAudioBufferRecognitionRequest)? {
+        -> (SFSpeechRecognizer, SFSpeechAudioBufferRecognitionRequest)? {
         guard let recognizer = SFSpeechRecognizer(locale: Locale(identifier: localeID))
             ?? SFSpeechRecognizer(locale: Locale(identifier: "en-US")),
             recognizer.isAvailable
@@ -130,73 +152,83 @@ final class PronunciationService {
         return (recognizer, request)
     }
 
-    private func beginRecognition(target: String, wordID: String,
-                                  localeID: String, attemptID: Int) async throws {
-        guard let (recognizer, request) = await Self.makeRecognition(target: target, localeID: localeID)
-        else { throw CancellationError() }
-        guard attempt == attemptID, phase == .listening else { return }
-        recognitionRequest = request
+    private func startRecognition(target: String, localeID: String, token: Int) async throws {
+        let made = await Task.detached(priority: .userInitiated) {
+            Self.makeRecognition(target: target, localeID: localeID)
+        }.value
+        guard let (recognizer, request) = made else { throw CancellationError() }
+        guard attemptToken == token, phase == .listening else { return }
 
+        self.recognizer = recognizer
+        recognitionRequest = request
         recognitionTask = recognizer.recognitionTask(with: request) { [weak self] result, error in
             // Any candidate transcription counts, not just the top one — the
             // right word is often the recognizer's second guess.
             let candidates = result?.transcriptions.map(\.formattedString) ?? []
             let isFinal = result?.isFinal ?? false
             Task { @MainActor [weak self] in
-                guard let self, self.activeWordID == wordID, self.phase == .listening else { return }
+                guard let self, self.attemptToken == token, self.phase == .listening else { return }
                 if candidates.contains(where: { Self.matches(target: target, transcript: $0) }) {
-                    self.resolve(.success, wordID: wordID)
+                    self.resolve(.success, token: token)
                 } else if isFinal || error != nil {
-                    self.resolve(.failure, wordID: wordID)
+                    // The recognizer is done and the word wasn't there. While
+                    // capture is still running this is definitive; after
+                    // finish() the grace timer owns the failure so the verdict
+                    // lands on schedule either way.
+                    self.resolve(.failure, token: token)
                 }
             }
         }
 
-        try await captureEngine.start(feeding: request)
+        try await captureEngine.start(feeding: request, token: token)
 
         // The finger may have lifted (or the attempt been cancelled) while the
-        // engine was spinning up off-main; if so the stop enqueued then ran
-        // before capture began, so shut the engine down again.
-        guard attempt == attemptID, phase == .listening else {
-            await captureEngine.stop()
+        // engine was spinning up off-main; its stop may have run before
+        // capture even began, so shut the engine down again.
+        guard attemptToken == token, phase == .listening else {
+            await captureEngine.stop(ifToken: token)
             return
         }
 
         timeoutTask = Task { [weak self] in
             try? await Task.sleep(for: Self.listenTimeout)
-            guard !Task.isCancelled else { return }
-            self?.stopListening()
+            guard !Task.isCancelled, let self, self.attemptToken == token else { return }
+            self.finish()
         }
     }
 
-    private func resolve(_ result: Phase, wordID: String) {
-        guard activeWordID == wordID, phase == .listening else { return }
+    private func resolve(_ verdict: Phase, token: Int) {
+        guard attemptToken == token, phase == .listening else { return }
         timeoutTask?.cancel()
         graceTask?.cancel()
         recognitionTask?.cancel()
         recognitionTask = nil
         recognitionRequest = nil
-        Task { await captureEngine.stop() }
-        phase = result
+        recognizer = nil
+        Task { await captureEngine.stop(ifToken: token) }
+        phase = verdict
 
-        switch result {
+        switch verdict {
         case .success:
             Haptics.success()
             AudioServicesPlaySystemSound(Self.successSound)
         case .failure:
             Haptics.failure()
             AudioServicesPlaySystemSound(Self.failureSound)
+        case .idle:
+            activeWordID = nil
+            return
         default:
             break
         }
-        scheduleReset(after: result == .success ? .seconds(2) : .seconds(4))
+        scheduleReset(after: verdict == .success ? .seconds(2) : .seconds(4), token: token)
     }
 
-    private func scheduleReset(after delay: Duration) {
+    private func scheduleReset(after delay: Duration, token: Int) {
         resetTask?.cancel()
         resetTask = Task { [weak self] in
             try? await Task.sleep(for: delay)
-            guard !Task.isCancelled, let self, self.phase != .listening else { return }
+            guard !Task.isCancelled, let self, self.attemptToken == token else { return }
             self.activeWordID = nil
             self.phase = .idle
         }
@@ -218,28 +250,44 @@ final class PronunciationService {
     }
 }
 
-// Owns the audio engine and session. AVAudioSession calls block on the audio
-// server daemon, which runs at lower QoS than the main thread — doing them on
-// the main actor caused priority-inversion warnings and visible UI stalls, so
-// they are serialized here off-main instead.
+// Owns microphone capture. AVAudioSession calls block on the audio server
+// daemon, which runs at lower QoS than the main thread — doing them on the
+// main actor caused priority-inversion stalls, so they are serialized here
+// off-main instead.
+//
+// A fresh AVAudioEngine is built for every capture: input-node state does not
+// survive session category changes reliably, and reusing an engine across
+// attempts is what previously produced dead-mic captures. Stops carry the
+// token of the capture they belong to; actor jobs run by priority rather than
+// arrival order, so a stale stop that loses the race against the next start
+// must not be able to kill it.
 private actor CaptureEngine {
     enum CaptureError: Error {
         case noAudioInput
+        case staleAttempt
     }
 
-    private let engine = AVAudioEngine()
-    private var isCapturing = false
+    private var engine: AVAudioEngine?
+    private var activeToken = 0
 
-    func start(feeding request: SFSpeechAudioBufferRecognitionRequest) throws {
-        guard !isCapturing else { return }
+    func start(feeding request: SFSpeechAudioBufferRecognitionRequest, token: Int) throws {
+        // Tokens only grow; a start older than one already seen belongs to a
+        // superseded attempt and must not displace the current capture.
+        guard token >= activeToken else { throw CaptureError.staleAttempt }
+        stopEngine()
+        activeToken = token
+
+        // The session must be recording-capable before the engine's input
+        // node is first touched; created under a playback-only session the
+        // node wires to a dead route and reports a garbage format.
         let session = AVAudioSession.sharedInstance()
         // Mode stays .default: .measurement requests raw unprocessed input,
-        // which the simulator's virtual mic route can't always provide,
-        // yielding an invalid input format.
+        // which the simulator's virtual mic route can't always provide.
         try session.setCategory(.playAndRecord, mode: .default,
                                 options: [.duckOthers, .defaultToSpeaker])
         try session.setActive(true, options: .notifyOthersOnDeactivation)
 
+        let engine = AVAudioEngine()
         let input = engine.inputNode
         let format = input.outputFormat(forBus: 0)
         // installTap raises an uncatchable NSException on an invalid format,
@@ -249,21 +297,31 @@ private actor CaptureEngine {
             restorePlaybackSession(session)
             throw CaptureError.noAudioInput
         }
-        input.removeTap(onBus: 0)
         input.installTap(onBus: 0, bufferSize: 1024, format: format) { buffer, _ in
             request.append(buffer)
         }
         engine.prepare()
-        try engine.start()
-        isCapturing = true
+        do {
+            try engine.start()
+        } catch {
+            input.removeTap(onBus: 0)
+            restorePlaybackSession(session)
+            throw error
+        }
+        self.engine = engine
     }
 
-    func stop() {
-        guard isCapturing else { return }
-        isCapturing = false
-        engine.stop()
-        engine.inputNode.removeTap(onBus: 0)
+    func stop(ifToken token: Int) {
+        guard token == activeToken, engine != nil else { return }
+        stopEngine()
         restorePlaybackSession(AVAudioSession.sharedInstance())
+    }
+
+    private func stopEngine() {
+        guard let engine else { return }
+        engine.inputNode.removeTap(onBus: 0)
+        engine.stop()
+        self.engine = nil
     }
 
     // Hands the session back to SpeechService's text-to-speech setup.

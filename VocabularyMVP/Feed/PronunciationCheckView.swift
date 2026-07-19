@@ -90,14 +90,14 @@ struct PronunciationCheckView: View {
             switch phase {
             case .idle, .success, .failure:
                 Haptics.selection()
-                service.check(word: word.word, wordID: word.id, localeID: localeID)
+                service.begin(word: word.word, wordID: word.id, localeID: localeID)
             case .denied:
                 showsPermissionAlert = true
             case .listening:
                 break
             }
-        } else if service.activeWordID == word.id, service.phase == .listening {
-            service.stopListening()
+        } else if service.activeWordID == word.id {
+            service.finish()
         }
     }
 
