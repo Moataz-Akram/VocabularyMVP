@@ -18,10 +18,12 @@ struct WordCardView: View {
                 .minimumScaleFactor(0.6)
                 .lineLimit(1)
             PronunciationCheckView(word: word, voiceID: voiceID)
-            Text("(\(word.partOfSpeech)) \(word.definition)")
-                .font(.system(size: 19, design: .rounded))
-                .multilineTextAlignment(.center)
-                .padding(.horizontal, 16)
+            if let definitionLine = word.definitionLine {
+                Text(definitionLine)
+                    .font(.system(size: 19, design: .rounded))
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal, 16)
+            }
             Spacer()
             actions
         }

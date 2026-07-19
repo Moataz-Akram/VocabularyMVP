@@ -23,8 +23,8 @@ struct PersonalizationService {
     }
 
     private func sortKey(_ word: Word) -> (Int, Int, UInt64) {
-        let topicMiss = topics.isDisjoint(with: word.topics.map { $0.lowercased() }) ? 1 : 0
-        let levelDistance = abs(Self.index(of: word.level) - userLevel)
+        let topicMiss = topics.isDisjoint(with: (word.topics ?? []).map { $0.lowercased() }) ? 1 : 0
+        let levelDistance = abs(Self.index(of: word.level ?? .beginner) - userLevel)
         return (topicMiss, levelDistance, Self.stableHash(word.id))
     }
 

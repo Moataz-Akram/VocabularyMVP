@@ -44,7 +44,9 @@ struct PronunciationCheckView: View {
 
     private var phoneticPill: some View {
         HStack(spacing: 8) {
-            Text(word.phonetic)
+            if let phonetic = word.phonetic {
+                Text(phonetic)
+            }
             Button {
                 Haptics.selection()
                 if service.activeWordID == word.id { service.cancel() }

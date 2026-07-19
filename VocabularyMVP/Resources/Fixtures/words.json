@@ -1,6 +1,5 @@
 [
   {
-    "id": "whisper",
     "word": "whisper",
     "phonetic": "/ˈwɪspɚ/",
     "partOfSpeech": "v.",
@@ -15,7 +14,6 @@
     "topics": ["society"]
   },
   {
-    "id": "squint",
     "word": "squint",
     "phonetic": "/skwɪnt/",
     "partOfSpeech": "v.",
@@ -30,7 +28,6 @@
     "topics": ["human body"]
   },
   {
-    "id": "genuine",
     "word": "genuine",
     "phonetic": "/ˈdʒɛnjuɪn/",
     "partOfSpeech": "adj.",
@@ -45,7 +42,6 @@
     "topics": ["society"]
   },
   {
-    "id": "metal",
     "word": "metal",
     "phonetic": "/ˈmɛtəl/",
     "partOfSpeech": "n.",
@@ -60,7 +56,6 @@
     "topics": ["other"]
   },
   {
-    "id": "jumble",
     "word": "jumble",
     "phonetic": "/ˈdʒʌmbəl/",
     "partOfSpeech": "n.",
@@ -75,7 +70,6 @@
     "topics": ["other"]
   },
   {
-    "id": "borrow",
     "word": "borrow",
     "phonetic": "/ˈbɑɹoʊ/",
     "partOfSpeech": "v.",
@@ -90,7 +84,6 @@
     "topics": ["business"]
   },
   {
-    "id": "eager",
     "word": "eager",
     "phonetic": "/ˈiɡɚ/",
     "partOfSpeech": "adj.",
@@ -105,7 +98,6 @@
     "topics": ["emotions"]
   },
   {
-    "id": "brave",
     "word": "brave",
     "phonetic": "/bɹeɪv/",
     "partOfSpeech": "adj.",
@@ -120,7 +112,6 @@
     "topics": ["emotions"]
   },
   {
-    "id": "praise",
     "word": "praise",
     "phonetic": "/pɹeɪz/",
     "partOfSpeech": "v.",
@@ -135,7 +126,6 @@
     "topics": ["society"]
   },
   {
-    "id": "weary",
     "word": "weary",
     "phonetic": "/ˈwɪɹi/",
     "partOfSpeech": "adj.",
@@ -150,7 +140,6 @@
     "topics": ["emotions"]
   },
   {
-    "id": "tidy",
     "word": "tidy",
     "phonetic": "/ˈtaɪdi/",
     "partOfSpeech": "adj.",
@@ -165,7 +154,6 @@
     "topics": ["other"]
   },
   {
-    "id": "gather",
     "word": "gather",
     "phonetic": "/ˈɡæðɚ/",
     "partOfSpeech": "v.",
@@ -180,7 +168,6 @@
     "topics": ["society"]
   },
   {
-    "id": "blend",
     "word": "blend",
     "phonetic": "/blɛnd/",
     "partOfSpeech": "v.",
@@ -195,7 +182,6 @@
     "topics": ["other"]
   },
   {
-    "id": "glance",
     "word": "glance",
     "phonetic": "/ɡlæns/",
     "partOfSpeech": "v.",
@@ -210,7 +196,6 @@
     "topics": ["human body"]
   },
   {
-    "id": "steady",
     "word": "steady",
     "phonetic": "/ˈstɛdi/",
     "partOfSpeech": "adj.",
@@ -225,7 +210,6 @@
     "topics": ["other"]
   },
   {
-    "id": "vivid",
     "word": "vivid",
     "phonetic": "/ˈvɪvɪd/",
     "partOfSpeech": "adj.",
@@ -240,7 +224,6 @@
     "topics": ["other"]
   },
   {
-    "id": "humble",
     "word": "humble",
     "phonetic": "/ˈhʌmbəl/",
     "partOfSpeech": "adj.",
@@ -255,7 +238,6 @@
     "topics": ["society"]
   },
   {
-    "id": "drift",
     "word": "drift",
     "phonetic": "/dɹɪft/",
     "partOfSpeech": "v.",
@@ -270,7 +252,6 @@
     "topics": ["other"]
   },
   {
-    "id": "cozy",
     "word": "cozy",
     "phonetic": "/ˈkoʊzi/",
     "partOfSpeech": "adj.",
@@ -285,7 +266,6 @@
     "topics": ["emotions"]
   },
   {
-    "id": "calm",
     "word": "calm",
     "phonetic": "/kɑm/",
     "partOfSpeech": "adj.",
@@ -300,7 +280,6 @@
     "topics": ["emotions"]
   },
   {
-    "id": "deportment",
     "word": "deportment",
     "phonetic": "/dɪˈpɔɹtmənt/",
     "partOfSpeech": "n.",
@@ -315,7 +294,6 @@
     "topics": ["society"]
   },
   {
-    "id": "whet",
     "word": "whet",
     "phonetic": "/wɛt/",
     "partOfSpeech": "v.",
@@ -330,7 +308,6 @@
     "topics": ["other"]
   },
   {
-    "id": "squander",
     "word": "squander",
     "phonetic": "/ˈskwɑndɚ/",
     "partOfSpeech": "v.",
@@ -345,7 +322,6 @@
     "topics": ["business"]
   },
   {
-    "id": "impeccable",
     "word": "impeccable",
     "phonetic": "/ɪmˈpɛkəbəl/",
     "partOfSpeech": "adj.",
@@ -360,7 +336,6 @@
     "topics": ["society"]
   },
   {
-    "id": "pervasive",
     "word": "pervasive",
     "phonetic": "/pɚˈveɪsɪv/",
     "partOfSpeech": "adj.",
@@ -375,7 +350,6 @@
     "topics": ["society"]
   },
   {
-    "id": "morose",
     "word": "morose",
     "phonetic": "/məˈɹoʊs/",
     "partOfSpeech": "adj.",
@@ -390,7 +364,6 @@
     "topics": ["emotions"]
   },
   {
-    "id": "candid",
     "word": "candid",
     "phonetic": "/ˈkændɪd/",
     "partOfSpeech": "adj.",
@@ -405,7 +378,6 @@
     "topics": ["society"]
   },
   {
-    "id": "resilient",
     "word": "resilient",
     "phonetic": "/ɹɪˈzɪljənt/",
     "partOfSpeech": "adj.",
@@ -420,7 +392,6 @@
     "topics": ["emotions"]
   },
   {
-    "id": "meticulous",
     "word": "meticulous",
     "phonetic": "/məˈtɪkjələs/",
     "partOfSpeech": "adj.",
@@ -435,7 +406,6 @@
     "topics": ["business"]
   },
   {
-    "id": "ambiguous",
     "word": "ambiguous",
     "phonetic": "/æmˈbɪɡjuəs/",
     "partOfSpeech": "adj.",
@@ -450,7 +420,6 @@
     "topics": ["other"]
   },
   {
-    "id": "nostalgia",
     "word": "nostalgia",
     "phonetic": "/nɑˈstældʒə/",
     "partOfSpeech": "n.",
@@ -465,7 +434,6 @@
     "topics": ["emotions"]
   },
   {
-    "id": "pragmatic",
     "word": "pragmatic",
     "phonetic": "/pɹæɡˈmætɪk/",
     "partOfSpeech": "adj.",
@@ -480,7 +448,6 @@
     "topics": ["business"]
   },
   {
-    "id": "eloquent",
     "word": "eloquent",
     "phonetic": "/ˈɛləkwənt/",
     "partOfSpeech": "adj.",
@@ -495,7 +462,6 @@
     "topics": ["society"]
   },
   {
-    "id": "tenacious",
     "word": "tenacious",
     "phonetic": "/təˈneɪʃəs/",
     "partOfSpeech": "adj.",
@@ -510,7 +476,6 @@
     "topics": ["business"]
   },
   {
-    "id": "frugal",
     "word": "frugal",
     "phonetic": "/ˈfɹuɡəl/",
     "partOfSpeech": "adj.",
@@ -525,7 +490,6 @@
     "topics": ["business"]
   },
   {
-    "id": "lucrative",
     "word": "lucrative",
     "phonetic": "/ˈlukɹətɪv/",
     "partOfSpeech": "adj.",
@@ -540,7 +504,6 @@
     "topics": ["business"]
   },
   {
-    "id": "diligent",
     "word": "diligent",
     "phonetic": "/ˈdɪlɪdʒənt/",
     "partOfSpeech": "adj.",
@@ -555,7 +518,6 @@
     "topics": ["business"]
   },
   {
-    "id": "subtle",
     "word": "subtle",
     "phonetic": "/ˈsʌtəl/",
     "partOfSpeech": "adj.",
@@ -570,7 +532,6 @@
     "topics": ["other"]
   },
   {
-    "id": "adept",
     "word": "adept",
     "phonetic": "/əˈdɛpt/",
     "partOfSpeech": "adj.",
@@ -585,7 +546,6 @@
     "topics": ["business"]
   },
   {
-    "id": "empathy",
     "word": "empathy",
     "phonetic": "/ˈɛmpəθi/",
     "partOfSpeech": "n.",
@@ -600,7 +560,6 @@
     "topics": ["emotions"]
   },
   {
-    "id": "logophile",
     "word": "logophile",
     "phonetic": "/ˈlɔɡəfaɪl/",
     "partOfSpeech": "n.",
@@ -615,7 +574,6 @@
     "topics": ["other"]
   },
   {
-    "id": "lucubration",
     "word": "lucubration",
     "phonetic": "/ˌlukjʊˈbɹeɪʃən/",
     "partOfSpeech": "n.",
@@ -630,7 +588,6 @@
     "topics": ["other"]
   },
   {
-    "id": "quixotic",
     "word": "quixotic",
     "phonetic": "/kwɪkˈsɑtɪk/",
     "partOfSpeech": "adj.",
@@ -645,7 +602,6 @@
     "topics": ["society"]
   },
   {
-    "id": "numinous",
     "word": "numinous",
     "phonetic": "/ˈnumɪnəs/",
     "partOfSpeech": "adj.",
@@ -660,7 +616,6 @@
     "topics": ["emotions"]
   },
   {
-    "id": "superincumbent",
     "word": "superincumbent",
     "phonetic": "/ˌsupɚɪnˈkʌmbənt/",
     "partOfSpeech": "adj.",
@@ -675,7 +630,6 @@
     "topics": ["other"]
   },
   {
-    "id": "callipygian",
     "word": "callipygian",
     "phonetic": "/ˌkælɪˈpɪdʒiən/",
     "partOfSpeech": "adj.",
@@ -690,7 +644,6 @@
     "topics": ["human body"]
   },
   {
-    "id": "ephemeral",
     "word": "ephemeral",
     "phonetic": "/ɪˈfɛməɹəl/",
     "partOfSpeech": "adj.",
@@ -705,7 +658,6 @@
     "topics": ["other"]
   },
   {
-    "id": "serendipity",
     "word": "serendipity",
     "phonetic": "/ˌsɛɹənˈdɪpɪti/",
     "partOfSpeech": "n.",
@@ -720,7 +672,6 @@
     "topics": ["emotions"]
   },
   {
-    "id": "obfuscate",
     "word": "obfuscate",
     "phonetic": "/ˈɑbfəskeɪt/",
     "partOfSpeech": "v.",
@@ -735,7 +686,6 @@
     "topics": ["society"]
   },
   {
-    "id": "perspicacious",
     "word": "perspicacious",
     "phonetic": "/ˌpɝspɪˈkeɪʃəs/",
     "partOfSpeech": "adj.",
@@ -750,7 +700,6 @@
     "topics": ["other"]
   },
   {
-    "id": "taciturn",
     "word": "taciturn",
     "phonetic": "/ˈtæsɪtɝn/",
     "partOfSpeech": "adj.",
@@ -765,7 +714,6 @@
     "topics": ["society"]
   },
   {
-    "id": "magnanimous",
     "word": "magnanimous",
     "phonetic": "/mæɡˈnænɪməs/",
     "partOfSpeech": "adj.",
@@ -780,7 +728,6 @@
     "topics": ["emotions"]
   },
   {
-    "id": "insidious",
     "word": "insidious",
     "phonetic": "/ɪnˈsɪdiəs/",
     "partOfSpeech": "adj.",
@@ -795,7 +742,6 @@
     "topics": ["other"]
   },
   {
-    "id": "sycophant",
     "word": "sycophant",
     "phonetic": "/ˈsɪkəfænt/",
     "partOfSpeech": "n.",
@@ -810,7 +756,6 @@
     "topics": ["business"]
   },
   {
-    "id": "equanimity",
     "word": "equanimity",
     "phonetic": "/ˌɛkwəˈnɪmɪti/",
     "partOfSpeech": "n.",
@@ -825,7 +770,6 @@
     "topics": ["emotions"]
   },
   {
-    "id": "ineffable",
     "word": "ineffable",
     "phonetic": "/ɪnˈɛfəbəl/",
     "partOfSpeech": "adj.",
@@ -840,7 +784,6 @@
     "topics": ["emotions"]
   },
   {
-    "id": "garrulous",
     "word": "garrulous",
     "phonetic": "/ˈɡæɹələs/",
     "partOfSpeech": "adj.",
@@ -855,7 +798,6 @@
     "topics": ["society"]
   },
   {
-    "id": "nadir",
     "word": "nadir",
     "phonetic": "/ˈneɪdɪɹ/",
     "partOfSpeech": "n.",
@@ -870,7 +812,6 @@
     "topics": ["other"]
   },
   {
-    "id": "penurious",
     "word": "penurious",
     "phonetic": "/pəˈnʊɹiəs/",
     "partOfSpeech": "adj.",
@@ -885,7 +826,6 @@
     "topics": ["business"]
   },
   {
-    "id": "apocryphal",
     "word": "apocryphal",
     "phonetic": "/əˈpɑkɹɪfəl/",
     "partOfSpeech": "adj.",
@@ -896,6 +836,566 @@
     ],
     "synonyms": ["dubious", "unverified", "legendary"],
     "origin": "From Greek apokryphos, meaning “hidden away.”",
+    "level": "advanced",
+    "topics": ["society"]
+  },
+  {
+    "word": "yawn",
+    "phonetic": "/jɔn/",
+    "partOfSpeech": "v.",
+    "definition": "To open the mouth wide and inhale deeply, usually from tiredness or boredom",
+    "examples": [
+      "She tried to hide a yawn during the long meeting.",
+      "Watching him yawn made everyone else yawn too."
+    ],
+    "synonyms": ["gape", "doze", "drowse"],
+    "origin": "From Old English geonian, meaning “to open wide.”",
+    "level": "beginner",
+    "topics": ["human body"]
+  },
+  {
+    "word": "shiver",
+    "phonetic": "/ˈʃɪvɚ/",
+    "partOfSpeech": "v.",
+    "definition": "To shake slightly because of cold, fear, or excitement",
+    "examples": [
+      "We shivered at the bus stop in the icy wind.",
+      "The ghost story made the campers shiver."
+    ],
+    "synonyms": ["tremble", "quiver", "shudder"],
+    "origin": "From Middle English chiveren, possibly from chavel, “jaw” — teeth chattering.",
+    "level": "beginner",
+    "topics": ["human body"]
+  },
+  {
+    "word": "blink",
+    "phonetic": "/blɪŋk/",
+    "partOfSpeech": "v.",
+    "definition": "To shut and open the eyes quickly",
+    "examples": [
+      "She blinked in the bright sunlight.",
+      "Don't blink or you'll miss the shooting star."
+    ],
+    "synonyms": ["wink", "flutter", "flicker"],
+    "origin": "From Middle English blenken, meaning “to move suddenly.”",
+    "level": "beginner",
+    "topics": ["human body"]
+  },
+  {
+    "word": "stretch",
+    "phonetic": "/stɹɛtʃ/",
+    "partOfSpeech": "v.",
+    "definition": "To extend the body or limbs to full length",
+    "examples": [
+      "Remember to stretch before your morning run.",
+      "The cat stretched lazily across the windowsill."
+    ],
+    "synonyms": ["extend", "lengthen", "reach"],
+    "origin": "From Old English streccan, meaning “to spread out.”",
+    "level": "beginner",
+    "topics": ["human body"]
+  },
+  {
+    "word": "gentle",
+    "phonetic": "/ˈdʒɛntəl/",
+    "partOfSpeech": "adj.",
+    "definition": "Kind, mild, and careful not to hurt",
+    "examples": [
+      "She gave the puppy a gentle pat on the head.",
+      "A gentle breeze drifted through the open window."
+    ],
+    "synonyms": ["tender", "mild", "soft"],
+    "origin": "From Latin gentilis, meaning “of the same family.”",
+    "level": "beginner",
+    "topics": ["emotions"]
+  },
+  {
+    "word": "polite",
+    "phonetic": "/pəˈlaɪt/",
+    "partOfSpeech": "adj.",
+    "definition": "Showing good manners and respect for others",
+    "examples": [
+      "The polite waiter thanked every customer by name.",
+      "It's polite to hold the door for the person behind you."
+    ],
+    "synonyms": ["courteous", "respectful", "civil"],
+    "origin": "From Latin politus, meaning “polished.”",
+    "level": "beginner",
+    "topics": ["society"]
+  },
+  {
+    "word": "chatter",
+    "phonetic": "/ˈtʃætɚ/",
+    "partOfSpeech": "v.",
+    "definition": "To talk quickly and at length about unimportant things",
+    "examples": [
+      "The students chattered excitedly before the trip.",
+      "Sparrows chattered on the fence all morning."
+    ],
+    "synonyms": ["babble", "prattle", "gab"],
+    "origin": "From Middle English chateren, imitating rapid talk.",
+    "level": "beginner",
+    "topics": ["society"]
+  },
+  {
+    "word": "gloomy",
+    "phonetic": "/ˈɡlumi/",
+    "partOfSpeech": "adj.",
+    "definition": "Dark or dim; feeling sad and without hope",
+    "examples": [
+      "The gloomy weather kept everyone indoors.",
+      "He felt gloomy after hearing the bad news."
+    ],
+    "synonyms": ["dreary", "dismal", "somber"],
+    "origin": "From Middle English gloumen, meaning “to look sullen.”",
+    "level": "beginner",
+    "topics": ["emotions"]
+  },
+  {
+    "word": "wander",
+    "phonetic": "/ˈwɑndɚ/",
+    "partOfSpeech": "v.",
+    "definition": "To walk or move around without a fixed plan or direction",
+    "examples": [
+      "We wandered through the old town with no map.",
+      "Her mind wandered during the boring lecture."
+    ],
+    "synonyms": ["roam", "stroll", "drift"],
+    "origin": "From Old English wandrian, meaning “to move about aimlessly.”",
+    "level": "beginner",
+    "topics": ["other"]
+  },
+  {
+    "word": "spark",
+    "phonetic": "/spɑɹk/",
+    "partOfSpeech": "n.",
+    "definition": "A tiny burst of fire or electricity; a small trace that starts something",
+    "examples": [
+      "A single spark from the campfire lit the dry grass.",
+      "The workshop gave her a spark of inspiration."
+    ],
+    "synonyms": ["flash", "glint", "flicker"],
+    "origin": "From Old English spearca, meaning “glowing particle.”",
+    "level": "beginner",
+    "topics": ["other"]
+  },
+  {
+    "word": "sturdy",
+    "phonetic": "/ˈstɚdi/",
+    "partOfSpeech": "adj.",
+    "definition": "Strongly built and not easily broken",
+    "examples": [
+      "The sturdy table survived three house moves.",
+      "You'll need sturdy boots for the mountain trail."
+    ],
+    "synonyms": ["robust", "solid", "durable"],
+    "origin": "From Old French estourdi, meaning “dazed, reckless” — the sense hardened over time.",
+    "level": "beginner",
+    "topics": ["other"]
+  },
+  {
+    "word": "crisp",
+    "phonetic": "/kɹɪsp/",
+    "partOfSpeech": "adj.",
+    "definition": "Pleasantly firm and fresh; cool and clear",
+    "examples": [
+      "The crisp autumn air smelled of fallen leaves.",
+      "She took a bite of the crisp green apple."
+    ],
+    "synonyms": ["fresh", "brisk", "crunchy"],
+    "origin": "From Latin crispus, meaning “curled.”",
+    "level": "beginner",
+    "topics": ["other"]
+  },
+  {
+    "word": "mend",
+    "phonetic": "/mɛnd/",
+    "partOfSpeech": "v.",
+    "definition": "To repair something broken or make a situation better",
+    "examples": [
+      "Grandma taught me to mend a torn sleeve.",
+      "A long talk helped mend their friendship."
+    ],
+    "synonyms": ["repair", "fix", "restore"],
+    "origin": "Shortened from Middle English amenden, from Latin emendare, “to correct.”",
+    "level": "beginner",
+    "topics": ["other"]
+  },
+  {
+    "word": "alleviate",
+    "phonetic": "/əˈliviˌeɪt/",
+    "partOfSpeech": "v.",
+    "definition": "To make pain or a problem less severe",
+    "examples": [
+      "An ice pack can alleviate the swelling.",
+      "The new bus line alleviated downtown traffic."
+    ],
+    "synonyms": ["ease", "relieve", "lessen"],
+    "origin": "From Latin alleviare, meaning “to lighten.”",
+    "level": "intermediate",
+    "topics": ["human body"]
+  },
+  {
+    "word": "astute",
+    "phonetic": "/əˈstut/",
+    "partOfSpeech": "adj.",
+    "definition": "Quick to see how to gain an advantage; shrewd",
+    "examples": [
+      "An astute investor spotted the trend early.",
+      "Her astute question exposed the plan's weakness."
+    ],
+    "synonyms": ["shrewd", "sharp", "canny"],
+    "origin": "From Latin astutus, meaning “crafty.”",
+    "level": "intermediate",
+    "topics": ["business"]
+  },
+  {
+    "word": "vigilant",
+    "phonetic": "/ˈvɪdʒɪlənt/",
+    "partOfSpeech": "adj.",
+    "definition": "Keeping careful watch for danger or difficulty",
+    "examples": [
+      "Lifeguards stay vigilant even when the water looks calm.",
+      "Be vigilant about suspicious emails asking for passwords."
+    ],
+    "synonyms": ["watchful", "alert", "attentive"],
+    "origin": "From Latin vigilare, meaning “to keep awake.”",
+    "level": "intermediate",
+    "topics": ["other"]
+  },
+  {
+    "word": "composure",
+    "phonetic": "/kəmˈpoʊʒɚ/",
+    "partOfSpeech": "n.",
+    "definition": "Calmness of mind and manner, especially under pressure",
+    "examples": [
+      "The pilot kept her composure through the turbulence.",
+      "He regained his composure before walking on stage."
+    ],
+    "synonyms": ["poise", "calm", "self-possession"],
+    "origin": "From Latin componere, meaning “to put together, arrange.”",
+    "level": "intermediate",
+    "topics": ["emotions"]
+  },
+  {
+    "word": "fatigue",
+    "phonetic": "/fəˈtiɡ/",
+    "partOfSpeech": "n.",
+    "definition": "Extreme tiredness from effort or illness",
+    "examples": [
+      "Muscle fatigue set in during the final mile.",
+      "Jet lag left her fighting fatigue all week."
+    ],
+    "synonyms": ["exhaustion", "weariness", "tiredness"],
+    "origin": "From Latin fatigare, meaning “to weary.”",
+    "level": "intermediate",
+    "topics": ["human body"]
+  },
+  {
+    "word": "agile",
+    "phonetic": "/ˈædʒəl/",
+    "partOfSpeech": "adj.",
+    "definition": "Able to move quickly and easily; mentally quick",
+    "examples": [
+      "The agile gymnast flipped effortlessly across the mat.",
+      "An agile mind adapts fast to new problems."
+    ],
+    "synonyms": ["nimble", "limber", "spry"],
+    "origin": "From Latin agilis, meaning “easily moved.”",
+    "level": "intermediate",
+    "topics": ["human body"]
+  },
+  {
+    "word": "posture",
+    "phonetic": "/ˈpɑstʃɚ/",
+    "partOfSpeech": "n.",
+    "definition": "The position in which someone holds their body",
+    "examples": [
+      "Good posture at your desk prevents back pain.",
+      "Years of dance gave her an upright posture."
+    ],
+    "synonyms": ["stance", "bearing", "carriage"],
+    "origin": "From Latin positura, meaning “position.”",
+    "level": "intermediate",
+    "topics": ["human body"]
+  },
+  {
+    "word": "negotiate",
+    "phonetic": "/nɪˈɡoʊʃiˌeɪt/",
+    "partOfSpeech": "v.",
+    "definition": "To discuss something in order to reach an agreement",
+    "examples": [
+      "She negotiated a higher salary before accepting the offer.",
+      "The two firms negotiated for months over the merger."
+    ],
+    "synonyms": ["bargain", "mediate", "broker"],
+    "origin": "From Latin negotiari, meaning “to do business.”",
+    "level": "intermediate",
+    "topics": ["business"]
+  },
+  {
+    "word": "audit",
+    "phonetic": "/ˈɔdɪt/",
+    "partOfSpeech": "n.",
+    "definition": "An official inspection of accounts or processes",
+    "examples": [
+      "The annual audit found no irregularities in the books.",
+      "A quick audit of your spending reveals easy savings."
+    ],
+    "synonyms": ["inspection", "review", "examination"],
+    "origin": "From Latin audire, meaning “to hear” — accounts were once read aloud.",
+    "level": "intermediate",
+    "topics": ["business"]
+  },
+  {
+    "word": "morale",
+    "phonetic": "/məˈɹæl/",
+    "partOfSpeech": "n.",
+    "definition": "The confidence and enthusiasm of a person or group",
+    "examples": [
+      "Free lunches did wonders for team morale.",
+      "Losing three games in a row hurt the squad's morale."
+    ],
+    "synonyms": ["spirit", "confidence", "esprit"],
+    "origin": "From French moral, meaning “moral condition,” respelled in English.",
+    "level": "intermediate",
+    "topics": ["business", "emotions"]
+  },
+  {
+    "word": "elated",
+    "phonetic": "/ɪˈleɪtɪd/",
+    "partOfSpeech": "adj.",
+    "definition": "Extremely happy and excited",
+    "examples": [
+      "She was elated when the acceptance letter arrived.",
+      "The elated fans flooded onto the field."
+    ],
+    "synonyms": ["overjoyed", "thrilled", "jubilant"],
+    "origin": "From Latin elatus, meaning “lifted up.”",
+    "level": "intermediate",
+    "topics": ["emotions"]
+  },
+  {
+    "word": "apprehensive",
+    "phonetic": "/ˌæpɹɪˈhɛnsɪv/",
+    "partOfSpeech": "adj.",
+    "definition": "Anxious or fearful that something bad may happen",
+    "examples": [
+      "He felt apprehensive before his first flight.",
+      "Investors grew apprehensive as prices swung wildly."
+    ],
+    "synonyms": ["uneasy", "anxious", "worried"],
+    "origin": "From Latin apprehendere, meaning “to seize” — the mind grasping at fears.",
+    "level": "intermediate",
+    "topics": ["emotions"]
+  },
+  {
+    "word": "versatile",
+    "phonetic": "/ˈvɚsətəl/",
+    "partOfSpeech": "adj.",
+    "definition": "Able to adapt to many different functions or activities",
+    "examples": [
+      "A versatile jacket works for hiking and the office alike.",
+      "She's a versatile musician, at home in jazz and classical."
+    ],
+    "synonyms": ["adaptable", "flexible", "all-around"],
+    "origin": "From Latin versatilis, meaning “turning easily.”",
+    "level": "intermediate",
+    "topics": ["other"]
+  },
+  {
+    "word": "ebullient",
+    "phonetic": "/ɪˈbʊljənt/",
+    "partOfSpeech": "adj.",
+    "definition": "Overflowing with cheerful energy and enthusiasm",
+    "examples": [
+      "Her ebullient welcome made every guest feel like family.",
+      "The ebullient crowd sang long after the concert ended."
+    ],
+    "synonyms": ["exuberant", "buoyant", "effervescent"],
+    "origin": "From Latin ebullire, meaning “to boil over.”",
+    "level": "advanced",
+    "topics": ["emotions"]
+  },
+  {
+    "word": "pulchritude",
+    "phonetic": "/ˈpʌlkɹɪˌtud/",
+    "partOfSpeech": "n.",
+    "definition": "Physical beauty",
+    "examples": [
+      "The statue celebrates classical ideals of pulchritude.",
+      "Critics praised the film's visual pulchritude over its plot."
+    ],
+    "synonyms": ["beauty", "comeliness", "loveliness"],
+    "origin": "From Latin pulchritudo, meaning “beauty.”",
+    "level": "advanced",
+    "topics": ["human body"]
+  },
+  {
+    "word": "obstreperous",
+    "phonetic": "/əbˈstɹɛpɚəs/",
+    "partOfSpeech": "adj.",
+    "definition": "Noisy and difficult to control",
+    "examples": [
+      "The obstreperous toddler refused to leave the playground.",
+      "Security escorted an obstreperous heckler from the hall."
+    ],
+    "synonyms": ["unruly", "boisterous", "rowdy"],
+    "origin": "From Latin obstrepere, meaning “to shout against.”",
+    "level": "advanced",
+    "topics": ["society"]
+  },
+  {
+    "word": "recalcitrant",
+    "phonetic": "/ɹɪˈkælsɪtɹənt/",
+    "partOfSpeech": "adj.",
+    "definition": "Stubbornly resistant to authority or guidance",
+    "examples": [
+      "The recalcitrant witness refused to answer questions.",
+      "Even recalcitrant students warmed to her teaching style."
+    ],
+    "synonyms": ["defiant", "unmanageable", "obstinate"],
+    "origin": "From Latin recalcitrare, meaning “to kick back with the heels.”",
+    "level": "advanced",
+    "topics": ["society"]
+  },
+  {
+    "word": "soporific",
+    "phonetic": "/ˌsɑpəˈɹɪfɪk/",
+    "partOfSpeech": "adj.",
+    "definition": "Tending to induce drowsiness or sleep",
+    "examples": [
+      "The professor's soporific voice emptied the lecture hall.",
+      "A warm bath has a pleasantly soporific effect."
+    ],
+    "synonyms": ["sleep-inducing", "sedative", "drowsy"],
+    "origin": "From Latin sopor, meaning “deep sleep.”",
+    "level": "advanced",
+    "topics": ["human body"]
+  },
+  {
+    "word": "lassitude",
+    "phonetic": "/ˈlæsɪˌtud/",
+    "partOfSpeech": "n.",
+    "definition": "A state of physical or mental weariness; lack of energy",
+    "examples": [
+      "A heavy lassitude settled over the office in the August heat.",
+      "After the fever broke, only lassitude remained."
+    ],
+    "synonyms": ["lethargy", "languor", "torpor"],
+    "origin": "From Latin lassus, meaning “weary.”",
+    "level": "advanced",
+    "topics": ["human body"]
+  },
+  {
+    "word": "visceral",
+    "phonetic": "/ˈvɪsɚəl/",
+    "partOfSpeech": "adj.",
+    "definition": "Felt deep in the body rather than through reason; instinctive",
+    "examples": [
+      "The film provokes a visceral reaction of dread.",
+      "Her visceral distrust of heights kept her off the bridge."
+    ],
+    "synonyms": ["instinctive", "gut", "primal"],
+    "origin": "From Latin viscera, meaning “internal organs.”",
+    "level": "advanced",
+    "topics": ["human body", "emotions"]
+  },
+  {
+    "word": "sagacious",
+    "phonetic": "/səˈɡeɪʃəs/",
+    "partOfSpeech": "adj.",
+    "definition": "Having keen judgment and deep practical wisdom",
+    "examples": [
+      "The sagacious elder settled the dispute with a single question.",
+      "Her sagacious advice saved the company from a bad deal."
+    ],
+    "synonyms": ["wise", "discerning", "judicious"],
+    "origin": "From Latin sagax, meaning “keen-scented, acute.”",
+    "level": "advanced",
+    "topics": ["other"]
+  },
+  {
+    "word": "truculent",
+    "phonetic": "/ˈtɹʌkjələnt/",
+    "partOfSpeech": "adj.",
+    "definition": "Eager to argue or fight; aggressively defiant",
+    "examples": [
+      "The truculent customer disputed every line of the bill.",
+      "His truculent tone turned the debate into a shouting match."
+    ],
+    "synonyms": ["belligerent", "combative", "hostile"],
+    "origin": "From Latin trux, meaning “fierce, savage.”",
+    "level": "advanced",
+    "topics": ["emotions"]
+  },
+  {
+    "word": "mellifluous",
+    "phonetic": "/məˈlɪfluəs/",
+    "partOfSpeech": "adj.",
+    "definition": "Sweet and smooth to hear",
+    "examples": [
+      "The narrator's mellifluous voice made the audiobook a joy.",
+      "Mellifluous cello lines drifted from the open window."
+    ],
+    "synonyms": ["dulcet", "euphonious", "honeyed"],
+    "origin": "From Latin mel, “honey,” and fluere, “to flow.”",
+    "level": "advanced",
+    "topics": ["other"]
+  },
+  {
+    "word": "insouciant",
+    "phonetic": "/ɪnˈsusiənt/",
+    "partOfSpeech": "adj.",
+    "definition": "Showing a casual lack of concern; carefree",
+    "examples": [
+      "He gave an insouciant shrug at the deadline warning.",
+      "Her insouciant charm made hard work look effortless."
+    ],
+    "synonyms": ["nonchalant", "carefree", "unconcerned"],
+    "origin": "From French insouciant, from Latin sollicitare, “to disturb.”",
+    "level": "advanced",
+    "topics": ["emotions"]
+  },
+  {
+    "word": "perfunctory",
+    "phonetic": "/pɚˈfʌŋktɚi/",
+    "partOfSpeech": "adj.",
+    "definition": "Done quickly as a duty, without real interest or care",
+    "examples": [
+      "The inspector gave the paperwork a perfunctory glance.",
+      "His perfunctory apology convinced no one."
+    ],
+    "synonyms": ["cursory", "mechanical", "halfhearted"],
+    "origin": "From Latin perfungi, meaning “to get through with.”",
+    "level": "advanced",
+    "topics": ["business"]
+  },
+  {
+    "word": "halcyon",
+    "phonetic": "/ˈhælsiən/",
+    "partOfSpeech": "adj.",
+    "definition": "Denoting a calm, peaceful, and happy period in the past",
+    "examples": [
+      "They reminisced about the halcyon summers at the lake.",
+      "The startup's halcyon days ended with its first lawsuit."
+    ],
+    "synonyms": ["tranquil", "golden", "serene"],
+    "origin": "From Greek alkyon, a mythical bird said to calm the winter sea.",
+    "level": "advanced",
+    "topics": ["other"]
+  },
+  {
+    "word": "sesquipedalian",
+    "phonetic": "/ˌsɛskwɪpɪˈdeɪliən/",
+    "partOfSpeech": "adj.",
+    "definition": "Given to using long words; polysyllabic",
+    "examples": [
+      "His sesquipedalian emails sent colleagues to the dictionary.",
+      "The professor's sesquipedalian style hid a simple idea."
+    ],
+    "synonyms": ["long-winded", "verbose", "grandiloquent"],
+    "origin": "From Latin sesquipedalis, meaning “a foot and a half long.”",
     "level": "advanced",
     "topics": ["society"]
   }

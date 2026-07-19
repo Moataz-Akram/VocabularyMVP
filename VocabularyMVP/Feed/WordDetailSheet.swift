@@ -16,7 +16,9 @@ struct WordDetailSheet: View {
                         SpeechService.shared.speak(word.word, voiceID: voiceID)
                     } label: {
                         HStack(spacing: 6) {
-                            Text(word.phonetic)
+                            if let phonetic = word.phonetic {
+                                Text(phonetic)
+                            }
                             Image(systemName: "speaker.wave.2")
                         }
                         .font(.system(.subheadline, design: .rounded))
@@ -25,35 +27,43 @@ struct WordDetailSheet: View {
                         .background(Theme.background, in: Capsule())
                     }
                     .buttonStyle(.plain)
-                    Text("(\(word.partOfSpeech)) \(word.definition)")
-                        .font(.system(.body, design: .rounded))
-                        .multilineTextAlignment(.center)
+                    if let definitionLine = word.definitionLine {
+                        Text(definitionLine)
+                            .font(.system(.body, design: .rounded))
+                            .multilineTextAlignment(.center)
+                    }
                 }
                 .frame(maxWidth: .infinity)
 
-                section("Examples") {
-                    VStack(alignment: .leading, spacing: 8) {
-                        ForEach(Array(word.examples.enumerated()), id: \.offset) { index, example in
-                            HStack(alignment: .top, spacing: 8) {
-                                Text("\(index + 1).")
-                                Text(highlighted(example))
+                if let examples = word.examples, !examples.isEmpty {
+                    section("Examples") {
+                        VStack(alignment: .leading, spacing: 8) {
+                            ForEach(Array(examples.enumerated()), id: \.offset) { index, example in
+                                HStack(alignment: .top, spacing: 8) {
+                                    Text("\(index + 1).")
+                                    Text(highlighted(example))
+                                }
                             }
                         }
                     }
                 }
-                section("Synonyms") {
-                    FlowLayout(spacing: 8) {
-                        ForEach(word.synonyms, id: \.self) { synonym in
-                            Text(synonym)
-                                .font(.system(.subheadline, design: .rounded))
-                                .padding(.horizontal, 12)
-                                .padding(.vertical, 6)
-                                .background(Theme.background, in: Capsule())
+                if let synonyms = word.synonyms, !synonyms.isEmpty {
+                    section("Synonyms") {
+                        FlowLayout(spacing: 8) {
+                            ForEach(synonyms, id: \.self) { synonym in
+                                Text(synonym)
+                                    .font(.system(.subheadline, design: .rounded))
+                                    .padding(.horizontal, 12)
+                                    .padding(.vertical, 6)
+                                    .background(Theme.background, in: Capsule())
+                            }
                         }
                     }
                 }
-                section("Origin") {
-                    Text(word.origin)
+                if let origin = word.origin {
+                    section("Origin") {
+                        Text(origin)
+                    }
                 }
             }
             .font(.system(.body, design: .rounded))

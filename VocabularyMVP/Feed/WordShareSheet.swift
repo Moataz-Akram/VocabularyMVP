@@ -53,14 +53,20 @@ struct WordShareSheet: View {
             Spacer()
             Text(word.word)
                 .font(.system(size: 34, weight: .bold, design: .serif))
-            Text(word.phonetic)
-                .font(.system(size: 14, design: .rounded))
-                .opacity(0.7)
-            Text("(\(word.partOfSpeech)) \(word.definition)")
-                .font(.system(size: 18, design: .rounded))
-            Text(word.examples.first ?? "")
-                .font(.system(size: 15, design: .rounded))
-                .opacity(0.8)
+            if let phonetic = word.phonetic {
+                Text(phonetic)
+                    .font(.system(size: 14, design: .rounded))
+                    .opacity(0.7)
+            }
+            if let definitionLine = word.definitionLine {
+                Text(definitionLine)
+                    .font(.system(size: 18, design: .rounded))
+            }
+            if let example = word.examples?.first {
+                Text(example)
+                    .font(.system(size: 15, design: .rounded))
+                    .opacity(0.8)
+            }
             watermark
                 .padding(.top, 12)
             Spacer()
@@ -113,7 +119,11 @@ struct WordShareSheet: View {
     }
 
     private var shareText: String {
-        "\(word.word) (\(word.partOfSpeech)) — \(word.definition)\n“\(word.examples.first ?? "")”"
+        var text = [word.word, word.definitionLine].compactMap { $0 }.joined(separator: " — ")
+        if let example = word.examples?.first {
+            text += "\n“\(example)”"
+        }
+        return text
     }
 
     private func action(_ symbol: String, _ title: String, handler: @escaping () -> Void) -> some View {

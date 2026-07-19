@@ -19,7 +19,9 @@ struct WordRowCard: View {
                     SpeechService.shared.speak(word.word, voiceID: viewModel.voiceID)
                 } label: {
                     HStack(spacing: 6) {
-                        Text(word.phonetic)
+                        if let phonetic = word.phonetic {
+                            Text(phonetic)
+                        }
                         Image(systemName: "speaker.wave.2")
                     }
                     .font(.system(.caption, design: .rounded))
@@ -30,9 +32,11 @@ struct WordRowCard: View {
                 .buttonStyle(.plain)
                 .accessibilityLabel("Pronounce \(word.word)")
             }
-            Text("(\(word.partOfSpeech)) \(word.definition)")
-                .font(.system(size: 16, design: .rounded))
-            if let example = word.examples.first {
+            if let definitionLine = word.definitionLine {
+                Text(definitionLine)
+                    .font(.system(size: 16, design: .rounded))
+            }
+            if let example = word.examples?.first {
                 Text("(\(example))")
                     .font(.system(size: 14, design: .rounded))
                     .foregroundStyle(Theme.textSecondary)
