@@ -65,7 +65,6 @@ struct PronunciationCheckView: View {
         .padding(.horizontal, 16)
         .padding(.vertical, 10)
         .background(Theme.surface, in: Capsule())
-        .hardShadow(in: Capsule(), offset: 2)
     }
 
     // Push-to-talk: the mic records only while the finger stays down. Press
@@ -78,7 +77,6 @@ struct PronunciationCheckView: View {
                 .font(.system(size: 15, weight: .medium))
                 .frame(width: 40, height: 40)
                 .background(phase == .listening ? Theme.accent : Theme.surface, in: Circle())
-                .hardShadow(in: Circle(), offset: 2)
                 .scaleEffect(isPressing ? 0.9 : 1)
                 .animation(.spring(duration: 0.2), value: isPressing)
         }

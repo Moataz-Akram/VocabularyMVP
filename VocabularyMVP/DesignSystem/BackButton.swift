@@ -13,7 +13,6 @@ struct BackButton: View {
                 .foregroundStyle(Theme.textPrimary)
                 .frame(width: 40, height: 40)
                 .background(Theme.surface, in: Circle())
-                .hardShadow(in: Circle(), offset: 2)
         }
         .buttonStyle(.plain)
         .accessibilityLabel("Back")

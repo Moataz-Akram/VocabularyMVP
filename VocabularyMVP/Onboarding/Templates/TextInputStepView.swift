@@ -22,7 +22,6 @@ struct TextInputStepView: View {
                 .padding(.horizontal, 24)
                 .padding(.vertical, 20)
                 .background(Theme.surface, in: Capsule())
-                .hardShadow(in: Capsule())
                 .focused($isFocused)
                 .submitLabel(.done)
             Spacer()

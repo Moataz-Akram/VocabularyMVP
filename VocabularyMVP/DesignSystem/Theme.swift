@@ -18,9 +18,28 @@ enum Theme {
 }
 
 extension View {
-    // Hard offset shadow used across buttons and rows, as in the reference design.
-    func hardShadow<S: Shape>(in shape: S, offset: CGFloat = 4) -> some View {
-        background(shape.fill(Color.black.opacity(0.25)).offset(y: offset))
+    // Hard offset shadow used across buttons and rows, as in the reference
+    // design. While `pressed`, the view sinks down onto its shadow (the shadow
+    // stays anchored) and springs back up on release.
+    func hardShadow<S: Shape>(in shape: S, offset: CGFloat = 4, pressed: Bool = false) -> some View {
+        background(shape.fill(.black).offset(y: pressed ? 0 : offset))
+            // Flattens view + shadow into one layer, so fades and dimming
+            // can't show the black shape through the surface above it.
+            .compositingGroup()
+            .offset(y: pressed ? offset : 0)
+            .animation(.spring(duration: 0.2), value: pressed)
+    }
+}
+
+// Sinking hard shadow for any Button or NavigationLink whose label already
+// draws its own background in `shape`.
+struct HardShadowButtonStyle<S: Shape>: ButtonStyle {
+    var shape: S
+    var offset: CGFloat = 4
+
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .hardShadow(in: shape, offset: offset, pressed: configuration.isPressed)
     }
 }
 

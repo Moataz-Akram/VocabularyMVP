@@ -15,6 +15,5 @@ struct SearchBar: View {
         .padding(.horizontal, 18)
         .padding(.vertical, 14)
         .background(Theme.surface, in: Capsule())
-        .hardShadow(in: Capsule(), offset: 2)
     }
 }

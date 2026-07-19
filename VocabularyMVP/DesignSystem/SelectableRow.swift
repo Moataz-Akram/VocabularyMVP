@@ -27,9 +27,8 @@ struct SelectableRow: View {
             .padding(.horizontal, 24)
             .padding(.vertical, 20)
             .background(isSelected ? Theme.accent : Theme.surface, in: Capsule())
-            .hardShadow(in: Capsule())
         }
-        .buttonStyle(.plain)
+        .buttonStyle(HardShadowButtonStyle(shape: Capsule()))
         .accessibilityAddTraits(isSelected ? .isSelected : [])
     }
 }

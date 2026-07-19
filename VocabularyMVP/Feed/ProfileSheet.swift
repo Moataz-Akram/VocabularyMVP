@@ -94,9 +94,8 @@ struct ProfileSheet: View {
             .padding(.horizontal, 16)
             .padding(.vertical, 20)
             .background(Theme.surface, in: RoundedRectangle(cornerRadius: 20))
-            .hardShadow(in: RoundedRectangle(cornerRadius: 20))
         }
-        .buttonStyle(.plain)
+        .buttonStyle(HardShadowButtonStyle(shape: RoundedRectangle(cornerRadius: 20)))
     }
 
     private func tile(_ title: String, symbol: String,
@@ -118,9 +117,8 @@ struct ProfileSheet: View {
             .padding(.horizontal, 16)
             .padding(.vertical, 20)
             .background(Theme.surface, in: RoundedRectangle(cornerRadius: 20))
-            .hardShadow(in: RoundedRectangle(cornerRadius: 20))
         }
-        .buttonStyle(.plain)
+        .buttonStyle(HardShadowButtonStyle(shape: RoundedRectangle(cornerRadius: 20)))
     }
 }
 
