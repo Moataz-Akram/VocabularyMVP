@@ -12,7 +12,6 @@ final class FeedViewModel {
     private(set) var voiceID: String?
 
     private let repository: WordRepository
-    private let personalization: PersonalizationService
     private var interactions: [String: WordInteraction] = [:]
     private var context: ModelContext?
     private var page = 0
@@ -20,10 +19,8 @@ final class FeedViewModel {
     private var isLoadingPage = false
 
     init(repository: WordRepository = WordRepository(client: MockAPIClient())) {
-        let profile = OnboardingProfile.load()
         self.repository = repository
-        self.personalization = PersonalizationService(profile: profile)
-        self.voiceID = profile?.voiceID
+        self.voiceID = OnboardingProfile.load()?.voiceID
     }
 
     func start(context: ModelContext) async {
@@ -60,7 +57,7 @@ final class FeedViewModel {
             let response = try await repository.words(page: page + 1)
             page = response.page
             hasMore = response.hasMore
-            words += personalization.orderPage(response.words)
+            words += response.words
         } catch {
             loadFailed = true
         }

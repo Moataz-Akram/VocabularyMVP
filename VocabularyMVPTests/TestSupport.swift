@@ -4,24 +4,20 @@ import XCTest
 
 // MARK: - Word factory
 
-func makeWord(id: String,
-              word: String? = nil,
-              level: WordLevel = .beginner,
-              topics: [String] = []) -> Word {
-    Word(id: id,
-         word: word ?? id,
+func makeWord(_ word: String) -> Word {
+    Word(word: word,
          phonetic: "/test/",
          partOfSpeech: "n.",
-         definition: "definition of \(id)",
-         examples: ["Example using \(id)."],
+         definition: "definition of \(word)",
+         examples: ["Example using \(word)."],
          synonyms: [],
          origin: "test",
-         level: level,
-         topics: topics)
+         level: .beginner,
+         topics: [])
 }
 
 func makeWords(_ count: Int, prefix: String = "word") -> [Word] {
-    (0..<count).map { makeWord(id: "\(prefix)-\($0)") }
+    (0..<count).map { makeWord("\(prefix)-\($0)") }
 }
 
 // MARK: - Stub API client

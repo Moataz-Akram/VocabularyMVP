@@ -11,8 +11,6 @@
 		078174043008468B000ACABA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 078174033008468B000ACABA /* Assets.xcassets */; };
 		078174073008468B000ACABA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 078174063008468B000ACABA /* Preview Assets.xcassets */; };
 		078174113008468B000ACABA /* VocabularyMVPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078174103008468B000ACABA /* VocabularyMVPTests.swift */; };
-		0781741B3008468B000ACABA /* VocabularyMVPUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0781741A3008468B000ACABA /* VocabularyMVPUITests.swift */; };
-		0781741D3008468B000ACABA /* VocabularyMVPUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0781741C3008468B000ACABA /* VocabularyMVPUITestsLaunchTests.swift */; };
 		AB20000000000000000000001 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB10000000000000000000001 /* RootView.swift */; };
 		AB20000000000000000000002 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB10000000000000000000002 /* Theme.swift */; };
 		AB20000000000000000000003 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB10000000000000000000003 /* Haptics.swift */; };
@@ -38,7 +36,6 @@
 		AB20000000000000000000017 /* MockAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB10000000000000000000017 /* MockAPIClient.swift */; };
 		AB20000000000000000000018 /* URLSessionAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB10000000000000000000018 /* URLSessionAPIClient.swift */; };
 		AB20000000000000000000019 /* WordRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB10000000000000000000019 /* WordRepository.swift */; };
-		AB2000000000000000000001A /* PersonalizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1000000000000000000001A /* PersonalizationService.swift */; };
 		AB2000000000000000000001B /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1000000000000000000001B /* FeedView.swift */; };
 		AB2000000000000000000001C /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1000000000000000000001C /* FeedViewModel.swift */; };
 		AB2000000000000000000001D /* WordCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1000000000000000000001D /* WordCardView.swift */; };
@@ -59,7 +56,6 @@
 		AB2000000000000000000002C /* PronunciationCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1000000000000000000002C /* PronunciationCheckView.swift */; };
 		AB2000000000000000000002D /* VoiceList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1000000000000000000002D /* VoiceList.swift */; };
 		AB60000000000000000000001 /* TestSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB50000000000000000000001 /* TestSupport.swift */; };
-		AB60000000000000000000002 /* PersonalizationServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB50000000000000000000002 /* PersonalizationServiceTests.swift */; };
 		AB60000000000000000000003 /* OnboardingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB50000000000000000000003 /* OnboardingTests.swift */; };
 		AB60000000000000000000004 /* NetworkingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB50000000000000000000004 /* NetworkingTests.swift */; };
 		AB60000000000000000000005 /* FeedViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB50000000000000000000005 /* FeedViewModelTests.swift */; };
@@ -90,8 +86,6 @@
 		0781740C3008468B000ACABA /* VocabularyMVPTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VocabularyMVPTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		078174103008468B000ACABA /* VocabularyMVPTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabularyMVPTests.swift; sourceTree = "<group>"; };
 		078174163008468B000ACABA /* VocabularyMVPUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VocabularyMVPUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		0781741A3008468B000ACABA /* VocabularyMVPUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabularyMVPUITests.swift; sourceTree = "<group>"; };
-		0781741C3008468B000ACABA /* VocabularyMVPUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabularyMVPUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		AB10000000000000000000001 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		AB10000000000000000000002 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		AB10000000000000000000003 /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
@@ -117,7 +111,6 @@
 		AB10000000000000000000017 /* MockAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAPIClient.swift; sourceTree = "<group>"; };
 		AB10000000000000000000018 /* URLSessionAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionAPIClient.swift; sourceTree = "<group>"; };
 		AB10000000000000000000019 /* WordRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordRepository.swift; sourceTree = "<group>"; };
-		AB1000000000000000000001A /* PersonalizationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalizationService.swift; sourceTree = "<group>"; };
 		AB1000000000000000000001B /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
 		AB1000000000000000000001C /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
 		AB1000000000000000000001D /* WordCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordCardView.swift; sourceTree = "<group>"; };
@@ -138,7 +131,6 @@
 		AB1000000000000000000002C /* PronunciationCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PronunciationCheckView.swift; sourceTree = "<group>"; };
 		AB1000000000000000000002D /* VoiceList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceList.swift; sourceTree = "<group>"; };
 		AB50000000000000000000001 /* TestSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSupport.swift; sourceTree = "<group>"; };
-		AB50000000000000000000002 /* PersonalizationServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalizationServiceTests.swift; sourceTree = "<group>"; };
 		AB50000000000000000000003 /* OnboardingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTests.swift; sourceTree = "<group>"; };
 		AB50000000000000000000004 /* NetworkingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingTests.swift; sourceTree = "<group>"; };
 		AB50000000000000000000005 /* FeedViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModelTests.swift; sourceTree = "<group>"; };
@@ -174,7 +166,6 @@
 			children = (
 				078173FE3008468A000ACABA /* VocabularyMVP */,
 				0781740F3008468B000ACABA /* VocabularyMVPTests */,
-				078174193008468B000ACABA /* VocabularyMVPUITests */,
 				078173FD3008468A000ACABA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -221,21 +212,11 @@
 			children = (
 				078174103008468B000ACABA /* VocabularyMVPTests.swift */,
 				AB50000000000000000000001 /* TestSupport.swift */,
-				AB50000000000000000000002 /* PersonalizationServiceTests.swift */,
 				AB50000000000000000000003 /* OnboardingTests.swift */,
 				AB50000000000000000000004 /* NetworkingTests.swift */,
 				AB50000000000000000000005 /* FeedViewModelTests.swift */,
 			);
 			path = VocabularyMVPTests;
-			sourceTree = "<group>";
-		};
-		078174193008468B000ACABA /* VocabularyMVPUITests */ = {
-			isa = PBXGroup;
-			children = (
-				0781741A3008468B000ACABA /* VocabularyMVPUITests.swift */,
-				0781741C3008468B000ACABA /* VocabularyMVPUITestsLaunchTests.swift */,
-			);
-			path = VocabularyMVPUITests;
 			sourceTree = "<group>";
 		};
 		AB30000000000000000000001 /* DesignSystem */ = {
@@ -284,7 +265,6 @@
 			isa = PBXGroup;
 			children = (
 				AB10000000000000000000013 /* SpeechService.swift */,
-				AB1000000000000000000001A /* PersonalizationService.swift */,
 				AB1000000000000000000002B /* PronunciationService.swift */,
 			);
 			path = Services;
@@ -511,7 +491,6 @@
 				AB20000000000000000000017 /* MockAPIClient.swift in Sources */,
 				AB20000000000000000000018 /* URLSessionAPIClient.swift in Sources */,
 				AB20000000000000000000019 /* WordRepository.swift in Sources */,
-				AB2000000000000000000001A /* PersonalizationService.swift in Sources */,
 				AB2000000000000000000001B /* FeedView.swift in Sources */,
 				AB2000000000000000000001C /* FeedViewModel.swift in Sources */,
 				AB2000000000000000000001D /* WordCardView.swift in Sources */,
@@ -539,7 +518,6 @@
 			files = (
 				078174113008468B000ACABA /* VocabularyMVPTests.swift in Sources */,
 				AB60000000000000000000001 /* TestSupport.swift in Sources */,
-				AB60000000000000000000002 /* PersonalizationServiceTests.swift in Sources */,
 				AB60000000000000000000003 /* OnboardingTests.swift in Sources */,
 				AB60000000000000000000004 /* NetworkingTests.swift in Sources */,
 				AB60000000000000000000005 /* FeedViewModelTests.swift in Sources */,
@@ -550,8 +528,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0781741D3008468B000ACABA /* VocabularyMVPUITestsLaunchTests.swift in Sources */,
-				0781741B3008468B000ACABA /* VocabularyMVPUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

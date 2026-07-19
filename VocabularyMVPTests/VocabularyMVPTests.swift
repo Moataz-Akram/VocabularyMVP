@@ -16,14 +16,16 @@ final class WordFixtureTests: XCTestCase {
         let words = try loadFixtureWords()
 
         XCTAssertFalse(words.isEmpty)
+        // Every field except `word` is optional in the model; the curated
+        // fixture must still fill them all in (nil counts as missing).
         for word in words {
             XCTAssertFalse(word.word.isEmpty, "\(word.id): empty word")
-            XCTAssertFalse(word.phonetic.isEmpty, "\(word.id): empty phonetic")
-            XCTAssertFalse(word.partOfSpeech.isEmpty, "\(word.id): empty partOfSpeech")
-            XCTAssertFalse(word.definition.isEmpty, "\(word.id): empty definition")
-            XCTAssertFalse(word.examples.isEmpty, "\(word.id): no examples")
-            XCTAssertFalse(word.origin.isEmpty, "\(word.id): empty origin")
-            XCTAssertFalse(word.topics.isEmpty, "\(word.id): no topics")
+            XCTAssertFalse(word.phonetic?.isEmpty ?? true, "\(word.id): missing phonetic")
+            XCTAssertFalse(word.partOfSpeech?.isEmpty ?? true, "\(word.id): missing partOfSpeech")
+            XCTAssertFalse(word.definition?.isEmpty ?? true, "\(word.id): missing definition")
+            XCTAssertFalse(word.examples?.isEmpty ?? true, "\(word.id): no examples")
+            XCTAssertFalse(word.origin?.isEmpty ?? true, "\(word.id): missing origin")
+            XCTAssertFalse(word.topics?.isEmpty ?? true, "\(word.id): no topics")
         }
     }
 
@@ -33,7 +35,7 @@ final class WordFixtureTests: XCTestCase {
     }
 
     func testFixtureCoversEveryLevel() throws {
-        let levels = Set(try loadFixtureWords().map(\.level))
+        let levels = Set(try loadFixtureWords().compactMap(\.level))
         XCTAssertEqual(levels, Set(WordLevel.allCases))
     }
 }
