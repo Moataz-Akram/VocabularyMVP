@@ -17,7 +17,7 @@ struct WordCardView: View {
                 .font(.system(size: 40, weight: .bold, design: .serif))
                 .minimumScaleFactor(0.6)
                 .lineLimit(1)
-            phoneticPill
+            PronunciationCheckView(word: word, voiceID: voiceID)
             Text("(\(word.partOfSpeech)) \(word.definition)")
                 .font(.system(size: 19, design: .rounded))
                 .multilineTextAlignment(.center)
@@ -29,25 +29,6 @@ struct WordCardView: View {
         .frame(maxWidth: .infinity)
         .padding(.horizontal, 24)
         .padding(.bottom, 48)
-    }
-
-    private var phoneticPill: some View {
-        Button {
-            Haptics.selection()
-            SpeechService.shared.speak(word.word, voiceID: voiceID)
-        } label: {
-            HStack(spacing: 8) {
-                Text(word.phonetic)
-                Image(systemName: "speaker.wave.2")
-            }
-            .font(.system(.subheadline, design: .rounded))
-            .padding(.horizontal, 16)
-            .padding(.vertical, 10)
-            .background(Theme.surface, in: Capsule())
-            .hardShadow(in: Capsule(), offset: 2)
-        }
-        .buttonStyle(.plain)
-        .accessibilityLabel("Pronounce \(word.word)")
     }
 
     private var actions: some View {

@@ -50,6 +50,8 @@
 		AB20000000000000000000028 /* CollectionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB10000000000000000000028 /* CollectionDetailView.swift */; };
 		AB20000000000000000000029 /* CollectionPickerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB10000000000000000000029 /* CollectionPickerSheet.swift */; };
 		AB2000000000000000000002A /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1000000000000000000002A /* BackButton.swift */; };
+		AB2000000000000000000002B /* PronunciationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1000000000000000000002B /* PronunciationService.swift */; };
+		AB2000000000000000000002C /* PronunciationCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1000000000000000000002C /* PronunciationCheckView.swift */; };
 		078174043008468B000ACABA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 078174033008468B000ACABA /* Assets.xcassets */; };
 		078174073008468B000ACABA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 078174063008468B000ACABA /* Preview Assets.xcassets */; };
 		078174113008468B000ACABA /* VocabularyMVPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078174103008468B000ACABA /* VocabularyMVPTests.swift */; };
@@ -119,6 +121,8 @@
 		AB10000000000000000000028 /* CollectionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionDetailView.swift; sourceTree = "<group>"; };
 		AB10000000000000000000029 /* CollectionPickerSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionPickerSheet.swift; sourceTree = "<group>"; };
 		AB1000000000000000000002A /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
+		AB1000000000000000000002B /* PronunciationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PronunciationService.swift; sourceTree = "<group>"; };
+		AB1000000000000000000002C /* PronunciationCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PronunciationCheckView.swift; sourceTree = "<group>"; };
 		078174033008468B000ACABA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		078174063008468B000ACABA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0781740C3008468B000ACABA /* VocabularyMVPTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VocabularyMVPTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -235,6 +239,7 @@
 				AB10000000000000000000027 /* NewCollectionView.swift */,
 				AB10000000000000000000028 /* CollectionDetailView.swift */,
 				AB10000000000000000000029 /* CollectionPickerSheet.swift */,
+				AB1000000000000000000002C /* PronunciationCheckView.swift */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -301,6 +306,7 @@
 			children = (
 				AB10000000000000000000013 /* SpeechService.swift */,
 				AB1000000000000000000001A /* PersonalizationService.swift */,
+				AB1000000000000000000002B /* PronunciationService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -503,6 +509,8 @@
 				AB20000000000000000000028 /* CollectionDetailView.swift in Sources */,
 				AB20000000000000000000029 /* CollectionPickerSheet.swift in Sources */,
 				AB2000000000000000000002A /* BackButton.swift in Sources */,
+				AB2000000000000000000002B /* PronunciationService.swift in Sources */,
+				AB2000000000000000000002C /* PronunciationCheckView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -669,7 +677,9 @@
 				DEVELOPMENT_TEAM = KJJ2686DAT;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Lets you say a word aloud to practice your pronunciation.";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Saves word cards you share to your photo library.";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Transcribes what you say to check your pronunciation of a word.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -699,7 +709,9 @@
 				DEVELOPMENT_TEAM = KJJ2686DAT;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Lets you say a word aloud to practice your pronunciation.";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Saves word cards you share to your photo library.";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Transcribes what you say to check your pronunciation of a word.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
