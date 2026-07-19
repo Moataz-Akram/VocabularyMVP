@@ -8,29 +8,32 @@
 import XCTest
 @testable import VocabularyMVP
 
-final class VocabularyMVPTests: XCTestCase {
+// The bundled words.json is the app's entire data source, so a malformed
+// entry breaks the feed at runtime. These tests keep the fixture honest.
+final class WordFixtureTests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
+    func testFixtureDecodesAndFieldsAreComplete() throws {
+        let words = try loadFixtureWords()
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+        XCTAssertFalse(words.isEmpty)
+        for word in words {
+            XCTAssertFalse(word.word.isEmpty, "\(word.id): empty word")
+            XCTAssertFalse(word.phonetic.isEmpty, "\(word.id): empty phonetic")
+            XCTAssertFalse(word.partOfSpeech.isEmpty, "\(word.id): empty partOfSpeech")
+            XCTAssertFalse(word.definition.isEmpty, "\(word.id): empty definition")
+            XCTAssertFalse(word.examples.isEmpty, "\(word.id): no examples")
+            XCTAssertFalse(word.origin.isEmpty, "\(word.id): empty origin")
+            XCTAssertFalse(word.topics.isEmpty, "\(word.id): no topics")
         }
     }
 
+    func testFixtureIDsAreUnique() throws {
+        let ids = try loadFixtureWords().map(\.id)
+        XCTAssertEqual(Set(ids).count, ids.count)
+    }
+
+    func testFixtureCoversEveryLevel() throws {
+        let levels = Set(try loadFixtureWords().map(\.level))
+        XCTAssertEqual(levels, Set(WordLevel.allCases))
+    }
 }
