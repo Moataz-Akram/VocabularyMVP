@@ -2,7 +2,7 @@
 
 A vocabulary-learning iOS app inspired by [Vocabulary — Learn words daily](https://apps.apple.com/us/app/vocabulary-learn-words-daily/id1084540807). Learn new words through a personalized onboarding, a swipeable word feed, and a voice-powered pronunciation coach.
 
-Built entirely with native frameworks — SwiftUI, SwiftData, AVFoundation, and Speech. No third-party dependencies. iOS 17.2+.
+Built entirely with native frameworks — SwiftUI, SwiftData, AVFoundation, and Speech. No third-party dependencies. iOS 26.0+.
 
 ## Features
 
@@ -43,14 +43,19 @@ MVVM with `@Observable` view models. SwiftData persists likes, bookmarks, and co
 
 ```
 VocabularyMVP/
-├── DesignSystem/     Theme tokens, button styles, haptics, shared controls
-├── Onboarding/       Step array + coordinator + template step views
-├── Feed/             Feed pager, word cards, collections, sheets, view model
-├── Models/           Word, WordInteraction, WordCollection
-├── Networking/       APIClient protocol, MockAPIClient, URLSessionAPIClient
-├── Repositories/     WordRepository
-├── Services/         SpeechService, PronunciationService
-└── Resources/        words.json — 100 curated words across 3 levels
+├── App/                  App entry point, RootView
+├── DesignSystem/         Theme tokens, button styles, haptics, shared controls
+├── Core/
+│   ├── Models/           Word, WordInteraction, WordCollection
+│   ├── Networking/       APIClient protocol, MockAPIClient, URLSessionAPIClient, WordRepository
+│   ├── Services/         SpeechService, VoiceSettings, PronunciationService
+│   └── Stores/           InteractionsStore
+├── Features/
+│   ├── Onboarding/       Step array + coordinator + template step views
+│   ├── Feed/             Feed pager, word cards, pronunciation check, sheets, view model
+│   ├── SavedWords/       Collections, word list, search
+│   └── Profile/          ProfileSheet
+└── Resources/Fixtures/   words.json — 100 curated words across 3 levels
 ```
 
 The app is built as if a backend existed: all data flows through an `APIClient` protocol with REST-shaped endpoints. A mock client serves the bundled word content with pagination and simulated latency, so loading and error states are real; a `URLSession` implementation is ready, and swapping it in is one change at the injection point.
@@ -61,4 +66,4 @@ Open `VocabularyMVP/VocabularyMVP.xcodeproj` and run the `VocabularyMVP` scheme.
 
 ## Tests
 
-Unit tests cover the onboarding coordinator and level scoring, the networking layer, and the feed view model. Run with **⌘U**.
+XCTest unit tests cover the onboarding profile and coordinator (including level scoring), the networking layer (endpoints, mock and `URLSession` clients, repository), the feed view model, and the SwiftData-backed interactions store. Run with **⌘U**.
