@@ -48,7 +48,8 @@ actor RecognitionSession {
            let request = try await AssetInventory.assetInstallationRequest(supporting: [transcriber]) {
             try await request.downloadAndInstall()
         }
-        try? await AssetInventory.reserve(locale: locale)
+        // Best effort: a full reservation table is not a reason to fail the attempt.
+        _ = try? await AssetInventory.reserve(locale: locale)
 
         guard let format = await SpeechAnalyzer.bestAvailableAudioFormat(compatibleWith: [transcriber])
         else { throw SessionError.noAudioFormat }
@@ -99,7 +100,7 @@ actor RecognitionSession {
         consumeTask?.cancel()
         consumeTask = nil
         settle(matched: false)
-        try? await AssetInventory.release(reservedLocale: locale)
+        _ = await AssetInventory.release(reservedLocale: locale)
     }
 
     /// True once the target is matched, false when the recognizer has finished
