@@ -31,6 +31,9 @@ The whole flow is driven by data, not views: one step array rendered by a handfu
 
 Hold the mic button on any word card and say the word. The app listens while the finger is down, checks the speech against the target word using on-device recognition, and reveals the result with haptic and visual feedback. Works fully offline.
 
+> [!IMPORTANT]
+> **Test this on a real IPhone.** The Simulator routes audio through the Mac's microphone and lacks the on-device speech models, so recognition is unreliable there — words get misheard or rejected even when pronounced correctly. On a physical device the results are accurate.
+
 ### Polish
 
 - Layered, tasteful haptics on every interaction — selections, page snaps, likes, results — tuned from a single central service.
@@ -62,7 +65,9 @@ The app is built as if a backend existed: all data flows through an `APIClient` 
 
 ## Running
 
-Open `VocabularyMVP/VocabularyMVP.xcodeproj` and run the `VocabularyMVP` scheme. No setup needed. The pronunciation coach uses the microphone and speech recognition, so it works best on a real device.
+Open `VocabularyMVP/VocabularyMVP.xcodeproj` and run the `VocabularyMVP` scheme. No setup needed.
+
+**Run on a real iPhone if you want to try the pronunciation coach.** It depends on the microphone and on-device speech recognition, neither of which the Simulator reproduces faithfully — expect poor recognition results there. Everything else in the app behaves the same on the Simulator.
 
 ## Tests
 
