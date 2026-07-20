@@ -63,7 +63,9 @@ struct CollectionPickerSheet: View {
         return HStack {
             Text(collection.name)
                 .font(.system(.body, design: .rounded).weight(.semibold))
+            
             Spacer()
+            
             Image(systemName: isCurrent ? "bookmark.fill" : "bookmark")
         }
         .foregroundStyle(Theme.textPrimary)

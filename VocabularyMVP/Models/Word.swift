@@ -13,7 +13,6 @@ struct Word: Codable, Identifiable, Hashable {
 
     var id: String { word }
 
-    // "(adj.) Lasting for a very short time" — omits whichever parts are missing.
     var definitionLine: String? {
         let parts = [partOfSpeech.map { "(\($0))" }, definition].compactMap { $0 }
         return parts.isEmpty ? nil : parts.joined(separator: " ")

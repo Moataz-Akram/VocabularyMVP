@@ -19,8 +19,10 @@ struct PronunciationCheckView: View {
         VStack(spacing: 10) {
             HStack(spacing: 12) {
                 phoneticPill
+                
                 micButton
             }
+            
             feedback
         }
         .animation(.spring(duration: 0.3), value: phase)
@@ -36,6 +38,7 @@ struct PronunciationCheckView: View {
                     UIApplication.shared.open(url)
                 }
             }
+            
             Button("Not now", role: .cancel) {}
         } message: {
             Text("To check your pronunciation, allow microphone and speech recognition access in Settings.")
@@ -47,6 +50,7 @@ struct PronunciationCheckView: View {
             if let phonetic = word.phonetic {
                 Text(phonetic)
             }
+            
             Button {
                 Haptics.selection()
                 if service.activeWordID == word.id { service.cancel() }
@@ -67,10 +71,6 @@ struct PronunciationCheckView: View {
         .background(Theme.surface, in: Capsule())
     }
 
-    // Push-to-talk: the mic records only while the finger stays down. Press
-    // tracking goes through a Button's isPressed rather than a DragGesture —
-    // the enclosing paging ScrollView cancels stolen drags without ever calling
-    // onEnded, which left the mic running until the timeout.
     private var micButton: some View {
         Button {} label: {
             micIcon
@@ -148,8 +148,6 @@ struct PronunciationCheckView: View {
     }
 }
 
-// Relays the system-tracked pressed state, which is delivered reliably even
-// when an enclosing scroll view cancels the touch.
 private struct HoldButtonStyle: ButtonStyle {
     let onPressingChanged: (Bool) -> Void
 

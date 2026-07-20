@@ -10,6 +10,7 @@ struct CollectionsListView: View {
                 VStack(spacing: 8) {
                     Text("No collections yet")
                         .font(.serifTitle)
+                    
                     Text("Create a collection to organize the words you save.")
                         .font(.system(.body, design: .rounded))
                         .foregroundStyle(Theme.textSecondary)

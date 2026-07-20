@@ -13,21 +13,25 @@ struct ProfileSheet: View {
                 VStack(alignment: .leading, spacing: 16) {
                     Text("Your Vocabulary")
                         .font(.system(.title3, design: .rounded).weight(.bold))
+                    
                     LazyVGrid(columns: [GridItem(.flexible(), spacing: 16), GridItem(.flexible())],
                               spacing: 16) {
                         tile("Favorites", symbol: "heart.fill") {
                             WordListView()
                         }
+                        
                         tile("Collections", symbol: "bookmark.fill") {
                             CollectionsListView()
                         }
                     }
+                    
                     Text("Settings")
                         .font(.system(.title3, design: .rounded).weight(.bold))
                         .padding(.top, 8)
+                    
                     voiceRow
-                    // Debug-only: lets us re-test the onboarding flow without
-                    // reinstalling; stripped from release builds.
+                    
+                    // Restart onboarding button is available on debug only.
                     #if DEBUG
                     Button("Restart onboarding", role: .destructive) {
                         showsRestartConfirm = true
@@ -45,6 +49,7 @@ struct ProfileSheet: View {
                         Text("Your saved words and collections stay; you'll go through setup again.")
                     }
                     #endif
+                    
                 }
                 .padding(20)
             }
@@ -77,15 +82,19 @@ struct ProfileSheet: View {
                 Image(systemName: "waveform")
                     .font(.system(size: 20))
                     .foregroundStyle(Theme.accent)
+                
                 Text("Pronunciation voice")
                     .font(.system(.subheadline, design: .rounded).weight(.semibold))
                     .foregroundStyle(Theme.textPrimary)
+                
                 Spacer(minLength: 8)
+                
                 if let name = SpeechService.shared.voices.first(where: { $0.id == voiceSettings.voiceID })?.name {
                     Text(name)
                         .font(.system(.subheadline, design: .rounded))
                         .foregroundStyle(Theme.textSecondary)
                 }
+                
                 Image(systemName: "chevron.right")
                     .font(.system(size: 13, weight: .semibold))
                     .foregroundStyle(Theme.textSecondary)
@@ -106,11 +115,13 @@ struct ProfileSheet: View {
                 Image(systemName: symbol)
                     .font(.system(size: 20))
                     .foregroundStyle(Theme.accent)
+                
                 Text(title)
                     .font(.system(.subheadline, design: .rounded).weight(.semibold))
                     .foregroundStyle(Theme.textPrimary)
                     .lineLimit(1)
                     .minimumScaleFactor(0.6)
+                
                 Spacer(minLength: 0)
             }
             .padding(.horizontal, 16)

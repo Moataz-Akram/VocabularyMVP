@@ -20,6 +20,7 @@ struct WordListView: View {
                 VStack(spacing: 8) {
                     Text(searchText.isEmpty ? "No favorites yet" : "No matches")
                         .font(.serifTitle)
+                    
                     if searchText.isEmpty {
                         Text("Tap the heart on any word to save it here.")
                             .font(.system(.body, design: .rounded))

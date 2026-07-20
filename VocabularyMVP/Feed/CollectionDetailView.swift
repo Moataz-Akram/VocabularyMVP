@@ -71,12 +71,14 @@ struct CollectionDetailView: View {
                 }
                 .accessibilityLabel(newestFirst ? "Sort oldest first" : "Sort newest first")
             }
+            
             ToolbarItem(placement: .topBarTrailing) {
                 Menu {
                     Button("Rename") {
                         renameText = collection.name
                         showsRename = true
                     }
+                    
                     Button("Delete collection", role: .destructive) {
                         showsDeleteConfirm = true
                     }
@@ -91,12 +93,14 @@ struct CollectionDetailView: View {
         }
         .alert("Rename collection", isPresented: $showsRename) {
             TextField("Name", text: $renameText)
+            
             Button("Save") {
                 let trimmed = renameText.trimmingCharacters(in: .whitespaces)
                 if !trimmed.isEmpty {
                     interactions.renameCollection(collection, to: trimmed)
                 }
             }
+            
             Button("Cancel", role: .cancel) {}
         }
         .confirmationDialog("Delete “\(collection.name)”?",

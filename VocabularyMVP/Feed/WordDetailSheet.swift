@@ -12,15 +12,16 @@ struct WordDetailSheet: View {
                 VStack(spacing: 8) {
                     Text(word.word)
                         .font(.system(size: 30, weight: .bold, design: .serif))
+                    
                     HStack(spacing: 6) {
                         if let phonetic = word.phonetic {
                             Text(phonetic)
                         }
+                        
                         Button {
                             SpeechService.shared.speak(word.word, voiceID: voiceID)
                         } label: {
                             Image(systemName: "speaker.wave.2")
-                                // Keeps the tap target finger-sized while the pill stays compact.
                                 .padding(8)
                                 .contentShape(Rectangle())
                         }
@@ -32,6 +33,7 @@ struct WordDetailSheet: View {
                     .padding(.horizontal, 14)
                     .padding(.vertical, 8)
                     .background(Theme.background, in: Capsule())
+                    
                     if let definitionLine = word.definitionLine {
                         Text(definitionLine)
                             .font(.system(.body, design: .rounded))
@@ -52,6 +54,7 @@ struct WordDetailSheet: View {
                         }
                     }
                 }
+                
                 if let synonyms = word.synonyms, !synonyms.isEmpty {
                     section("Synonyms") {
                         FlowLayout(spacing: 8) {
@@ -65,6 +68,7 @@ struct WordDetailSheet: View {
                         }
                     }
                 }
+                
                 if let origin = word.origin {
                     section("Origin") {
                         Text(origin)

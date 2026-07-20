@@ -17,6 +17,7 @@ struct WordCardView: View {
                 .font(.system(size: 40, weight: .bold, design: .serif))
                 .minimumScaleFactor(0.6)
                 .lineLimit(1)
+            
             PronunciationCheckView(word: word, voiceID: voiceID)
             if let definitionLine = word.definitionLine {
                 Text(definitionLine)
@@ -24,7 +25,9 @@ struct WordCardView: View {
                     .multilineTextAlignment(.center)
                     .padding(.horizontal, 16)
             }
+            
             Spacer()
+            
             actions
         }
         .foregroundStyle(Theme.textPrimary)

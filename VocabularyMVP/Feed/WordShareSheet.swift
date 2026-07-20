@@ -23,12 +23,17 @@ struct WordShareSheet: View {
                 }
                 .buttonStyle(.plain)
                 .accessibilityLabel("Close")
+                
                 Spacer()
             }
+            
             Spacer()
+            
             framedCard
                 .shadow(color: .black.opacity(0.08), radius: 4, y: 2)
+            
             Spacer()
+            
             actions
         }
         .padding(24)
@@ -47,29 +52,33 @@ struct WordShareSheet: View {
             .background(.white, in: RoundedRectangle(cornerRadius: 29))
     }
 
-    // Fixed light palette so the exported image looks the same in dark mode.
     private var card: some View {
         VStack(spacing: 18) {
             Spacer()
+            
             Text(word.word)
                 .font(.system(size: 34, weight: .bold, design: .serif))
+            
             if let phonetic = word.phonetic {
                 Text(phonetic)
                     .font(.system(size: 14, design: .rounded))
                     .opacity(0.7)
             }
+            
             if let definitionLine = word.definitionLine {
                 Text(definitionLine)
                     .font(.system(size: 18, design: .rounded))
             }
+            
             if let example = word.examples?.first {
                 Text(example)
                     .font(.system(size: 15, design: .rounded))
                     .opacity(0.8)
             }
+            
             watermark
                 .padding(.top, 12)
-            Spacer()
+            
             Spacer()
         }
         .multilineTextAlignment(.center)
@@ -86,6 +95,7 @@ struct WordShareSheet: View {
                 .font(.system(size: 11, weight: .semibold, design: .serif))
                 .frame(width: 18, height: 18)
                 .background(.white, in: RoundedRectangle(cornerRadius: 5))
+            
             Text("vocabularymvp.app")
                 .font(.system(.caption, design: .rounded))
         }
@@ -104,10 +114,12 @@ struct WordShareSheet: View {
                 savedToPhotos = true
                 Haptics.success()
             }
+            
             action("doc.on.doc", "Copy text") {
                 UIPasteboard.general.string = shareText
                 Haptics.selection()
             }
+            
             action("square.and.arrow.up", "Share") {
                 showsActivitySheet = true
             }
@@ -139,6 +151,7 @@ struct WordShareSheet: View {
                 .font(.system(size: 20))
                 .frame(width: 56, height: 56)
                 .background(Theme.surface, in: Circle())
+            
             Text(title)
                 .font(.system(.caption, design: .rounded))
         }
