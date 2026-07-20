@@ -203,16 +203,10 @@
 		078173FE3008468A000ACABA /* VocabularyMVP */ = {
 			isa = PBXGroup;
 			children = (
-				078173FF3008468A000ACABA /* VocabularyMVPApp.swift */,
-				AB10000000000000000000001 /* RootView.swift */,
+				AB3000000000000000000000C /* App */,
+				AB3000000000000000000000D /* Core */,
 				AB30000000000000000000001 /* DesignSystem */,
-				AB30000000000000000000002 /* Onboarding */,
-				AB30000000000000000000008 /* Feed */,
-				AB30000000000000000000005 /* Models */,
-				AB30000000000000000000006 /* Networking */,
-				AB30000000000000000000007 /* Repositories */,
-				AB3000000000000000000000B /* Stores */,
-				AB30000000000000000000004 /* Services */,
+				AB3000000000000000000000E /* Features */,
 				AB30000000000000000000009 /* Resources */,
 				078174033008468B000ACABA /* Assets.xcassets */,
 				078174053008468B000ACABA /* Preview Content */,
@@ -323,16 +317,9 @@
 				AB10000000000000000000016 /* APIClient.swift */,
 				AB10000000000000000000017 /* MockAPIClient.swift */,
 				AB10000000000000000000018 /* URLSessionAPIClient.swift */,
-			);
-			path = Networking;
-			sourceTree = "<group>";
-		};
-		AB30000000000000000000007 /* Repositories */ = {
-			isa = PBXGroup;
-			children = (
 				AB10000000000000000000019 /* WordRepository.swift */,
 			);
-			path = Repositories;
+			path = Networking;
 			sourceTree = "<group>";
 		};
 		AB30000000000000000000008 /* Feed */ = {
@@ -341,17 +328,9 @@
 				AB1000000000000000000001B /* FeedView.swift */,
 				AB1000000000000000000001C /* FeedViewModel.swift */,
 				AB1000000000000000000001D /* WordCardView.swift */,
-				AB1000000000000000000001E /* WordDetailSheet.swift */,
-				AB1000000000000000000001F /* ProfileSheet.swift */,
-				AB10000000000000000000021 /* WordShareSheet.swift */,
-				AB10000000000000000000022 /* WordListView.swift */,
-				AB10000000000000000000024 /* WordRowCard.swift */,
-				AB10000000000000000000026 /* CollectionsListView.swift */,
-				AB10000000000000000000027 /* NewCollectionView.swift */,
-				AB10000000000000000000028 /* CollectionDetailView.swift */,
-				AB10000000000000000000029 /* CollectionPickerSheet.swift */,
 				AB1000000000000000000002C /* PronunciationCheckView.swift */,
-				AB1000000000000000000036 /* WordSearchList.swift */,
+				AB1000000000000000000001E /* WordDetailSheet.swift */,
+				AB10000000000000000000021 /* WordShareSheet.swift */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -370,6 +349,59 @@
 				AB10000000000000000000020 /* words.json */,
 			);
 			path = Fixtures;
+			sourceTree = "<group>";
+		};
+		AB3000000000000000000000C /* App */ = {
+			isa = PBXGroup;
+			children = (
+				078173FF3008468A000ACABA /* VocabularyMVPApp.swift */,
+				AB10000000000000000000001 /* RootView.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		AB3000000000000000000000D /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				AB30000000000000000000005 /* Models */,
+				AB30000000000000000000006 /* Networking */,
+				AB30000000000000000000004 /* Services */,
+				AB3000000000000000000000B /* Stores */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		AB3000000000000000000000E /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				AB30000000000000000000002 /* Onboarding */,
+				AB30000000000000000000008 /* Feed */,
+				AB3000000000000000000000F /* SavedWords */,
+				AB30000000000000000000010 /* Profile */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		AB3000000000000000000000F /* SavedWords */ = {
+			isa = PBXGroup;
+			children = (
+				AB10000000000000000000022 /* WordListView.swift */,
+				AB1000000000000000000036 /* WordSearchList.swift */,
+				AB10000000000000000000024 /* WordRowCard.swift */,
+				AB10000000000000000000026 /* CollectionsListView.swift */,
+				AB10000000000000000000028 /* CollectionDetailView.swift */,
+				AB10000000000000000000029 /* CollectionPickerSheet.swift */,
+				AB10000000000000000000027 /* NewCollectionView.swift */,
+			);
+			path = SavedWords;
+			sourceTree = "<group>";
+		};
+		AB30000000000000000000010 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				AB1000000000000000000001F /* ProfileSheet.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
