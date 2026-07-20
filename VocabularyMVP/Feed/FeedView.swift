@@ -3,7 +3,8 @@ import SwiftData
 
 @MainActor
 struct FeedView: View {
-    @Environment(\.modelContext) private var modelContext
+    @Environment(InteractionsStore.self) private var interactions
+    @Environment(VoiceSettings.self) private var voiceSettings
     @State private var viewModel = FeedViewModel()
     @State private var scrolledWordID: String?
     @State private var detailWord: Word?
@@ -20,25 +21,25 @@ struct FeedView: View {
             .overlay(alignment: .top) { goalPill }
             .overlay(alignment: .top) { savedToast }
             .sheet(item: $detailWord) { word in
-                WordDetailSheet(word: word, voiceID: viewModel.voiceID)
+                WordDetailSheet(word: word, voiceID: voiceSettings.voiceID)
             }
             .sheet(item: $collectionPickerWord) { word in
-                CollectionPickerSheet(word: word, viewModel: viewModel)
+                CollectionPickerSheet(word: word)
             }
             .fullScreenCover(item: $shareWord) { word in
                 WordShareSheet(word: word)
             }
             .fullScreenCover(isPresented: $showsSettings) {
-                ProfileSheet(viewModel: viewModel)
+                ProfileSheet()
                     .zoomTransition(sourceID: "profile", in: profileZoom)
             }
-            .task { await viewModel.start(context: modelContext) }
+            .task { await viewModel.start(interactions: interactions) }
             .onChange(of: scrolledWordID) { _, newID in
                 Haptics.stepAdvance()
                 viewModel.markSeen(wordID: newID)
                 viewModel.loadMoreIfNeeded(nearWordID: newID)
             }
-            .animation(.spring(duration: 0.35), value: viewModel.savedToast?.word.id)
+            .animation(.spring(duration: 0.35), value: interactions.savedToast?.word.id)
             .onReceive(NotificationCenter.default.publisher(
                 for: UIApplication.userDidTakeScreenshotNotification)) { _ in
                 // Mirror the original app: a screenshot opens the share card.
@@ -76,13 +77,13 @@ struct FeedView: View {
             LazyVStack(spacing: 0) {
                 ForEach(viewModel.words) { word in
                     WordCardView(word: word,
-                                 isLiked: viewModel.isLiked(word),
-                                 isBookmarked: viewModel.isBookmarked(word),
-                                 voiceID: viewModel.voiceID,
+                                 isLiked: interactions.isLiked(word),
+                                 isBookmarked: interactions.isBookmarked(word),
+                                 voiceID: voiceSettings.voiceID,
                                  onInfo: { detailWord = word },
                                  onShare: { shareWord = word },
-                                 onLike: { viewModel.toggleLike(word) },
-                                 onBookmark: { viewModel.toggleBookmark(word) })
+                                 onLike: { interactions.toggleLike(word) },
+                                 onBookmark: { interactions.toggleBookmark(word) })
                         .containerRelativeFrame(.vertical)
                 }
                 // A page load failed mid-feed; the feed otherwise just ends
@@ -115,13 +116,13 @@ struct FeedView: View {
 
     @ViewBuilder
     private var goalPill: some View {
-        if viewModel.bookmarkedTodayCount > 0, viewModel.bookmarkedTodayCount < viewModel.dailyGoal {
+        if interactions.bookmarkedTodayCount > 0, interactions.bookmarkedTodayCount < interactions.dailyGoal {
             HStack(spacing: 6) {
                 Image(systemName: "bookmark")
                     .font(.system(size: 11))
-                Text("\(viewModel.bookmarkedTodayCount)/\(viewModel.dailyGoal)")
+                Text("\(interactions.bookmarkedTodayCount)/\(interactions.dailyGoal)")
                     .font(.system(.caption, design: .rounded).weight(.semibold))
-                ProgressView(value: Double(viewModel.bookmarkedTodayCount) / Double(viewModel.dailyGoal))
+                ProgressView(value: Double(interactions.bookmarkedTodayCount) / Double(interactions.dailyGoal))
                     .tint(Theme.textPrimary)
                     .scaleEffect(y: 0.7)
                     .frame(width: 64)
@@ -131,21 +132,21 @@ struct FeedView: View {
             .padding(.vertical, 7)
             .background(Theme.surface, in: Capsule())
             .shadow(color: .black.opacity(0.18), radius: 4, y: 3)
-            .animation(.spring(duration: 0.4), value: viewModel.bookmarkedTodayCount)
-            .accessibilityLabel("\(viewModel.bookmarkedTodayCount) of \(viewModel.dailyGoal) words saved today")
+            .animation(.spring(duration: 0.4), value: interactions.bookmarkedTodayCount)
+            .accessibilityLabel("\(interactions.bookmarkedTodayCount) of \(interactions.dailyGoal) words saved today")
         }
     }
 
     @ViewBuilder
     private var savedToast: some View {
-        if let toast = viewModel.savedToast {
+        if let toast = interactions.savedToast {
             HStack {
                 Text("Saved to **\(toast.collection.name)**")
                     .font(.system(.subheadline, design: .rounded))
                 Spacer()
                 Button("Change") {
                     let word = toast.word
-                    viewModel.dismissToast()
+                    interactions.dismissToast()
                     collectionPickerWord = word
                 }
                 .font(.system(.subheadline, design: .rounded).weight(.semibold))
@@ -218,6 +219,10 @@ private extension View {
 }
 
 #Preview {
-    FeedView()
-        .modelContainer(for: WordInteraction.self, inMemory: true)
+    let container = try! ModelContainer(
+        for: WordInteraction.self, WordCollection.self,
+        configurations: ModelConfiguration(isStoredInMemoryOnly: true))
+    return FeedView()
+        .environment(InteractionsStore(context: container.mainContext))
+        .environment(VoiceSettings())
 }

@@ -2,9 +2,9 @@ import SwiftUI
 
 @MainActor
 struct NewCollectionView: View {
-    let viewModel: FeedViewModel
     var onCreated: ((WordCollection) -> Void)?
 
+    @Environment(InteractionsStore.self) private var interactions
     @Environment(\.dismiss) private var dismiss
     @State private var name = ""
     @FocusState private var isFocused: Bool
@@ -26,7 +26,7 @@ struct NewCollectionView: View {
                 .submitLabel(.done)
             Spacer()
             Button("Save") {
-                let collection = viewModel.addCollection(named: trimmedName)
+                let collection = interactions.addCollection(named: trimmedName)
                 Haptics.success()
                 onCreated?(collection)
                 dismiss()

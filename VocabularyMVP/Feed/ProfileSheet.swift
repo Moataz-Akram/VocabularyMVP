@@ -2,8 +2,7 @@ import SwiftUI
 
 @MainActor
 struct ProfileSheet: View {
-    let viewModel: FeedViewModel
-
+    @Environment(VoiceSettings.self) private var voiceSettings
     @Environment(\.dismiss) private var dismiss
     @AppStorage(OnboardingProfile.hasCompletedOnboardingKey) private var hasCompletedOnboarding = true
     @State private var showsRestartConfirm = false
@@ -17,10 +16,10 @@ struct ProfileSheet: View {
                     LazyVGrid(columns: [GridItem(.flexible(), spacing: 16), GridItem(.flexible())],
                               spacing: 16) {
                         tile("Favorites", symbol: "heart.fill") {
-                            WordListView(viewModel: viewModel)
+                            WordListView()
                         }
                         tile("Collections", symbol: "bookmark.fill") {
-                            CollectionsListView(viewModel: viewModel)
+                            CollectionsListView()
                         }
                     }
                     Text("Settings")
@@ -72,7 +71,7 @@ struct ProfileSheet: View {
 
     private var voiceRow: some View {
         NavigationLink {
-            VoiceSettingsView(viewModel: viewModel)
+            VoiceSettingsView()
         } label: {
             HStack(spacing: 10) {
                 Image(systemName: "waveform")
@@ -82,7 +81,7 @@ struct ProfileSheet: View {
                     .font(.system(.subheadline, design: .rounded).weight(.semibold))
                     .foregroundStyle(Theme.textPrimary)
                 Spacer(minLength: 8)
-                if let name = SpeechService.shared.voices.first(where: { $0.id == viewModel.voiceID })?.name {
+                if let name = SpeechService.shared.voices.first(where: { $0.id == voiceSettings.voiceID })?.name {
                     Text(name)
                         .font(.system(.subheadline, design: .rounded))
                         .foregroundStyle(Theme.textSecondary)
@@ -125,13 +124,13 @@ struct ProfileSheet: View {
 // Selecting a row applies and persists the voice immediately — no save button.
 @MainActor
 private struct VoiceSettingsView: View {
-    let viewModel: FeedViewModel
+    @Environment(VoiceSettings.self) private var voiceSettings
 
     var body: some View {
         ScrollView {
             VoiceList(voiceID: Binding(
-                get: { viewModel.voiceID },
-                set: { viewModel.setVoice($0) }))
+                get: { voiceSettings.voiceID },
+                set: { voiceSettings.setVoice($0) }))
                 .padding(20)
         }
         .background(Theme.background.ignoresSafeArea())

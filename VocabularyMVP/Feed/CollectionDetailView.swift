@@ -3,8 +3,8 @@ import SwiftUI
 @MainActor
 struct CollectionDetailView: View {
     let collection: WordCollection
-    let viewModel: FeedViewModel
 
+    @Environment(InteractionsStore.self) private var interactions
     @Environment(\.dismiss) private var dismiss
     @State private var searchText = ""
     @State private var newestFirst = true
@@ -14,13 +14,13 @@ struct CollectionDetailView: View {
     @State private var renameText = ""
 
     private var words: [Word] {
-        var result = viewModel.words(in: collection)
+        var result = interactions.words(in: collection)
         if !searchText.isEmpty {
             result = result.filter { $0.word.localizedCaseInsensitiveContains(searchText) }
         }
         return result.sorted {
-            let first = viewModel.bookmarkedDate($0) ?? .distantPast
-            let second = viewModel.bookmarkedDate($1) ?? .distantPast
+            let first = interactions.bookmarkedDate($0) ?? .distantPast
+            let second = interactions.bookmarkedDate($1) ?? .distantPast
             return newestFirst ? first > second : first < second
         }
     }
@@ -44,8 +44,7 @@ struct CollectionDetailView: View {
                     LazyVStack(spacing: 16) {
                         ForEach(words) { word in
                             WordRowCard(word: word,
-                                        date: viewModel.bookmarkedDate(word),
-                                        viewModel: viewModel,
+                                        date: interactions.bookmarkedDate(word),
                                         onShare: { shareWord = word })
                         }
                     }
@@ -95,7 +94,7 @@ struct CollectionDetailView: View {
             Button("Save") {
                 let trimmed = renameText.trimmingCharacters(in: .whitespaces)
                 if !trimmed.isEmpty {
-                    viewModel.renameCollection(collection, to: trimmed)
+                    interactions.renameCollection(collection, to: trimmed)
                 }
             }
             Button("Cancel", role: .cancel) {}
@@ -103,7 +102,7 @@ struct CollectionDetailView: View {
         .confirmationDialog("Delete “\(collection.name)”?",
                             isPresented: $showsDeleteConfirm, titleVisibility: .visible) {
             Button("Delete", role: .destructive) {
-                viewModel.deleteCollection(collection)
+                interactions.deleteCollection(collection)
                 dismiss()
             }
         } message: {

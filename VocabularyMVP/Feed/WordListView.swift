@@ -2,14 +2,14 @@ import SwiftUI
 
 @MainActor
 struct WordListView: View {
-    let viewModel: FeedViewModel
+    @Environment(InteractionsStore.self) private var interactions
 
     @State private var searchText = ""
     @State private var shareWord: Word?
 
     private var words: [Word] {
-        guard !searchText.isEmpty else { return viewModel.favoriteWords }
-        return viewModel.favoriteWords.filter {
+        guard !searchText.isEmpty else { return interactions.favoriteWords }
+        return interactions.favoriteWords.filter {
             $0.word.localizedCaseInsensitiveContains(searchText)
         }
     }
@@ -33,8 +33,7 @@ struct WordListView: View {
                     LazyVStack(spacing: 16) {
                         ForEach(words) { word in
                             WordRowCard(word: word,
-                                        date: viewModel.likedDate(word),
-                                        viewModel: viewModel,
+                                        date: interactions.likedDate(word),
                                         onShare: { shareWord = word })
                         }
                     }

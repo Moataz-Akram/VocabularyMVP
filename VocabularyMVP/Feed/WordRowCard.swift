@@ -5,8 +5,10 @@ import SwiftUI
 struct WordRowCard: View {
     let word: Word
     let date: Date?
-    let viewModel: FeedViewModel
     let onShare: () -> Void
+
+    @Environment(InteractionsStore.self) private var interactions
+    @Environment(VoiceSettings.self) private var voiceSettings
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -16,7 +18,7 @@ struct WordRowCard: View {
                     .lineLimit(1)
                     .minimumScaleFactor(0.6)
                 Button {
-                    SpeechService.shared.speak(word.word, voiceID: viewModel.voiceID)
+                    SpeechService.shared.speak(word.word, voiceID: voiceSettings.voiceID)
                 } label: {
                     HStack(spacing: 6) {
                         if let phonetic = word.phonetic {
@@ -50,17 +52,17 @@ struct WordRowCard: View {
                 Spacer()
                 HStack(spacing: 24) {
                     Button {
-                        viewModel.toggleLike(word)
+                        interactions.toggleLike(word)
                     } label: {
-                        Image(systemName: viewModel.isLiked(word) ? "heart.fill" : "heart")
+                        Image(systemName: interactions.isLiked(word) ? "heart.fill" : "heart")
                     }
-                    .accessibilityLabel(viewModel.isLiked(word) ? "Unlike" : "Like")
+                    .accessibilityLabel(interactions.isLiked(word) ? "Unlike" : "Like")
                     Button {
-                        viewModel.toggleBookmark(word)
+                        interactions.toggleBookmark(word)
                     } label: {
-                        Image(systemName: viewModel.isBookmarked(word) ? "bookmark.fill" : "bookmark")
+                        Image(systemName: interactions.isBookmarked(word) ? "bookmark.fill" : "bookmark")
                     }
-                    .accessibilityLabel(viewModel.isBookmarked(word) ? "Remove from collection" : "Save to collection")
+                    .accessibilityLabel(interactions.isBookmarked(word) ? "Remove from collection" : "Save to collection")
                     Button(action: onShare) {
                         Image(systemName: "square.and.arrow.up")
                     }

@@ -2,11 +2,11 @@ import SwiftUI
 
 @MainActor
 struct CollectionsListView: View {
-    let viewModel: FeedViewModel
+    @Environment(InteractionsStore.self) private var interactions
 
     var body: some View {
         Group {
-            if viewModel.collections.isEmpty {
+            if interactions.collections.isEmpty {
                 VStack(spacing: 8) {
                     Text("No collections yet")
                         .font(.serifTitle)
@@ -19,14 +19,14 @@ struct CollectionsListView: View {
             } else {
                 ScrollView {
                     VStack(spacing: 0) {
-                        ForEach(viewModel.collections) { collection in
+                        ForEach(interactions.collections) { collection in
                             NavigationLink {
-                                CollectionDetailView(collection: collection, viewModel: viewModel)
+                                CollectionDetailView(collection: collection)
                             } label: {
                                 row(collection)
                             }
                             .buttonStyle(.plain)
-                            if collection.id != viewModel.collections.last?.id {
+                            if collection.id != interactions.collections.last?.id {
                                 Divider().padding(.leading, 20)
                             }
                         }
@@ -43,7 +43,7 @@ struct CollectionsListView: View {
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 NavigationLink {
-                    NewCollectionView(viewModel: viewModel)
+                    NewCollectionView()
                 } label: {
                     Text("Add new")
                         .font(.system(.subheadline, design: .rounded).weight(.semibold))
@@ -62,7 +62,7 @@ struct CollectionsListView: View {
             VStack(alignment: .leading, spacing: 2) {
                 Text(collection.name)
                     .font(.system(.body, design: .rounded).weight(.semibold))
-                Text("^[\(viewModel.words(in: collection).count) word](inflect: true)")
+                Text("^[\(interactions.words(in: collection).count) word](inflect: true)")
                     .font(.system(.subheadline, design: .rounded))
                     .foregroundStyle(Theme.textSecondary)
             }

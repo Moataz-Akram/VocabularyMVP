@@ -4,23 +4,23 @@ import SwiftUI
 @MainActor
 struct CollectionPickerSheet: View {
     let word: Word
-    let viewModel: FeedViewModel
 
+    @Environment(InteractionsStore.self) private var interactions
     @Environment(\.dismiss) private var dismiss
 
     var body: some View {
         NavigationStack {
             ScrollView {
                 VStack(spacing: 0) {
-                    ForEach(viewModel.collections) { collection in
+                    ForEach(interactions.collections) { collection in
                         Button {
-                            viewModel.assign(word, to: collection)
+                            interactions.assign(word, to: collection)
                             dismiss()
                         } label: {
                             row(collection)
                         }
                         .buttonStyle(.plain)
-                        if collection.id != viewModel.collections.last?.id {
+                        if collection.id != interactions.collections.last?.id {
                             Divider().padding(.leading, 20)
                         }
                     }
@@ -39,8 +39,8 @@ struct CollectionPickerSheet: View {
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     NavigationLink {
-                        NewCollectionView(viewModel: viewModel) { newCollection in
-                            viewModel.assign(word, to: newCollection)
+                        NewCollectionView { newCollection in
+                            interactions.assign(word, to: newCollection)
                             dismiss()
                         }
                     } label: {
@@ -59,7 +59,7 @@ struct CollectionPickerSheet: View {
     }
 
     private func row(_ collection: WordCollection) -> some View {
-        let isCurrent = viewModel.collection(for: word)?.id == collection.id
+        let isCurrent = interactions.collection(for: word)?.id == collection.id
         return HStack {
             Text(collection.name)
                 .font(.system(.body, design: .rounded).weight(.semibold))

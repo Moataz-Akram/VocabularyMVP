@@ -55,10 +55,13 @@
 		AB2000000000000000000002B /* PronunciationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1000000000000000000002B /* PronunciationService.swift */; };
 		AB2000000000000000000002C /* PronunciationCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1000000000000000000002C /* PronunciationCheckView.swift */; };
 		AB2000000000000000000002D /* VoiceList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1000000000000000000002D /* VoiceList.swift */; };
+		AB2000000000000000000002E /* InteractionsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1000000000000000000002E /* InteractionsStore.swift */; };
+		AB2000000000000000000002F /* VoiceSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1000000000000000000002F /* VoiceSettings.swift */; };
 		AB60000000000000000000001 /* TestSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB50000000000000000000001 /* TestSupport.swift */; };
 		AB60000000000000000000003 /* OnboardingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB50000000000000000000003 /* OnboardingTests.swift */; };
 		AB60000000000000000000004 /* NetworkingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB50000000000000000000004 /* NetworkingTests.swift */; };
 		AB60000000000000000000005 /* FeedViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB50000000000000000000005 /* FeedViewModelTests.swift */; };
+		AB60000000000000000000006 /* InteractionsStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB50000000000000000000006 /* InteractionsStoreTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -130,10 +133,13 @@
 		AB1000000000000000000002B /* PronunciationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PronunciationService.swift; sourceTree = "<group>"; };
 		AB1000000000000000000002C /* PronunciationCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PronunciationCheckView.swift; sourceTree = "<group>"; };
 		AB1000000000000000000002D /* VoiceList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceList.swift; sourceTree = "<group>"; };
+		AB1000000000000000000002E /* InteractionsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractionsStore.swift; sourceTree = "<group>"; };
+		AB1000000000000000000002F /* VoiceSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceSettings.swift; sourceTree = "<group>"; };
 		AB50000000000000000000001 /* TestSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSupport.swift; sourceTree = "<group>"; };
 		AB50000000000000000000003 /* OnboardingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTests.swift; sourceTree = "<group>"; };
 		AB50000000000000000000004 /* NetworkingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingTests.swift; sourceTree = "<group>"; };
 		AB50000000000000000000005 /* FeedViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModelTests.swift; sourceTree = "<group>"; };
+		AB50000000000000000000006 /* InteractionsStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractionsStoreTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +197,7 @@
 				AB30000000000000000000005 /* Models */,
 				AB30000000000000000000006 /* Networking */,
 				AB30000000000000000000007 /* Repositories */,
+				AB3000000000000000000000B /* Stores */,
 				AB30000000000000000000004 /* Services */,
 				AB30000000000000000000009 /* Resources */,
 				078174033008468B000ACABA /* Assets.xcassets */,
@@ -215,6 +222,7 @@
 				AB50000000000000000000003 /* OnboardingTests.swift */,
 				AB50000000000000000000004 /* NetworkingTests.swift */,
 				AB50000000000000000000005 /* FeedViewModelTests.swift */,
+				AB50000000000000000000006 /* InteractionsStoreTests.swift */,
 			);
 			path = VocabularyMVPTests;
 			sourceTree = "<group>";
@@ -266,8 +274,17 @@
 			children = (
 				AB10000000000000000000013 /* SpeechService.swift */,
 				AB1000000000000000000002B /* PronunciationService.swift */,
+				AB1000000000000000000002F /* VoiceSettings.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		AB3000000000000000000000B /* Stores */ = {
+			isa = PBXGroup;
+			children = (
+				AB1000000000000000000002E /* InteractionsStore.swift */,
+			);
+			path = Stores;
 			sourceTree = "<group>";
 		};
 		AB30000000000000000000005 /* Models */ = {
@@ -509,6 +526,8 @@
 				AB2000000000000000000002B /* PronunciationService.swift in Sources */,
 				AB2000000000000000000002C /* PronunciationCheckView.swift in Sources */,
 				AB2000000000000000000002D /* VoiceList.swift in Sources */,
+				AB2000000000000000000002E /* InteractionsStore.swift in Sources */,
+				AB2000000000000000000002F /* VoiceSettings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -521,6 +540,7 @@
 				AB60000000000000000000003 /* OnboardingTests.swift in Sources */,
 				AB60000000000000000000004 /* NetworkingTests.swift in Sources */,
 				AB60000000000000000000005 /* FeedViewModelTests.swift in Sources */,
+				AB60000000000000000000006 /* InteractionsStoreTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
