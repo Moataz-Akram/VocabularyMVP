@@ -65,9 +65,9 @@ final class SpeechService: NSObject, AVSpeechSynthesizerDelegate {
     // gender. Legacy novelty voices all report en-US and are excluded, and the
     // robotic Eloquence screen-reader voices rank below everything else despite
     // reporting the same quality as normal voices. Compact voices report gender
-    // as .unspecified, so gender falls back to a known-name table. When no
-    // exact match exists, another English voice of the right gender is borrowed
-    // rather than listing the same voice twice.
+    // as .unspecified, so gender falls back to a known-name table. A persona
+    // with no voice matching both its accent and gender is dropped from the
+    // list — a mismatched substitute would misrepresent what the user hears.
     private static func makeVoices() -> [Voice] {
         let personas: [(name: String, accent: String, language: String, gender: AVSpeechSynthesisVoiceGender)] = [
             ("Brian", "American", "en-US", .male),
@@ -90,11 +90,8 @@ final class SpeechService: NSObject, AVSpeechSynthesizerDelegate {
         }
 
         return personas.compactMap { persona in
-            let voice = claim { $0.language == persona.language && gender(of: $0) == persona.gender }
-                ?? claim { gender(of: $0) == persona.gender }
-                ?? claim { $0.language == persona.language }
-                ?? claim { _ in true }
-            guard let voice else { return nil }
+            guard let voice = claim({ $0.language == persona.language && gender(of: $0) == persona.gender })
+            else { return nil }
             return Voice(name: persona.name, accent: persona.accent, systemVoice: voice)
         }
     }
