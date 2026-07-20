@@ -15,17 +15,18 @@ struct SingleSelectStepView: View {
                 .foregroundStyle(Theme.textPrimary)
                 .multilineTextAlignment(.center)
                 .padding(.bottom, 24)
+            
             ForEach(options, id: \.self) { option in
                 SelectableRow(title: option, isSelected: selection == option) {
                     select(option)
                 }
             }
+            
             Spacer()
         }
         .padding(.horizontal, 24)
     }
 
-    // Selecting auto-advances after a beat, so the user sees the highlight land.
     private func select(_ option: String) {
         guard !isAdvancing else { return }
         isAdvancing = true

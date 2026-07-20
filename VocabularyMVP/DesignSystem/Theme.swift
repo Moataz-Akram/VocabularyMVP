@@ -18,9 +18,7 @@ enum Theme {
 }
 
 extension View {
-    // Hard offset shadow used across buttons and rows, as in the reference
-    // design. While `pressed`, the view sinks down onto its shadow (the shadow
-    // stays anchored) and springs back up on release.
+    // offset shadow effect with spring effect on press
     func hardShadow<S: Shape>(in shape: S, offset: CGFloat = 4, pressed: Bool = false) -> some View {
         background(shape.fill(.black).offset(y: pressed ? 0 : offset))
             // Flattens view + shadow into one layer, so fades and dimming
@@ -31,8 +29,7 @@ extension View {
     }
 }
 
-// Sinking hard shadow for any Button or NavigationLink whose label already
-// draws its own background in `shape`.
+// offset shadow effect with spring effect on press
 struct HardShadowButtonStyle<S: Shape>: ButtonStyle {
     var shape: S
     var offset: CGFloat = 4

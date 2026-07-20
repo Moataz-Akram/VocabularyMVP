@@ -6,18 +6,23 @@ struct WelcomeStepView: View {
     var body: some View {
         VStack(spacing: 16) {
             Spacer()
+            
             Image(systemName: "books.vertical.fill")
                 .font(.system(size: 90))
                 .foregroundStyle(Theme.accent)
                 .padding(.bottom, 24)
+            
             Text("Expand your Vocabulary\nin 1 minute a day")
                 .font(.serifLargeTitle)
                 .multilineTextAlignment(.center)
+            
             Text("Learn 10,000+ new words with a new daily habit that takes just 1 minute")
                 .font(.system(.body, design: .rounded))
                 .foregroundStyle(Theme.textSecondary)
                 .multilineTextAlignment(.center)
+            
             Spacer()
+            
             stats
                 .padding(.bottom, 32)
             Button("Get started", action: onContinue)
@@ -40,6 +45,7 @@ struct WelcomeStepView: View {
         VStack(spacing: 2) {
             Text(value)
                 .font(.system(.headline, design: .rounded).weight(.bold))
+            
             Text(caption)
                 .font(.system(.caption, design: .rounded))
                 .foregroundStyle(Theme.textSecondary)

@@ -1,6 +1,5 @@
 import SwiftUI
 
-// Circular back button matching the app's chrome, replacing the system one.
 struct BackButton: View {
     @Environment(\.dismiss) private var dismiss
 

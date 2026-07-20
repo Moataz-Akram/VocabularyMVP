@@ -10,8 +10,11 @@ struct WordCardPreviewStepView: View {
                 .font(.serifTitle)
                 .foregroundStyle(Theme.textPrimary)
                 .multilineTextAlignment(.center)
+            
             sampleCard
+            
             Spacer()
+            
             Button("Continue", action: onContinue)
                 .buttonStyle(PrimaryButtonStyle())
         }
@@ -24,19 +27,22 @@ struct WordCardPreviewStepView: View {
             VStack(spacing: 8) {
                 Text("ephemeral")
                     .font(.system(size: 34, weight: .bold, design: .serif))
-                Button {
-                    SpeechService.shared.speak("ephemeral", voiceID: voiceID)
-                } label: {
-                    HStack(spacing: 6) {
+                
+                HStack(spacing: 6) {
+                    Text("/ɪˈfɛməɹəl/")
+                    
+                    Button {
+                        SpeechService.shared.speak("ephemeral", voiceID: voiceID)
+                    } label: {
                         Image(systemName: "speaker.wave.2")
-                        Text("/ɪˈfɛməɹəl/")
                     }
-                    .font(.system(.subheadline, design: .rounded))
-                    .padding(.horizontal, 14)
-                    .padding(.vertical, 8)
-                    .background(Theme.background, in: Capsule())
+                    .buttonStyle(.plain)
                 }
-                .buttonStyle(.plain)
+                .font(.system(.subheadline, design: .rounded))
+                .padding(.horizontal, 14)
+                .padding(.vertical, 8)
+                .background(Theme.background, in: Capsule())
+                
                 Text("(adj.) Lasting for a very short time")
                     .font(.system(.body, design: .rounded))
             }
@@ -45,6 +51,7 @@ struct WordCardPreviewStepView: View {
             section("Example") {
                 Text("The beauty of cherry blossoms is ephemeral, gone within a week.")
             }
+            
             section("Synonyms") {
                 HStack(spacing: 8) {
                     ForEach(["fleeting", "transient", "short-lived"], id: \.self) { synonym in
@@ -56,6 +63,7 @@ struct WordCardPreviewStepView: View {
                     }
                 }
             }
+            
             section("Origin") {
                 Text("From Greek ephémeros, meaning “lasting only a day.”")
             }

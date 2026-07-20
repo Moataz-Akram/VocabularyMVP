@@ -12,26 +12,6 @@ final class OnboardingProfileTests: XCTestCase {
         TestDefaults.restore(defaultsSnapshot)
     }
 
-    // Score = beginner + 2×intermediate + 3×advanced; <8 beginner,
-    // 8..<20 intermediate, 20+ advanced.
-    func testAssessedLevelThresholds() {
-        func profile(beginner: Int = 0, intermediate: Int = 0, advanced: Int = 0) -> OnboardingProfile {
-            var profile = OnboardingProfile()
-            profile.knownWords = [
-                "beginner": (0..<beginner).map { "b\($0)" },
-                "intermediate": (0..<intermediate).map { "i\($0)" },
-                "advanced": (0..<advanced).map { "a\($0)" },
-            ]
-            return profile
-        }
-
-        XCTAssertEqual(OnboardingProfile().assessedLevel, .beginner)
-        XCTAssertEqual(profile(beginner: 7).assessedLevel, .beginner)
-        XCTAssertEqual(profile(beginner: 8).assessedLevel, .intermediate)
-        XCTAssertEqual(profile(beginner: 1, intermediate: 3, advanced: 4).assessedLevel, .intermediate)
-        XCTAssertEqual(profile(beginner: 2, advanced: 6).assessedLevel, .advanced)
-    }
-
     func testLoadReturnsNilWhenNothingSaved() {
         XCTAssertNil(OnboardingProfile.load())
     }

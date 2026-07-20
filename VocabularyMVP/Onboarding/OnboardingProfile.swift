@@ -20,15 +20,6 @@ struct OnboardingProfile: Codable {
     var voiceID: String?
     var knownWords: [String: [String]] = [:]
 
-    var assessedLevel: WordLevel {
-        let score = knownCount(.beginner) + knownCount(.intermediate) * 2 + knownCount(.advanced) * 3
-        switch score {
-        case ..<8: return .beginner
-        case ..<20: return .intermediate
-        default: return .advanced
-        }
-    }
-
     private func knownCount(_ level: WordLevel) -> Int {
         knownWords[level.rawValue]?.count ?? 0
     }

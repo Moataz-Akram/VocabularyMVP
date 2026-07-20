@@ -6,6 +6,7 @@ struct OnboardingView: View {
     var body: some View {
         VStack(spacing: 0) {
             topBar
+            
             stepContent
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .id(coordinator.currentStep.id)

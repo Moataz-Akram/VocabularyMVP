@@ -241,12 +241,12 @@
 				AB10000000000000000000008 /* OnboardingFlow.swift */,
 				AB10000000000000000000009 /* OnboardingCoordinator.swift */,
 				AB1000000000000000000000A /* OnboardingView.swift */,
-				AB30000000000000000000003 /* Templates */,
+				AB30000000000000000000003 /* StepsViews */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
 		};
-		AB30000000000000000000003 /* Templates */ = {
+		AB30000000000000000000003 /* StepsViews */ = {
 			isa = PBXGroup;
 			children = (
 				AB1000000000000000000000B /* WelcomeStepView.swift */,
@@ -258,7 +258,7 @@
 				AB10000000000000000000011 /* StreakPreviewStepView.swift */,
 				AB10000000000000000000012 /* WordCardPreviewStepView.swift */,
 			);
-			path = Templates;
+			path = StepsViews;
 			sourceTree = "<group>";
 		};
 		AB30000000000000000000004 /* Services */ = {

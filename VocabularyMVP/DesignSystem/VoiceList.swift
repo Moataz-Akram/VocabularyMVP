@@ -1,7 +1,6 @@
 import SwiftUI
 
-// Tap-to-preview voice rows with a selection radio, shared by the onboarding
-// voice picker and the profile voice settings.
+// VoiceList view, using native voices, in real app scenario, it's better depending on professional voice over recordings
 struct VoiceList: View {
     @Binding var voiceID: String?
 
@@ -17,15 +16,11 @@ struct VoiceList: View {
         .onAppear {
             if voiceID == nil { voiceID = speech.voices.first?.id }
         }
-        // Voices load asynchronously at startup and may not be ready on first
-        // appearance; default the selection once they arrive.
         .onChange(of: speech.voices.count) {
             if voiceID == nil { voiceID = speech.voices.first?.id }
         }
     }
 
-    // The whole row is the select button so it sinks onto its shadow as one
-    // piece; the nested play button claims its own taps.
     private func voiceRow(_ voice: SpeechService.Voice) -> some View {
         let isSelected = voiceID == voice.id
         let isSpeaking = speech.speakingVoiceID == voice.id
@@ -86,7 +81,7 @@ struct VoiceList: View {
     }
 }
 
-// Waveform-style playback indicator; bars light up as speech progresses.
+// Speech progress bar, done hard coded as there's not actual record to make the real speech progress bar
 private struct WaveformProgress: View {
     let progress: Double
     let tint: Color

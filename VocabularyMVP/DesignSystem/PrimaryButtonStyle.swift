@@ -14,7 +14,6 @@ struct PrimaryButtonStyle: ButtonStyle {
         if isEnabled {
             label.hardShadow(in: Capsule(), pressed: configuration.isPressed)
         } else {
-            // Flat and dimmed — a shadow would read as pressable.
             label.opacity(0.4)
         }
     }

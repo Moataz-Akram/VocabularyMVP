@@ -6,21 +6,27 @@ struct StreakPreviewStepView: View {
     var body: some View {
         VStack(spacing: 32) {
             Spacer()
+            
             ZStack {
                 Image(systemName: "flame.fill")
                     .font(.system(size: 110))
                     .foregroundStyle(Theme.accent)
+                
                 Text("1")
                     .font(.system(size: 40, weight: .bold, design: .serif))
                     .foregroundStyle(Theme.onAccent)
                     .offset(y: 14)
             }
+            
             Text("Create a consistent daily learning routine")
                 .font(.serifLargeTitle)
                 .foregroundStyle(Theme.textPrimary)
                 .multilineTextAlignment(.center)
+            
             weekStrip
+            
             Spacer()
+            
             Button("Continue", action: onContinue)
                 .buttonStyle(PrimaryButtonStyle())
         }
@@ -36,6 +42,7 @@ struct StreakPreviewStepView: View {
                         Text(label)
                             .font(.system(.caption, design: .rounded).weight(index == 0 ? .bold : .regular))
                             .foregroundStyle(index == 0 ? Theme.textPrimary : Theme.textSecondary)
+                        
                         ZStack {
                             Circle()
                                 .fill(index == 0 ? Theme.accent : Theme.background)
@@ -49,6 +56,7 @@ struct StreakPreviewStepView: View {
                     }
                 }
             }
+            
             Text("Build a streak, one day at a time")
                 .font(.system(.subheadline, design: .rounded))
                 .foregroundStyle(Theme.textSecondary)
@@ -58,7 +66,6 @@ struct StreakPreviewStepView: View {
         .hardShadow(in: RoundedRectangle(cornerRadius: 24))
     }
 
-    // Seven day labels starting from today, e.g. ["We", "Th", ...]
     private var weekdayLabels: [String] {
         let symbols = Calendar.current.shortWeekdaySymbols
         let today = Calendar.current.component(.weekday, from: .now) - 1

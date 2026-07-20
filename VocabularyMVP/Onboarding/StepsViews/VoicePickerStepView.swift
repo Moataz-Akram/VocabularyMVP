@@ -11,8 +11,11 @@ struct VoicePickerStepView: View {
                 .foregroundStyle(Theme.textPrimary)
                 .multilineTextAlignment(.center)
                 .padding(.bottom, 24)
+            
             VoiceList(voiceID: $voiceID)
+            
             Spacer()
+            
             Button("Save voice selection", action: onContinue)
                 .buttonStyle(PrimaryButtonStyle())
                 .disabled(voiceID == nil)

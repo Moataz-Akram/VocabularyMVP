@@ -13,11 +13,14 @@ struct InfoStepView: View {
                     .font(.system(size: 80))
                     .foregroundStyle(Theme.accent)
             }
+            
             Text(title)
                 .font(.serifLargeTitle)
                 .foregroundStyle(Theme.textPrimary)
                 .multilineTextAlignment(.center)
+            
             Spacer()
+            
             Button("Continue", action: onContinue)
                 .buttonStyle(PrimaryButtonStyle())
         }

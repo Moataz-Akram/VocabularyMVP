@@ -12,21 +12,26 @@ struct WordDetailSheet: View {
                 VStack(spacing: 8) {
                     Text(word.word)
                         .font(.system(size: 30, weight: .bold, design: .serif))
-                    Button {
-                        SpeechService.shared.speak(word.word, voiceID: voiceID)
-                    } label: {
-                        HStack(spacing: 6) {
-                            if let phonetic = word.phonetic {
-                                Text(phonetic)
-                            }
-                            Image(systemName: "speaker.wave.2")
+                    HStack(spacing: 6) {
+                        if let phonetic = word.phonetic {
+                            Text(phonetic)
                         }
-                        .font(.system(.subheadline, design: .rounded))
-                        .padding(.horizontal, 14)
-                        .padding(.vertical, 8)
-                        .background(Theme.background, in: Capsule())
+                        Button {
+                            SpeechService.shared.speak(word.word, voiceID: voiceID)
+                        } label: {
+                            Image(systemName: "speaker.wave.2")
+                                // Keeps the tap target finger-sized while the pill stays compact.
+                                .padding(8)
+                                .contentShape(Rectangle())
+                        }
+                        .buttonStyle(.plain)
+                        .padding(-8)
+                        .accessibilityLabel("Pronounce \(word.word)")
                     }
-                    .buttonStyle(.plain)
+                    .font(.system(.subheadline, design: .rounded))
+                    .padding(.horizontal, 14)
+                    .padding(.vertical, 8)
+                    .background(Theme.background, in: Capsule())
                     if let definitionLine = word.definitionLine {
                         Text(definitionLine)
                             .font(.system(.body, design: .rounded))

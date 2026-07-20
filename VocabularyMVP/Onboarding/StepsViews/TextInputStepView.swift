@@ -14,6 +14,7 @@ struct TextInputStepView: View {
                 .font(.serifTitle)
                 .foregroundStyle(Theme.textPrimary)
                 .multilineTextAlignment(.center)
+            
             TextField(placeholder, text: Binding(
                 get: { text ?? "" },
                 set: { text = $0.isEmpty ? nil : $0 }))
@@ -24,7 +25,9 @@ struct TextInputStepView: View {
                 .background(Theme.surface, in: Capsule())
                 .focused($isFocused)
                 .submitLabel(.done)
+            
             Spacer()
+            
             Button("Continue", action: onContinue)
                 .buttonStyle(PrimaryButtonStyle())
                 .disabled(text == nil)

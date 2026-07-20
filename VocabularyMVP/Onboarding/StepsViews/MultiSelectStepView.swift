@@ -13,18 +13,23 @@ struct MultiSelectStepView: View {
                 .font(.serifTitle)
                 .foregroundStyle(Theme.textPrimary)
                 .multilineTextAlignment(.center)
+            
             if let subtitle {
                 Text(subtitle)
                     .font(.system(.body, design: .rounded))
                     .foregroundStyle(Theme.textSecondary)
             }
+            
             Spacer().frame(height: 12)
+            
             ForEach(options, id: \.self) { option in
                 SelectableRow(title: option, isSelected: selection.contains(option)) {
                     toggle(option)
                 }
             }
+            
             Spacer()
+            
             Button("Continue", action: onContinue)
                 .buttonStyle(PrimaryButtonStyle())
         }
