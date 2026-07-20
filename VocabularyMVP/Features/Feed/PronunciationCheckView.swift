@@ -139,7 +139,11 @@ struct PronunciationCheckView: View {
         case .failure:
             feedbackText("Not quite — hold the mic and try again")
         case .unavailable:
-            feedbackText("Pronunciation check isn’t available for this language")
+        #if targetEnvironment(simulator)
+            feedbackText("Pronunciation check isn’t available on simulator")
+        #else
+            feedbackText("Pronunciation check isn’t available")
+        #endif
         case .idle, .denied:
             EmptyView()
         }
