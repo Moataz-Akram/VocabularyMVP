@@ -53,6 +53,8 @@
 		AB20000000000000000000029 /* CollectionPickerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB10000000000000000000029 /* CollectionPickerSheet.swift */; };
 		AB2000000000000000000002A /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1000000000000000000002A /* BackButton.swift */; };
 		AB2000000000000000000002B /* PronunciationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1000000000000000000002B /* PronunciationService.swift */; };
+		AB200000000000000000002B1 /* RecognitionSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB100000000000000000002B1 /* RecognitionSession.swift */; };
+		AB200000000000000000002B2 /* PronunciationMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB100000000000000000002B2 /* PronunciationMatcher.swift */; };
 		AB2000000000000000000002C /* PronunciationCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1000000000000000000002C /* PronunciationCheckView.swift */; };
 		AB2000000000000000000002D /* VoiceList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1000000000000000000002D /* VoiceList.swift */; };
 		AB2000000000000000000002E /* InteractionsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1000000000000000000002E /* InteractionsStore.swift */; };
@@ -69,6 +71,7 @@
 		AB60000000000000000000004 /* NetworkingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB50000000000000000000004 /* NetworkingTests.swift */; };
 		AB60000000000000000000005 /* FeedViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB50000000000000000000005 /* FeedViewModelTests.swift */; };
 		AB60000000000000000000006 /* InteractionsStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB50000000000000000000006 /* InteractionsStoreTests.swift */; };
+		AB6000000000000000000009A /* PronunciationMatcherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5000000000000000000009A /* PronunciationMatcherTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -138,6 +141,8 @@
 		AB10000000000000000000029 /* CollectionPickerSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionPickerSheet.swift; sourceTree = "<group>"; };
 		AB1000000000000000000002A /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		AB1000000000000000000002B /* PronunciationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PronunciationService.swift; sourceTree = "<group>"; };
+		AB100000000000000000002B1 /* RecognitionSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognitionSession.swift; sourceTree = "<group>"; };
+		AB100000000000000000002B2 /* PronunciationMatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PronunciationMatcher.swift; sourceTree = "<group>"; };
 		AB1000000000000000000002C /* PronunciationCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PronunciationCheckView.swift; sourceTree = "<group>"; };
 		AB1000000000000000000002D /* VoiceList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceList.swift; sourceTree = "<group>"; };
 		AB1000000000000000000002E /* InteractionsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractionsStore.swift; sourceTree = "<group>"; };
@@ -154,6 +159,7 @@
 		AB50000000000000000000004 /* NetworkingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingTests.swift; sourceTree = "<group>"; };
 		AB50000000000000000000005 /* FeedViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModelTests.swift; sourceTree = "<group>"; };
 		AB50000000000000000000006 /* InteractionsStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractionsStoreTests.swift; sourceTree = "<group>"; };
+		AB5000000000000000000009A /* PronunciationMatcherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PronunciationMatcherTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -228,6 +234,7 @@
 				078174103008468B000ACABA /* VocabularyMVPTests.swift */,
 				AB50000000000000000000001 /* TestSupport.swift */,
 				AB50000000000000000000003 /* OnboardingTests.swift */,
+				AB5000000000000000000009A /* PronunciationMatcherTests.swift */,
 				AB50000000000000000000004 /* NetworkingTests.swift */,
 				AB50000000000000000000005 /* FeedViewModelTests.swift */,
 				AB50000000000000000000006 /* InteractionsStoreTests.swift */,
@@ -283,22 +290,24 @@
 			path = StepsViews;
 			sourceTree = "<group>";
 		};
+		AB300000000000000000002B0 /* PronunciationService */ = {
+			isa = PBXGroup;
+			children = (
+				AB1000000000000000000002B /* PronunciationService.swift */,
+				AB100000000000000000002B1 /* RecognitionSession.swift */,
+				AB100000000000000000002B2 /* PronunciationMatcher.swift */,
+			);
+			path = PronunciationService;
+			sourceTree = "<group>";
+		};
 		AB30000000000000000000004 /* Services */ = {
 			isa = PBXGroup;
 			children = (
 				AB10000000000000000000013 /* SpeechService.swift */,
-				AB1000000000000000000002B /* PronunciationService.swift */,
+				AB300000000000000000002B0 /* PronunciationService */,
 				AB1000000000000000000002F /* VoiceSettings.swift */,
 			);
 			path = Services;
-			sourceTree = "<group>";
-		};
-		AB3000000000000000000000B /* Stores */ = {
-			isa = PBXGroup;
-			children = (
-				AB1000000000000000000002E /* InteractionsStore.swift */,
-			);
-			path = Stores;
 			sourceTree = "<group>";
 		};
 		AB30000000000000000000005 /* Models */ = {
@@ -349,6 +358,14 @@
 				AB10000000000000000000020 /* words.json */,
 			);
 			path = Fixtures;
+			sourceTree = "<group>";
+		};
+		AB3000000000000000000000B /* Stores */ = {
+			isa = PBXGroup;
+			children = (
+				AB1000000000000000000002E /* InteractionsStore.swift */,
+			);
+			path = Stores;
 			sourceTree = "<group>";
 		};
 		AB3000000000000000000000C /* App */ = {
@@ -577,6 +594,8 @@
 				AB20000000000000000000029 /* CollectionPickerSheet.swift in Sources */,
 				AB2000000000000000000002A /* BackButton.swift in Sources */,
 				AB2000000000000000000002B /* PronunciationService.swift in Sources */,
+				AB200000000000000000002B1 /* RecognitionSession.swift in Sources */,
+				AB200000000000000000002B2 /* PronunciationMatcher.swift in Sources */,
 				AB2000000000000000000002C /* PronunciationCheckView.swift in Sources */,
 				AB2000000000000000000002D /* VoiceList.swift in Sources */,
 				AB2000000000000000000002E /* InteractionsStore.swift in Sources */,
@@ -598,6 +617,7 @@
 				078174113008468B000ACABA /* VocabularyMVPTests.swift in Sources */,
 				AB60000000000000000000001 /* TestSupport.swift in Sources */,
 				AB60000000000000000000003 /* OnboardingTests.swift in Sources */,
+				AB6000000000000000000009A /* PronunciationMatcherTests.swift in Sources */,
 				AB60000000000000000000004 /* NetworkingTests.swift in Sources */,
 				AB60000000000000000000005 /* FeedViewModelTests.swift in Sources */,
 				AB60000000000000000000006 /* InteractionsStoreTests.swift in Sources */,
@@ -766,6 +786,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -800,6 +821,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -823,7 +845,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = KJJ2686DAT;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = moataz.VocabularyMVPTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -843,7 +865,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = KJJ2686DAT;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = moataz.VocabularyMVPTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

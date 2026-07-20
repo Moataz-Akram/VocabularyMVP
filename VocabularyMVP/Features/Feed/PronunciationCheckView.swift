@@ -88,12 +88,12 @@ struct PronunciationCheckView: View {
         isPressing = pressed
         if pressed {
             switch phase {
-            case .idle, .success, .failure:
+            case .idle, .success, .failure, .unavailable:
                 Haptics.selection()
                 service.begin(word: word.word, wordID: word.id, localeID: localeID)
             case .denied:
                 showsPermissionAlert = true
-            case .listening:
+            case .preparing, .listening:
                 break
             }
         } else if service.activeWordID == word.id {
@@ -104,6 +104,9 @@ struct PronunciationCheckView: View {
     @ViewBuilder
     private var micIcon: some View {
         switch phase {
+        case .preparing:
+            ProgressView()
+                .controlSize(.small)
         case .listening:
             Image(systemName: "waveform")
                 .symbolEffect(.variableColor.iterative, options: .repeating)
@@ -116,6 +119,8 @@ struct PronunciationCheckView: View {
             Image(systemName: "xmark")
                 .foregroundStyle(.red)
                 .transition(.scale.combined(with: .opacity))
+        case .unavailable:
+            Image(systemName: "mic.slash")
         case .idle, .denied:
             Image(systemName: "mic")
         }
@@ -124,12 +129,17 @@ struct PronunciationCheckView: View {
     @ViewBuilder
     private var feedback: some View {
         switch phase {
+        // The first attempt in a language downloads its speech model.
+        case .preparing:
+            feedbackText("Getting ready…")
         case .listening:
             feedbackText(isPressing ? "Say “\(word.word)”…" : "Checking…")
         case .success:
             feedbackText("Sounded great!")
         case .failure:
             feedbackText("Not quite — hold the mic and try again")
+        case .unavailable:
+            feedbackText("Pronunciation check isn’t available for this language")
         case .idle, .denied:
             EmptyView()
         }
