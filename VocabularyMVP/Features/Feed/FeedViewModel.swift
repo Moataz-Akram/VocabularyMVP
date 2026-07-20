@@ -14,6 +14,7 @@ final class FeedViewModel {
     private var hasMore = true
     private var isLoadingPage = false
 
+    //TODO: in production we will use the real APIClient instead of MockAPIClient
     init(repository: WordRepository = WordRepository(client: MockAPIClient())) {
         self.repository = repository
     }

@@ -2,16 +2,12 @@ import Foundation
 import Observation
 import SwiftData
 
-// Single source of truth for per-word state (likes, bookmarks, seen) and
-// collections. Shared through the environment so the feed and the profile
-// screens observe and mutate the same data.
+// Single source of truth for per-word state (likes, bookmarks, seen) and collections.
 @Observable
 @MainActor
 final class InteractionsStore {
     private(set) var collections: [WordCollection] = []
     private(set) var savedToast: (word: Word, collection: WordCollection)?
-
-    let dailyGoal = 5
 
     private let context: ModelContext
     private var interactions: [String: WordInteraction] = [:]
@@ -22,6 +18,17 @@ final class InteractionsStore {
     private var knownWordIDs: Set<String> = []
     private var toastTask: Task<Void, Never>?
     private static let lastCollectionKey = "lastCollectionID"
+    let dailyGoal = 5
+
+    var favoriteWords: [Word] {
+        knownWords.filter { isLiked($0) }
+    }
+
+    var bookmarkedTodayCount: Int {
+        interactions.values.filter {
+            $0.bookmarkedAt.map(Calendar.current.isDateInToday) ?? false
+        }.count
+    }
 
     init(context: ModelContext) {
         self.context = context
@@ -38,10 +45,6 @@ final class InteractionsStore {
     }
 
     // MARK: - Likes & seen
-
-    var favoriteWords: [Word] {
-        knownWords.filter { isLiked($0) }
-    }
 
     func isLiked(_ word: Word) -> Bool {
         interactions[word.id]?.liked ?? false
@@ -63,12 +66,6 @@ final class InteractionsStore {
     }
 
     // MARK: - Bookmarks & collections
-
-    var bookmarkedTodayCount: Int {
-        interactions.values.filter {
-            $0.bookmarkedAt.map(Calendar.current.isDateInToday) ?? false
-        }.count
-    }
 
     func isBookmarked(_ word: Word) -> Bool {
         interactions[word.id]?.collectionID != nil

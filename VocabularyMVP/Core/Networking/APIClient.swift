@@ -4,6 +4,7 @@ protocol APIClient {
     func send<T: Decodable>(_ endpoint: Endpoint) async throws -> T
 }
 
+//TODO: real EndPoint should be provided by BE
 enum Endpoint {
     case words(page: Int, pageSize: Int)
 

@@ -1,8 +1,6 @@
 import Foundation
 import Observation
 
-// The user's chosen pronunciation voice, persisted on the onboarding profile.
-// Shared through the environment so any screen can read or change it.
 @Observable
 @MainActor
 final class VoiceSettings {
@@ -12,8 +10,7 @@ final class VoiceSettings {
         voiceID = OnboardingProfile.load()?.voiceID
     }
 
-    // Picks up a voice chosen during onboarding, which writes the profile
-    // directly after this object was created at launch.
+    // Picks up a voice chosen during onboarding, which writes the profile directly after this object was created at launch.
     func reload() {
         voiceID = OnboardingProfile.load()?.voiceID
     }
