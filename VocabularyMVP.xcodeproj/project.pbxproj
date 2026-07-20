@@ -57,6 +57,13 @@
 		AB2000000000000000000002D /* VoiceList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1000000000000000000002D /* VoiceList.swift */; };
 		AB2000000000000000000002E /* InteractionsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1000000000000000000002E /* InteractionsStore.swift */; };
 		AB2000000000000000000002F /* VoiceSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1000000000000000000002F /* VoiceSettings.swift */; };
+		AB2000000000000000000030 /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1000000000000000000030 /* CloseButton.swift */; };
+		AB2000000000000000000031 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1000000000000000000031 /* EmptyStateView.swift */; };
+		AB2000000000000000000032 /* RadioIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1000000000000000000032 /* RadioIndicator.swift */; };
+		AB2000000000000000000033 /* TitledSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1000000000000000000033 /* TitledSection.swift */; };
+		AB2000000000000000000034 /* FlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1000000000000000000034 /* FlowLayout.swift */; };
+		AB2000000000000000000035 /* PronouncePill.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1000000000000000000035 /* PronouncePill.swift */; };
+		AB2000000000000000000036 /* WordSearchList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1000000000000000000036 /* WordSearchList.swift */; };
 		AB60000000000000000000001 /* TestSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB50000000000000000000001 /* TestSupport.swift */; };
 		AB60000000000000000000003 /* OnboardingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB50000000000000000000003 /* OnboardingTests.swift */; };
 		AB60000000000000000000004 /* NetworkingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB50000000000000000000004 /* NetworkingTests.swift */; };
@@ -135,6 +142,13 @@
 		AB1000000000000000000002D /* VoiceList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceList.swift; sourceTree = "<group>"; };
 		AB1000000000000000000002E /* InteractionsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractionsStore.swift; sourceTree = "<group>"; };
 		AB1000000000000000000002F /* VoiceSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceSettings.swift; sourceTree = "<group>"; };
+		AB1000000000000000000030 /* CloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseButton.swift; sourceTree = "<group>"; };
+		AB1000000000000000000031 /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
+		AB1000000000000000000032 /* RadioIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioIndicator.swift; sourceTree = "<group>"; };
+		AB1000000000000000000033 /* TitledSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitledSection.swift; sourceTree = "<group>"; };
+		AB1000000000000000000034 /* FlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowLayout.swift; sourceTree = "<group>"; };
+		AB1000000000000000000035 /* PronouncePill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PronouncePill.swift; sourceTree = "<group>"; };
+		AB1000000000000000000036 /* WordSearchList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordSearchList.swift; sourceTree = "<group>"; };
 		AB50000000000000000000001 /* TestSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSupport.swift; sourceTree = "<group>"; };
 		AB50000000000000000000003 /* OnboardingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTests.swift; sourceTree = "<group>"; };
 		AB50000000000000000000004 /* NetworkingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingTests.swift; sourceTree = "<group>"; };
@@ -236,6 +250,12 @@
 				AB10000000000000000000005 /* SelectableRow.swift */,
 				AB10000000000000000000025 /* SearchBar.swift */,
 				AB1000000000000000000002D /* VoiceList.swift */,
+				AB1000000000000000000030 /* CloseButton.swift */,
+				AB1000000000000000000031 /* EmptyStateView.swift */,
+				AB1000000000000000000032 /* RadioIndicator.swift */,
+				AB1000000000000000000033 /* TitledSection.swift */,
+				AB1000000000000000000034 /* FlowLayout.swift */,
+				AB1000000000000000000035 /* PronouncePill.swift */,
 				AB1000000000000000000002A /* BackButton.swift */,
 			);
 			path = DesignSystem;
@@ -331,6 +351,7 @@
 				AB10000000000000000000028 /* CollectionDetailView.swift */,
 				AB10000000000000000000029 /* CollectionPickerSheet.swift */,
 				AB1000000000000000000002C /* PronunciationCheckView.swift */,
+				AB1000000000000000000036 /* WordSearchList.swift */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -528,6 +549,13 @@
 				AB2000000000000000000002D /* VoiceList.swift in Sources */,
 				AB2000000000000000000002E /* InteractionsStore.swift in Sources */,
 				AB2000000000000000000002F /* VoiceSettings.swift in Sources */,
+				AB2000000000000000000030 /* CloseButton.swift in Sources */,
+				AB2000000000000000000031 /* EmptyStateView.swift in Sources */,
+				AB2000000000000000000032 /* RadioIndicator.swift in Sources */,
+				AB2000000000000000000033 /* TitledSection.swift in Sources */,
+				AB2000000000000000000034 /* FlowLayout.swift in Sources */,
+				AB2000000000000000000035 /* PronouncePill.swift in Sources */,
+				AB2000000000000000000036 /* WordSearchList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

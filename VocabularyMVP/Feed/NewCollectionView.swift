@@ -43,3 +43,23 @@ struct NewCollectionView: View {
         .onAppear { isFocused = true }
     }
 }
+
+// "Add new" toolbar chip linking to NewCollectionView, shared by the
+// collections list and the collection picker.
+struct AddNewCollectionLink: View {
+    var onCreated: ((WordCollection) -> Void)?
+
+    var body: some View {
+        NavigationLink {
+            NewCollectionView(onCreated: onCreated)
+        } label: {
+            Text("Add new")
+                .font(.system(.subheadline, design: .rounded).weight(.semibold))
+                .foregroundStyle(Theme.textPrimary)
+                .padding(.horizontal, 14)
+                .padding(.vertical, 8)
+                .background(Theme.surface, in: Capsule())
+        }
+        .buttonStyle(.plain)
+    }
+}

@@ -58,16 +58,7 @@ struct VoiceList: View {
                                  tint: Theme.onAccent,
                                  track: (isSelected ? Theme.onAccent : Theme.textSecondary).opacity(0.35))
                     .frame(maxWidth: .infinity)
-                ZStack {
-                    Circle()
-                        .strokeBorder(isSelected ? Theme.onAccent : Theme.textSecondary, lineWidth: 2)
-                        .frame(width: 26, height: 26)
-                    if isSelected {
-                        Circle()
-                            .fill(Theme.onAccent)
-                            .frame(width: 14, height: 14)
-                    }
-                }
+                RadioIndicator(isSelected: isSelected)
             }
             .contentShape(Rectangle())
             .foregroundStyle(isSelected ? Theme.onAccent : Theme.textPrimary)

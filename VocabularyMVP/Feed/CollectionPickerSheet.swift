@@ -38,20 +38,10 @@ struct CollectionPickerSheet: View {
                         .foregroundStyle(Theme.textPrimary)
                 }
                 ToolbarItem(placement: .topBarTrailing) {
-                    NavigationLink {
-                        NewCollectionView { newCollection in
-                            interactions.assign(word, to: newCollection)
-                            dismiss()
-                        }
-                    } label: {
-                        Text("Add new")
-                            .font(.system(.subheadline, design: .rounded).weight(.semibold))
-                            .foregroundStyle(Theme.textPrimary)
-                            .padding(.horizontal, 14)
-                            .padding(.vertical, 8)
-                            .background(Theme.surface, in: Capsule())
+                    AddNewCollectionLink { newCollection in
+                        interactions.assign(word, to: newCollection)
+                        dismiss()
                     }
-                    .buttonStyle(.plain)
                 }
             }
         }

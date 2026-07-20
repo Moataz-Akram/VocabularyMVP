@@ -7,16 +7,8 @@ struct CollectionsListView: View {
     var body: some View {
         Group {
             if interactions.collections.isEmpty {
-                VStack(spacing: 8) {
-                    Text("No collections yet")
-                        .font(.serifTitle)
-                    
-                    Text("Create a collection to organize the words you save.")
-                        .font(.system(.body, design: .rounded))
-                        .foregroundStyle(Theme.textSecondary)
-                }
-                .foregroundStyle(Theme.textPrimary)
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                EmptyStateView(title: "No collections yet",
+                               message: "Create a collection to organize the words you save.")
             } else {
                 ScrollView {
                     VStack(spacing: 0) {
@@ -43,17 +35,7 @@ struct CollectionsListView: View {
         .customBackButton()
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
-                NavigationLink {
-                    NewCollectionView()
-                } label: {
-                    Text("Add new")
-                        .font(.system(.subheadline, design: .rounded).weight(.semibold))
-                        .foregroundStyle(Theme.textPrimary)
-                        .padding(.horizontal, 14)
-                        .padding(.vertical, 8)
-                        .background(Theme.surface, in: Capsule())
-                }
-                .buttonStyle(.plain)
+                AddNewCollectionLink()
             }
         }
     }

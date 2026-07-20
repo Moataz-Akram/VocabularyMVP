@@ -28,31 +28,18 @@ struct WordCardPreviewStepView: View {
                 Text("ephemeral")
                     .font(.system(size: 34, weight: .bold, design: .serif))
                 
-                HStack(spacing: 6) {
-                    Text("/ɪˈfɛməɹəl/")
-                    
-                    Button {
-                        SpeechService.shared.speak("ephemeral", voiceID: voiceID)
-                    } label: {
-                        Image(systemName: "speaker.wave.2")
-                    }
-                    .buttonStyle(.plain)
-                }
-                .font(.system(.subheadline, design: .rounded))
-                .padding(.horizontal, 14)
-                .padding(.vertical, 8)
-                .background(Theme.background, in: Capsule())
+                PronouncePill(word: "ephemeral", phonetic: "/ɪˈfɛməɹəl/", voiceID: voiceID)
                 
                 Text("(adj.) Lasting for a very short time")
                     .font(.system(.body, design: .rounded))
             }
             .frame(maxWidth: .infinity)
 
-            section("Example") {
+            TitledSection("Example") {
                 Text("The beauty of cherry blossoms is ephemeral, gone within a week.")
             }
-            
-            section("Synonyms") {
+
+            TitledSection("Synonyms") {
                 HStack(spacing: 8) {
                     ForEach(["fleeting", "transient", "short-lived"], id: \.self) { synonym in
                         Text(synonym)
@@ -64,7 +51,7 @@ struct WordCardPreviewStepView: View {
                 }
             }
             
-            section("Origin") {
+            TitledSection("Origin") {
                 Text("From Greek ephémeros, meaning “lasting only a day.”")
             }
         }
@@ -72,14 +59,5 @@ struct WordCardPreviewStepView: View {
         .foregroundStyle(Theme.textPrimary)
         .padding(24)
         .background(Theme.surface, in: RoundedRectangle(cornerRadius: 28))
-    }
-
-    private func section(_ title: String, @ViewBuilder content: () -> some View) -> some View {
-        VStack(alignment: .leading, spacing: 6) {
-            Text(title)
-                .font(.system(.caption, design: .rounded))
-                .foregroundStyle(Theme.textSecondary)
-            content()
-        }
     }
 }

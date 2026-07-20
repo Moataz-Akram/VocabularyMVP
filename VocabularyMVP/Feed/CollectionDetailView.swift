@@ -6,57 +6,24 @@ struct CollectionDetailView: View {
 
     @Environment(InteractionsStore.self) private var interactions
     @Environment(\.dismiss) private var dismiss
-    @State private var searchText = ""
     @State private var newestFirst = true
-    @State private var shareWord: Word?
     @State private var showsRename = false
     @State private var showsDeleteConfirm = false
     @State private var renameText = ""
 
-    private var words: [Word] {
-        var result = interactions.words(in: collection)
-        if !searchText.isEmpty {
-            result = result.filter { $0.word.localizedCaseInsensitiveContains(searchText) }
-        }
-        return result.sorted {
-            let first = interactions.bookmarkedDate($0) ?? .distantPast
-            let second = interactions.bookmarkedDate($1) ?? .distantPast
-            return newestFirst ? first > second : first < second
-        }
-    }
-
     var body: some View {
-        Group {
-            if words.isEmpty {
-                VStack(spacing: 8) {
-                    Text(searchText.isEmpty ? "No words yet" : "No matches")
-                        .font(.serifTitle)
-                    if searchText.isEmpty {
-                        Text("Tap the bookmark on any word to save it here.")
-                            .font(.system(.body, design: .rounded))
-                            .foregroundStyle(Theme.textSecondary)
-                    }
-                }
-                .foregroundStyle(Theme.textPrimary)
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-            } else {
-                ScrollView {
-                    LazyVStack(spacing: 16) {
-                        ForEach(words) { word in
-                            WordRowCard(word: word,
-                                        date: interactions.bookmarkedDate(word),
-                                        onShare: { shareWord = word })
-                        }
-                    }
-                    .padding(20)
-                }
+        WordSearchList(emptyTitle: "No words yet",
+                       emptyMessage: "Tap the bookmark on any word to save it here.",
+                       date: interactions.bookmarkedDate) { searchText in
+            var result = interactions.words(in: collection)
+            if !searchText.isEmpty {
+                result = result.filter { $0.word.localizedCaseInsensitiveContains(searchText) }
             }
-        }
-        .background(Theme.background.ignoresSafeArea())
-        .safeAreaInset(edge: .bottom) {
-            SearchBar(text: $searchText)
-                .padding(.horizontal, 20)
-                .padding(.bottom, 8)
+            return result.sorted {
+                let first = interactions.bookmarkedDate($0) ?? .distantPast
+                let second = interactions.bookmarkedDate($1) ?? .distantPast
+                return newestFirst ? first > second : first < second
+            }
         }
         .navigationTitle(collection.name)
         .navigationBarTitleDisplayMode(.inline)
@@ -88,9 +55,6 @@ struct CollectionDetailView: View {
             }
         }
         .tint(Theme.textPrimary)
-        .fullScreenCover(item: $shareWord) { word in
-            WordShareSheet(word: word)
-        }
         .alert("Rename collection", isPresented: $showsRename) {
             TextField("Name", text: $renameText)
             

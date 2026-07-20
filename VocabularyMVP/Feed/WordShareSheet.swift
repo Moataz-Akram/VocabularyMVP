@@ -4,7 +4,6 @@ import SwiftUI
 struct WordShareSheet: View {
     let word: Word
 
-    @Environment(\.dismiss) private var dismiss
     @State private var rendered: UIImage?
     @State private var savedToPhotos = false
     @State private var showsActivitySheet = false
@@ -12,18 +11,7 @@ struct WordShareSheet: View {
     var body: some View {
         VStack(spacing: 24) {
             HStack {
-                Button {
-                    dismiss()
-                } label: {
-                    Image(systemName: "xmark")
-                        .font(.system(size: 16, weight: .medium))
-                        .foregroundStyle(Theme.textPrimary)
-                        .frame(width: 40, height: 40)
-                        .background(Theme.surface, in: Circle())
-                }
-                .buttonStyle(.plain)
-                .accessibilityLabel("Close")
-                
+                CloseButton()
                 Spacer()
             }
             

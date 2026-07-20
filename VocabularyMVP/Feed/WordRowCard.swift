@@ -17,22 +17,8 @@ struct WordRowCard: View {
                     .lineLimit(1)
                     .minimumScaleFactor(0.6)
                 
-                Button {
-                    SpeechService.shared.speak(word.word, voiceID: voiceSettings.voiceID)
-                } label: {
-                    HStack(spacing: 6) {
-                        if let phonetic = word.phonetic {
-                            Text(phonetic)
-                        }
-                        Image(systemName: "speaker.wave.2")
-                    }
-                    .font(.system(.caption, design: .rounded))
-                    .padding(.horizontal, 10)
-                    .padding(.vertical, 6)
-                    .background(Theme.background, in: Capsule())
-                }
-                .buttonStyle(.plain)
-                .accessibilityLabel("Pronounce \(word.word)")
+                PronouncePill(word: word.word, phonetic: word.phonetic,
+                              voiceID: voiceSettings.voiceID, compact: true)
             }
             
             if let definitionLine = word.definitionLine {
